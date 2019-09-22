@@ -1,5 +1,5 @@
 package br.com.novaroma.projeto.entidades;
-public class Catalogo implements Buscas{
+public class Catalogo{
 	private Produto produto[] = new Produto[2];
 
 	public void Preenchimento() {
@@ -21,18 +21,6 @@ public class Catalogo implements Buscas{
 
 	}
 
-	public void catalogoCompleto() {
-		for(Produto x: getCatalogo()) {
-			System.out.println("tipo:" +x.getTipo()+" ,tema: "+x.getTema()+" ,cor: "+x.getCor()+" ,preço: "+x.getPreco());
-			
-		}
-	}
-	
-	public void filtro(Produto produto) {
-		
-		
-		
-	}
 
 	public Produto[] getCatalogo() {
 		return produto;

@@ -12,7 +12,6 @@ public class CatalogoApresentacao {
 	public void infoPesquisa() {
 		Catalogo produtos = new Catalogo();
 		produtos.Preenchimento();
-		char p;
 		int x;
 
 		do {
