@@ -33,7 +33,7 @@ public class Verificar implements Verificacoes {
 		if ((r == 10) || (r == 11)) {
 			dig11 = '0';
 		} else {
-			dig11 = (char) (r + 48);
+			dig11 = (char) (r +48);
 		}
 		if (usuario.getCpf().equals("00000000000") || usuario.getCpf().equals("11111111111")
 				|| usuario.getCpf().equals("22222222222") || usuario.getCpf().equals("33333333333")
