@@ -43,6 +43,7 @@ public class CatalogoApresentacao {
 		String tipo = null, tema = null, cor = null;
 		double preco = 0;
 		int x;
+
 		do {
 			System.out.println("------------Digite 1 para filtrar o tipo-----------------------");
 			System.out.println("------------Digite 2 para filtrar o tema-----------------------");
@@ -67,8 +68,34 @@ public class CatalogoApresentacao {
 
 			}
 		} while (x != 0);
-		produtos.filtro(tipo, tema, cor, preco);
+		for (int i = 0; i < produtos.getCatalogo().length; i++) {
+			if (tipo.equalsIgnoreCase(produtos.getCatalogo()[1].getTipo()) && tema.equals(null) && cor.equals(null)
+					&& preco == 0) {
+				System.out.println("tipo " + produtos.getCatalogo()[i].getTipo() + "  tema "
+						+ produtos.getCatalogo()[i].getTema() + " cor " + produtos.getCatalogo()[i].getCor() + " preço "
+						+ produtos.getCatalogo()[i].getPreco());
 
+			} else if (tipo.equalsIgnoreCase(null) && tema.equals(produtos.getCatalogo()[i].getTema())
+					&& cor.equals(null) && preco == 0) {
+				System.out.println("tipo " + produtos.getCatalogo()[i].getTipo() + "  tema "
+						+ produtos.getCatalogo()[i].getTema() + " cor " + produtos.getCatalogo()[i].getCor() + " preço "
+						+ produtos.getCatalogo()[i].getPreco());
+			} else if (tipo.equalsIgnoreCase(null) && tema.equals(null)
+					&& cor.equals(produtos.getCatalogo()[i].getCor()) && preco == 0) {
+				System.out.println("tipo " + produtos.getCatalogo()[i].getTipo() + "  tema "
+						+ produtos.getCatalogo()[i].getTema() + " cor " + produtos.getCatalogo()[i].getCor() + " preço "
+						+ produtos.getCatalogo()[i].getPreco());
+			} else if (tipo.equalsIgnoreCase(null) && tema.equals(null) && cor.equals(null)
+					&& preco == produtos.getCatalogo()[i].getPreco()) {
+				System.out.println("tipo " + produtos.getCatalogo()[i].getTipo() + "  tema "
+						+ produtos.getCatalogo()[i].getTema() + " cor " + produtos.getCatalogo()[i].getCor() + " preço "
+						+ produtos.getCatalogo()[i].getPreco());
+			} else {
+				System.out.println("tipo " + produtos.getCatalogo()[i].getTipo() + "  tema "
+						+ produtos.getCatalogo()[i].getTema() + " cor " + produtos.getCatalogo()[i].getCor() + " preço "
+						+ produtos.getCatalogo()[i].getPreco());
+			}
+
+		}
 	}
-
 }

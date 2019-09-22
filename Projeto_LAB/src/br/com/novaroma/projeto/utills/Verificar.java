@@ -2,7 +2,7 @@ package br.com.novaroma.projeto.utills;
 
 import br.com.novaroma.projeto.entidades.Usuario;
 
-public class Verificar implements Verificacoes {
+public class Verificar {
 
 	public static boolean verificarCPF(Usuario usuario) {
 		char dig10, dig11;
