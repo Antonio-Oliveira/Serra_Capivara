@@ -40,7 +40,7 @@ public class CatalogoApresentacao {
 
 	private void filtroApresentacao(Catalogo produtos) {
 		String tipo = null, tema = null, cor = null;
-		double preco = 0;
+		double preco =     0;
 		int x;
 
 		do {
