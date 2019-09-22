@@ -49,6 +49,8 @@ public class Verificar implements Verificacoes {
 		return true;
 
 	}
+	
+	everton
 
 	public static String verificarPrefixo(Usuario usuario) {
 
