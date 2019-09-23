@@ -64,7 +64,14 @@ public class Verificar {
 	}
 
 	public static boolean verificarEmail(Usuario usuario) {
-		return true;
+		String email = "melyssagoliveiragmail.com";
+		int indiceEmail = email.indexOf('@');
+		if (indiceEmail == 1) {
+			return true;
+		} else {
+			return false;
+
+		}
 
 	}
 
