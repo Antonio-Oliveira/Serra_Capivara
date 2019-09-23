@@ -9,7 +9,7 @@ public class CatalogoApresentacao {
 
 	static Scanner scan = new Scanner(System.in);
 
-	static void infoPesquisa() {
+	public static void infoPesquisa() {
 		Catalogo produtos = new Catalogo();
 		produtos.Preenchimento();
 		int x;
