@@ -11,6 +11,7 @@ public class Principal {
 	static Scanner scan = new Scanner(System.in);
 
 	public static void main(String[] args) {
+		UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
 		String prefixoNome = null;
 
 		System.out.println("------------Digite 1 para gerar cadastro----------------------");
@@ -22,6 +23,8 @@ public class Principal {
 		switch (x) {
 		case 1:
 			Usuario usuario = UsuarioApresentacao.preencherUsuario();
+			String mensagem = usuarioNegocio.verificacoes(usuario);
+			System.out.println(mensagem);
 			break;
 		case 2:
 

@@ -37,7 +37,7 @@ public class CatalogoApresentacao {
 
 	}
 
-	static void filtroApresentacao(Catalogo produtos) {
+	static Produto filtroApresentacao(Catalogo produtos) {
 		String tipo = null, tema = null, cor = null;
 		double preco = 0;
 		int x;
@@ -54,7 +54,7 @@ public class CatalogoApresentacao {
 			System.out.println("                                                                ");
 			switch (x) {
 			case 1:
-				System.out.println("Informe o tipo do prosuto que deseja");
+				System.out.println("Informe o tipo do produto que deseja");
 				tipo = scan.next();
 				break;
 			case 2:
@@ -82,19 +82,46 @@ public class CatalogoApresentacao {
 						+ produtos.getCatalogo()[i].getTema() + " cor " + produtos.getCatalogo()[i].getCor() + " preço "
 						+ produtos.getCatalogo()[i].getPreco());
 
+				System.out.println("Deseja adicionar esse produto ao carrinho de compras? sim ou não?");
+				String condicao = scan.next();
+				if (condicao.equalsIgnoreCase("sim")) {
+					return produtos.getCatalogo()[i];
+				}
+
 			} else if (tipo == null && produtos.getCatalogo()[i].getTema().equals(tema) && cor == null
 					&& preco == 0.0) {
 				System.out.println("tipo " + produtos.getCatalogo()[i].getTipo() + "  tema "
 						+ produtos.getCatalogo()[i].getTema() + " cor " + produtos.getCatalogo()[i].getCor() + " preço "
 						+ produtos.getCatalogo()[i].getPreco());
+
+				System.out.println("Deseja adicionar esse produto ao carrinho de compras? sim ou não?");
+				String condicao = scan.next();
+				if (condicao.equalsIgnoreCase("sim")) {
+					return produtos.getCatalogo()[i];
+				}
+
 			} else if (tipo == null && tema == null && cor == produtos.getCatalogo()[i].getCor() && preco == 0.0) {
 				System.out.println("tipo " + produtos.getCatalogo()[i].getTipo() + "  tema "
 						+ produtos.getCatalogo()[i].getTema() + " cor " + produtos.getCatalogo()[i].getCor() + " preço "
 						+ produtos.getCatalogo()[i].getPreco());
+
+				System.out.println("Deseja adicionar esse produto ao carrinho de compras? sim ou não?");
+				String condicao = scan.next();
+				if (condicao.equalsIgnoreCase("sim")) {
+					return produtos.getCatalogo()[i];
+				}
+
 			} else if (tipo == null && tema == null && cor == null && preco >= produtos.getCatalogo()[i].getPreco()) {
 				System.out.println("tipo " + produtos.getCatalogo()[i].getTipo() + "  tema "
 						+ produtos.getCatalogo()[i].getTema() + " cor " + produtos.getCatalogo()[i].getCor() + " preço "
 						+ produtos.getCatalogo()[i].getPreco());
+
+				System.out.println("Deseja adicionar esse produto ao carrinho de compras? sim ou não?");
+				String condicao = scan.next();
+				if (condicao.equalsIgnoreCase("sim")) {
+					return produtos.getCatalogo()[i];
+				}
+
 			} else if (tipo.equalsIgnoreCase(produtos.getCatalogo()[i].getTipo())
 					&& preco == produtos.getCatalogo()[i].getPreco()
 					&& produtos.getCatalogo()[i].getCor().equalsIgnoreCase(cor)
@@ -102,8 +129,16 @@ public class CatalogoApresentacao {
 				System.out.println("tipo " + produtos.getCatalogo()[i].getTipo() + "  tema "
 						+ produtos.getCatalogo()[i].getTema() + " cor " + produtos.getCatalogo()[i].getCor() + " preço "
 						+ produtos.getCatalogo()[i].getPreco());
+
+				System.out.println("Deseja adicionar esse produto ao carrinho de compras? sim ou não?");
+				String condicao = scan.next();
+				if (condicao.equalsIgnoreCase("sim")) {
+					return produtos.getCatalogo()[i];
+				}
+
 			}
 
 		}
+		return null;
 	}
 }
