@@ -63,24 +63,34 @@ public class Verificar {
 		}
 	}
 
-	public static boolean verificarEmail(Usuario usuario) {
-		String email = "melyssagoliveiragmail.com";
-		int indiceEmail = email.indexOf('@');
-		if (indiceEmail == 1) {
-			return true;
-		} else {
-			return false;
+	public static boolean VerificarEmail(Usuario usuario) {
+		boolean statusEmail = false;
+		if (email != null && email.length() > 0) {
+			String expressao = ".+@.+\\.[a-z]+";
+			Pattern p = Pattern.compile(expressao);
+			Matcher m = p.matcher(email);
+			if (m.matches()) {
+				statusEmail = true;
 
+			}
 		}
+
+		return statusEmail;
 
 	}
 
 	public static boolean verificarSenha(Usuario usuario) {
-		if (usuario.getSenha().length() <= 4) {
-			return false;
+		boolean statusSenha = false;
+		String senhaInvalida;
+		if (senha.length() >= 8 && senha.length() <= 15) {
+			String expressao = "[A-Z][a-z0-9].+";
+			Pattern p = Pattern.compile(expressao);
+			Matcher m = p.matcher(senha);
+			if(m.matches()) {
+				statusSenha = true;
+			}
 		}
-
-		return true;
+		return statusSenha;
 
 	}
 
