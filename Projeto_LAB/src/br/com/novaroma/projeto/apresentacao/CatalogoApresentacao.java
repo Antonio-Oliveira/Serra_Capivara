@@ -98,7 +98,7 @@ public class CatalogoApresentacao {
 						+ produtos.getCatalogo()[i].getTema() + " cor " + produtos.getCatalogo()[i].getCor() + " preço "
 						+ produtos.getCatalogo()[i].getPreco());
 
-				System.out.println("Deseja adicionar esse produto ao carrinho de compras? sim ou não?");
+				System.out.println("Deseja adicionar esse produto ao carrinho de compras? Sim ou não?");
 				String condicao = scan.next();
 				
 
