@@ -100,19 +100,10 @@ public class CatalogoApresentacao {
 				} else if (tipo == null && tema.equalsIgnoreCase(produtos.getCatalogo()[i].getTema()) && cor == null
 						&& preco == 0.0) {
 
-
-
 					System.out.println(produtos.getCatalogo()[i].getTipo() + " " + produtos.getCatalogo()[i].getCor()
 							+ " ," + produtos.getCatalogo()[i].getTema() + " ," + produtos.getCatalogo()[i].getPreco()
 							+ "RS");
 					break;
-
-
-				System.out.println("Deseja adicionar esse produto ao carrinho de compras? Sim ou não?");
-				String condicao = scan.next();
-				
-
-
 
 				} else if (tipo == null && tema == null && cor.equalsIgnoreCase(produtos.getCatalogo()[i].getCor())
 						&& preco == 0.0) {
@@ -129,20 +120,91 @@ public class CatalogoApresentacao {
 							+ " ," + produtos.getCatalogo()[i].getTema() + " ," + produtos.getCatalogo()[i].getPreco()
 							+ "RS");
 					break;
-					//Water
+
 				} else if (tipo.equalsIgnoreCase(produtos.getCatalogo()[i].getTipo())
 						&& tema.equalsIgnoreCase(produtos.getCatalogo()[i].getTema()) && cor == null && preco == 0.0) {
-					
+
 					System.out.println(produtos.getCatalogo()[i].getTipo() + " " + produtos.getCatalogo()[i].getCor()
 							+ " ," + produtos.getCatalogo()[i].getTema() + " ," + produtos.getCatalogo()[i].getPreco()
 							+ "RS");
 					break;
 
-				}else if(tipo.equalsIgnoreCase(produtos.getCatalogo()[i].getTipo())
-						&& tema == null && cor.contentEquals(produtos.getCatalogo()[i].getCor()) && preco == 0.0) {
-					
-				}else if{
-					
+				} else if (tipo.equalsIgnoreCase(produtos.getCatalogo()[i].getTipo()) && tema == null
+						&& cor.contentEquals(produtos.getCatalogo()[i].getCor()) && preco == 0.0) {
+
+					System.out.println(produtos.getCatalogo()[i].getTipo() + " " + produtos.getCatalogo()[i].getCor()
+							+ " ," + produtos.getCatalogo()[i].getTema() + " ," + produtos.getCatalogo()[i].getPreco()
+							+ "RS");
+					break;
+
+				} else if (tipo.equalsIgnoreCase(produtos.getCatalogo()[i].getTipo()) && tema == null && cor == null
+						&& preco >= produtos.getCatalogo()[i].getPreco()) {
+
+					System.out.println(produtos.getCatalogo()[i].getTipo() + " " + produtos.getCatalogo()[i].getCor()
+							+ " ," + produtos.getCatalogo()[i].getTema() + " ," + produtos.getCatalogo()[i].getPreco()
+							+ "RS");
+					break;
+
+				} else if (tipo == null && tema.equalsIgnoreCase(produtos.getCatalogo()[i].getTema()) && cor == null
+						&& preco >= produtos.getCatalogo()[i].getPreco()) {
+
+					System.out.println(produtos.getCatalogo()[i].getTipo() + " " + produtos.getCatalogo()[i].getCor()
+							+ " ," + produtos.getCatalogo()[i].getTema() + " ," + produtos.getCatalogo()[i].getPreco()
+							+ "RS");
+					break;
+
+				} else if (tipo == null && tema.equalsIgnoreCase(produtos.getCatalogo()[i].getTema())
+						&& cor.equalsIgnoreCase(produtos.getCatalogo()[i].getCor()) && preco == 0) {
+
+					System.out.println(produtos.getCatalogo()[i].getTipo() + " " + produtos.getCatalogo()[i].getCor()
+							+ " ," + produtos.getCatalogo()[i].getTema() + " ," + produtos.getCatalogo()[i].getPreco()
+							+ "RS");
+					break;
+
+				} else if (tipo == null && tema == null && cor.equalsIgnoreCase(produtos.getCatalogo()[i].getCor())
+						&& preco >= produtos.getCatalogo()[i].getPreco()) {
+
+					System.out.println(produtos.getCatalogo()[i].getTipo() + " " + produtos.getCatalogo()[i].getCor()
+							+ " ," + produtos.getCatalogo()[i].getTema() + " ," + produtos.getCatalogo()[i].getPreco()
+							+ "RS");
+					break;
+
+				} else if (tipo.equalsIgnoreCase(produtos.getCatalogo()[i].getTipo())
+						&& tema.equalsIgnoreCase(produtos.getCatalogo()[i].getTema())
+						&& cor.equalsIgnoreCase(produtos.getCatalogo()[i].getCor()) && preco == 0) {
+
+					System.out.println(produtos.getCatalogo()[i].getTipo() + " " + produtos.getCatalogo()[i].getCor()
+							+ " ," + produtos.getCatalogo()[i].getTema() + " ," + produtos.getCatalogo()[i].getPreco()
+							+ "RS");
+					break;
+
+				} else if (tipo.equalsIgnoreCase(produtos.getCatalogo()[i].getTipo())
+						&& tema.equalsIgnoreCase(produtos.getCatalogo()[i].getTema()) && cor == null
+						&& preco >= produtos.getCatalogo()[i].getPreco()) {
+
+					System.out.println(produtos.getCatalogo()[i].getTipo() + " " + produtos.getCatalogo()[i].getCor()
+							+ " ," + produtos.getCatalogo()[i].getTema() + " ," + produtos.getCatalogo()[i].getPreco()
+							+ "RS");
+					break;
+
+				} else if (tipo.equalsIgnoreCase(produtos.getCatalogo()[i].getTipo()) && tema == null
+						&& cor.equalsIgnoreCase(produtos.getCatalogo()[i].getCor())
+						&& preco >= produtos.getCatalogo()[i].getPreco()) {
+
+					System.out.println(produtos.getCatalogo()[i].getTipo() + " " + produtos.getCatalogo()[i].getCor()
+							+ " ," + produtos.getCatalogo()[i].getTema() + " ," + produtos.getCatalogo()[i].getPreco()
+							+ "RS");
+					break;
+
+				} else if (tipo == null && tema.equalsIgnoreCase(produtos.getCatalogo()[i].getTema())
+						&& cor.equalsIgnoreCase(produtos.getCatalogo()[i].getCor())
+						&& preco >= produtos.getCatalogo()[i].getPreco()) {
+
+					System.out.println(produtos.getCatalogo()[i].getTipo() + " " + produtos.getCatalogo()[i].getCor()
+							+ " ," + produtos.getCatalogo()[i].getTema() + " ," + produtos.getCatalogo()[i].getPreco()
+							+ "RS");
+					break;
+
 				}
 
 			} else {
