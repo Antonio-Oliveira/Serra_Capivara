@@ -83,17 +83,15 @@ public class Verificar {
 	}
 
 	public static boolean verificarSenha(Usuario usuario) {
-		boolean statusSenha = false;
-		String senhaInvalida;
 		if (usuario.getSenha().length() >= 8 && usuario.getSenha().length() <= 15) {
 			String expressao = "[A-Z][a-z0-9].+";
 			Pattern p = Pattern.compile(expressao);
 			Matcher m = p.matcher(usuario.getSenha());
 			if (m.matches()) {
-				statusSenha = true;
+				return true;
 			}
 		}
-		return statusSenha;
+		return false;
 
 	}
 
