@@ -1,5 +1,8 @@
 package br.com.novaroma.projeto.utills;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import br.com.novaroma.projeto.entidades.Usuario;
 
 public class Verificar {
@@ -64,29 +67,29 @@ public class Verificar {
 	}
 
 	public static boolean VerificarEmail(Usuario usuario) {
-		boolean statusEmail = false;
-		if (email != null && email.length() > 0) {
+		
+		if (usuario.getEmail() != null && usuario.getEmail().length() > 0) {
 			String expressao = ".+@.+\\.[a-z]+";
 			Pattern p = Pattern.compile(expressao);
-			Matcher m = p.matcher(email);
+			Matcher m = p.matcher(usuario.getEmail());
 			if (m.matches()) {
-				statusEmail = true;
+				return true;
 
 			}
 		}
 
-		return statusEmail;
+		return false;
 
 	}
 
 	public static boolean verificarSenha(Usuario usuario) {
 		boolean statusSenha = false;
 		String senhaInvalida;
-		if (senha.length() >= 8 && senha.length() <= 15) {
+		if (usuario.getSenha().length() >= 8 && usuario.getSenha().length() <= 15) {
 			String expressao = "[A-Z][a-z0-9].+";
 			Pattern p = Pattern.compile(expressao);
-			Matcher m = p.matcher(senha);
-			if(m.matches()) {
+			Matcher m = p.matcher(usuario.getSenha());
+			if (m.matches()) {
 				statusSenha = true;
 			}
 		}

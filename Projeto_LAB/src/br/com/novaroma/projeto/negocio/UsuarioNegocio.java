@@ -16,7 +16,7 @@ public class UsuarioNegocio {
 
 		} else if (Verificar.verificarSenha(usuario) == false) {
 			return "O Usuario " + usuario.getNome() + " não foi cadastrado pois a senha esta incorreta";
-		} else if (Verificar.verificarEmail(usuario) == false) {
+		} else if (Verificar.VerificarEmail(usuario) == false) {
 			return "O Usuario " + usuario.getNome() + " não foi cadastrado pois o email esta incorreta";
 		}
 		return "Usuario Cadastrado com sucesso";
