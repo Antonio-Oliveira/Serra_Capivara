@@ -5,7 +5,7 @@ public class Catalogo{
 	public void Preenchimento() {
 		produto[0] = new Produto();
 		produto[0].setTipo("Copo");
-		produto[0].setTema("Cena do beijo");
+		produto[0].setTema("Cenadobeijo");
 		produto[0].setCor("Azul");
 		produto[0].setPreco(35);
 		produto[0].setCodigo("ABC123");
@@ -62,7 +62,7 @@ public class Catalogo{
 		produto[7] = new Produto();
 		produto[7].setTipo("Bola decorativa");
 		produto[7].setTema("Animais");
-		produto[7].setCor("Branco e azul");
+		produto[7].setCor("azul");
 		produto[7].setPreco(65);
 		produto[7].setCodigo("HHH888");
 		produto[7].setQuant(3);
