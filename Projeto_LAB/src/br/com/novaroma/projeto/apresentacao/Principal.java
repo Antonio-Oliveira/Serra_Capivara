@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 import br.com.novaroma.projeto.entidades.Usuario;
 import br.com.novaroma.projeto.negocio.UsuarioNegocio;
-import br.com.novaroma.projeto.utills.Verificar;
 
 public class Principal {
 
@@ -12,7 +11,6 @@ public class Principal {
 
 	public static void main(String[] args) {
 		UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
-		String prefixoNome = null;
 		int x;
 
 		do {
@@ -33,14 +31,13 @@ public class Principal {
 				break;
 			case 3:
 				CatalogoApresentacao.infoPesquisa();
-				
-				
+
 				break;
 			default:
 				System.out.println("Volte Sempre!");
 
 			}
-		}while(x!=0);
+		} while (x != 0);
 	}
 
 }

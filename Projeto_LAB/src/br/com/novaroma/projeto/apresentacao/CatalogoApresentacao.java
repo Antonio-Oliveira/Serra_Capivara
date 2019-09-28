@@ -14,39 +14,44 @@ public class CatalogoApresentacao {
 		produtos.Preenchimento();
 		int x;
 
-		System.out.println("------------Digite 1 para para apresentar Catalogo completo-------");
-		System.out.println("------------Digite 2 para filtrar informacões---------------------");
-		System.out.println("------------Digite 0 para sair desta opção------------------------");
-		x = scan.nextInt();
+		do {
+			System.out.println("------------Digite 1 para para apresentar Catalogo completo-------");
+			System.out.println("------------Digite 2 para filtrar informacões---------------------");
+			System.out.println("------------Digite 0 para sair desta opção------------------------");
+			x = scan.nextInt();
 
-		switch (x) {
-		case 1:
-			catalogoCompleto(produtos);
-			break;
-		case 2:
-			filtro(produtos);
-			break;
-		default:
-			System.out.println("Não temos essa opções, se deseja sair digite 0");
+			switch (x) {
+			case 1:
+				catalogoCompleto(produtos);
+				break;
+			case 2:
+				filtro(produtos);
+				break;
+			default:
+				System.out.println("Não temos essa opções, se deseja sair digite 0");
 
-		}
+			}
+
+		} while (x != 0);
 
 	}
 
 	private static void catalogoCompleto(Catalogo produtos) {
-		
+		produtos.Preenchimento();
 		for (int i = 0; i < produtos.getCatalogo().length; i++) {
 			System.out.println("tipo " + produtos.getCatalogo()[i].getTipo() + "  tema "
 					+ produtos.getCatalogo()[i].getTema() + " cor " + produtos.getCatalogo()[i].getCor() + " preço "
 					+ produtos.getCatalogo()[i].getPreco());
 		}
-		
+
 	}
 
+	@SuppressWarnings("unused")
 	public static void filtro(Catalogo produtos) {
 		String tipo = null, tema = null, cor = null;
 		double preco = 0;
 		int x;
+
 		produtos.Preenchimento();
 
 		do {
@@ -80,63 +85,63 @@ public class CatalogoApresentacao {
 
 			}
 		} while (x != 0);
+
 		for (int i = 0; i < produtos.getCatalogo().length; i++) {
-			if (produtos.getCatalogo()[i].getTipo().equalsIgnoreCase(tipo) && tema == null && cor == null
-					&& preco == 0.0) {
+			if (tipo == null || tema == null || cor == null || preco == 0) {
 
-				System.out.println("tipo " + produtos.getCatalogo()[i].getTipo() + "  tema "
-						+ produtos.getCatalogo()[i].getTema() + " cor " + produtos.getCatalogo()[i].getCor() + " preço "
-						+ produtos.getCatalogo()[i].getPreco());
+				if (tipo.equalsIgnoreCase(produtos.getCatalogo()[i].getTipo()) && tema == null && cor == null
+						&& preco == 0.0) {
 
-				System.out.println("Deseja adicionar esse produto ao carrinho de compras? sim ou não?");
-				String condicao = scan.next();
-				
+					System.out.println(produtos.getCatalogo()[i].getTipo() + " " + produtos.getCatalogo()[i].getCor()
+							+ " ," + produtos.getCatalogo()[i].getTema() + " ," + produtos.getCatalogo()[i].getPreco()
+							+ "RS");
+					break;
 
-			} else if (tipo == null && produtos.getCatalogo()[i].getTema().equals(tema) && cor == null
-					&& preco == 0.0) {
-				System.out.println("tipo " + produtos.getCatalogo()[i].getTipo() + "  tema "
-						+ produtos.getCatalogo()[i].getTema() + " cor " + produtos.getCatalogo()[i].getCor() + " preço "
-						+ produtos.getCatalogo()[i].getPreco());
+				} else if (tipo == null && tema.equalsIgnoreCase(produtos.getCatalogo()[i].getTema()) && cor == null
+						&& preco == 0.0) {
 
-				System.out.println("Deseja adicionar esse produto ao carrinho de compras? sim ou não?");
-				String condicao = scan.next();
-				
+					System.out.println(produtos.getCatalogo()[i].getTipo() + " " + produtos.getCatalogo()[i].getCor()
+							+ " ," + produtos.getCatalogo()[i].getTema() + " ," + produtos.getCatalogo()[i].getPreco()
+							+ "RS");
+					break;
 
-			} else if (tipo == null && tema == null && cor == produtos.getCatalogo()[i].getCor() && preco == 0.0) {
-				System.out.println("tipo " + produtos.getCatalogo()[i].getTipo() + "  tema "
-						+ produtos.getCatalogo()[i].getTema() + " cor " + produtos.getCatalogo()[i].getCor() + " preço "
-						+ produtos.getCatalogo()[i].getPreco());
+				} else if (tipo == null && tema == null && cor.equalsIgnoreCase(produtos.getCatalogo()[i].getCor())
+						&& preco == 0.0) {
 
-				System.out.println("Deseja adicionar esse produto ao carrinho de compras? sim ou não?");
-				String condicao = scan.next();
-				
+					System.out.println(produtos.getCatalogo()[i].getTipo() + " " + produtos.getCatalogo()[i].getCor()
+							+ " ," + produtos.getCatalogo()[i].getTema() + " ," + produtos.getCatalogo()[i].getPreco()
+							+ "RS");
+					break;
 
-			} else if (tipo == null && tema == null && cor == null && preco >= produtos.getCatalogo()[i].getPreco()) {
-				System.out.println("tipo " + produtos.getCatalogo()[i].getTipo() + "  tema "
-						+ produtos.getCatalogo()[i].getTema() + " cor " + produtos.getCatalogo()[i].getCor() + " preço "
-						+ produtos.getCatalogo()[i].getPreco());
+				} else if (tipo == null && tema == null && cor == null
+						&& preco >= produtos.getCatalogo()[i].getPreco()) {
 
-				System.out.println("Deseja adicionar esse produto ao carrinho de compras? sim ou não?");
-				String condicao = scan.next();
-				
+					System.out.println(produtos.getCatalogo()[i].getTipo() + " " + produtos.getCatalogo()[i].getCor()
+							+ " ," + produtos.getCatalogo()[i].getTema() + " ," + produtos.getCatalogo()[i].getPreco()
+							+ "RS");
+					break;
+					//Water
+				} else if (tipo.equalsIgnoreCase(produtos.getCatalogo()[i].getTipo())
+						&& tema.equalsIgnoreCase(produtos.getCatalogo()[i].getTema()) && cor == null && preco == 0.0) {
+					
+					System.out.println(produtos.getCatalogo()[i].getTipo() + " " + produtos.getCatalogo()[i].getCor()
+							+ " ," + produtos.getCatalogo()[i].getTema() + " ," + produtos.getCatalogo()[i].getPreco()
+							+ "RS");
+					break;
 
-			} else if (tipo.equalsIgnoreCase(produtos.getCatalogo()[i].getTipo())
-					&& preco == produtos.getCatalogo()[i].getPreco()
-					&& produtos.getCatalogo()[i].getCor().equalsIgnoreCase(cor)
-					&& tema.equals(produtos.getCatalogo()[i].getTema())) {
-				System.out.println("tipo " + produtos.getCatalogo()[i].getTipo() + "  tema "
-						+ produtos.getCatalogo()[i].getTema() + " cor " + produtos.getCatalogo()[i].getCor() + " preço "
-						+ produtos.getCatalogo()[i].getPreco());
-
-				System.out.println("Deseja adicionar esse produto ao carrinho de compras? sim ou não?");
-				String condicao = scan.next();
-				if (condicao.equalsIgnoreCase("sim")) {
+				}else if(tipo.equalsIgnoreCase(produtos.getCatalogo()[i].getTipo())
+						&& tema == null && cor.contentEquals(produtos.getCatalogo()[i].getCor()) && preco == 0.0) {
+					
+				}else if{
 					
 				}
 
+			} else {
+				System.out.println("tipo " + produtos.getCatalogo()[i].getTipo() + "  tema "
+						+ produtos.getCatalogo()[i].getTema() + " cor " + produtos.getCatalogo()[i].getCor() + " preço "
+						+ produtos.getCatalogo()[i].getPreco());
 			}
 
 		}
-	
 	}
 }
