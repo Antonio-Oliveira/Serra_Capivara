@@ -1,6 +1,6 @@
 package br.com.novaroma.projeto.entidades;
 public class Catalogo{
-	private Produto produto[] = new Produto[2];
+	private Produto produto[] = new Produto[10];
 
 	public void Preenchimento() {
 		produto[0] = new Produto();
