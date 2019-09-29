@@ -34,6 +34,7 @@ public class UsuarioApresentacao {
 		return new Usuario(nome, idade, numTell, email, cpf, senha, sexo);
 		
 	}
+
 	
 
 }

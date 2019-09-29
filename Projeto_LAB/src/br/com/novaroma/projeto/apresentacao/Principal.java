@@ -15,23 +15,28 @@ public class Principal {
 		int x;
 
 		do {
-			System.out.println("------------Digite 1 para gerar cadastro----------------------");
-			System.out.println("------------Digite 2 para acessar conta-----------------------");
-			System.out.println("------------Digite 3 para verificar nosso catalogo------------");
-			System.out.println("------------Digite 0 para sair desta opção--------------------");
+			System.out.println("=============== BEM-VINDO, Visitante! ===============");
+			System.out.println("=============== O que você deseja fazer? =============== \n");
+			System.out.println("=============== Digite 1 para EXPLORAR NOSSO CATALOGO ===============");
+			System.out.println("=============== Digite 2 para EFETUAR O LOGIN ===============");
+			System.out.println("=============== Digite 3 para REALIZAR UM CADASTRO ===============");
+			System.out.println("=============== Digite 4 para RECUPERAR A CONTA ===============");
+			System.out.println("=============== Digite 0 para retornar ===============");
 			x = scan.nextInt();
 
 			switch (x) {
 			case 1:
+				CatalogoApresentacao.infoPesquisa();
+				break;
+			case 2:
+				UsuarioLogin.loginUsuario();
+				break;
+			case 3:
 				Usuario usuario = UsuarioApresentacao.preencherUsuario();
 				String mensagem = usuarioNegocio.verificacoes(usuario);
 				System.out.println(mensagem);
 				break;
-			case 2:
-
-				break;
-			case 3:
-				CatalogoApresentacao.infoPesquisa();
+			case 4:
 
 				break;
 			default:
