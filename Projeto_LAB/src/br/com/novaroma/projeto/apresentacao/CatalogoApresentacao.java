@@ -8,6 +8,7 @@ import br.com.novaroma.projeto.entidades.Produto;
 public class CatalogoApresentacao {
 
 	static Scanner scan = new Scanner(System.in);
+	static Scanner scanInt = new Scanner(System.in);
 
 	public static void infoPesquisa() {
 		Catalogo produtos = new Catalogo();
@@ -18,18 +19,18 @@ public class CatalogoApresentacao {
 			System.out.println("------------Digite 1 para para apresentar Catalogo completo-------");
 			System.out.println("------------Digite 2 para filtrar informacões---------------------");
 			System.out.println("------------Digite 0 para sair desta opção------------------------");
-			x = scan.nextInt();
+			x = scanInt.nextInt();
 
 			switch (x) {
 			case 1:
 				catalogoCompleto(produtos);
-				break;
+				continue;
 			case 2:
 				filtro(produtos);
-				break;
+				continue;
 			default:
 				System.out.println("Não temos essa opções, se deseja sair digite 0");
-
+				continue;
 			}
 
 		} while (x != 0);
@@ -61,27 +62,28 @@ public class CatalogoApresentacao {
 			System.out.println("------------Digite 3 para filtrar a cor------------------------");
 			System.out.println("------------Digite 4 para filtrar preço maximo-----------------");
 			System.out.println("------------Digite 0 para sair desta opção---------------------");
-			x = scan.nextInt();
+			x = scanInt.nextInt();
 
 			System.out.println("                                                                ");
 			switch (x) {
 			case 1:
 				System.out.println("Informe o tipo do produto que deseja");
-				tipo = scan.next();
-				break;
+				tipo = scan.nextLine();
+				continue;
 			case 2:
 				System.out.println("Informe o tema do produto que deseja");
-				tema = scan.next();
-				break;
+				tema = scan.nextLine();
+				continue;
 			case 3:
 				System.out.println("Informe a cor do produto que deseja");
-				cor = scan.next();
-				break;
+				cor = scan.nextLine();
+				continue;
 			case 4:
 				System.out.println("Informe o preço maximo do produto");
-				preco = scan.nextInt();
+				preco = scanInt.nextInt();
+				continue;
 			case 0:
-				break;
+				continue;
 			default:
 				System.out.println("Não temos essa opções, se deseja sair digite 0");
 
