@@ -224,13 +224,21 @@ public class CatalogoApresentacao {
 				}
 
 			} else {
-				System.out.println(produtos.getCatalogo()[i].getTipo() + " " + produtos.getCatalogo()[i].getCor() + " ,"
-						+ produtos.getCatalogo()[i].getTema() + " ," + produtos.getCatalogo()[i].getPreco() + " R$"
-						+ " -- quantidade em estoque " + produtos.getCatalogo()[i].getQuant());
-				System.out.println("-------------------------------------------------------");
-				continue;
+				if (tipo.equalsIgnoreCase(produtos.getCatalogo()[i].getTipo())
+						&& tema.equalsIgnoreCase(produtos.getCatalogo()[i].getTema())
+						&& cor.equalsIgnoreCase(produtos.getCatalogo()[i].getCor())
+						&& preco >= produtos.getCatalogo()[i].getPreco()) {
+
+					System.out.println(produtos.getCatalogo()[i].getTipo() + " " + produtos.getCatalogo()[i].getCor()
+							+ " ," + produtos.getCatalogo()[i].getTema() + " ," + produtos.getCatalogo()[i].getPreco()
+							+ " R$" + " -- quantidade em estoque " + produtos.getCatalogo()[i].getQuant());
+					System.out.println("-------------------------------------------------------");
+					continue;
+
+				}
 			}
 
 		}
+
 	}
 }

@@ -13,7 +13,7 @@ public class Catalogo{
 
 		produto[1] = new Produto();
 		produto[1].setTipo("Xicara");
-		produto[1].setTema("Cenadecaça");
+		produto[1].setTema("caça");
 		produto[1].setCor("Verde");
 		produto[1].setPreco(25);
 		produto[1].setCodigo("BBB222");
@@ -29,7 +29,7 @@ public class Catalogo{
 		
 		produto[3] = new Produto();
 		produto[3].setTipo("Sopeira");
-		produto[3].setTema("Cenadeluta");
+		produto[3].setTema("luta");
 		produto[3].setCor("Branco");
 		produto[3].setPreco(30);
 		produto[3].setCodigo("DDD444");
@@ -37,7 +37,7 @@ public class Catalogo{
 		
 		produto[4] = new Produto();
 		produto[4].setTipo("Jarro");
-		produto[4].setTema("Cenadedança");
+		produto[4].setTema("Cena da dança");
 		produto[4].setCor("Branco");
 		produto[4].setPreco(40);
 		produto[4].setCodigo("EEE555");
@@ -62,7 +62,7 @@ public class Catalogo{
 		produto[7] = new Produto();
 		produto[7].setTipo("Bola");
 		produto[7].setTema("Animais");
-		produto[7].setCor("azul");
+		produto[7].setCor("Azul");
 		produto[7].setPreco(65);
 		produto[7].setCodigo("HHH888");
 		produto[7].setQuant(3);
@@ -77,7 +77,7 @@ public class Catalogo{
 		
 		produto[9] = new Produto();
 		produto[9].setTipo("Tijela");
-		produto[9].setTema("Cenadobeijo");
+		produto[9].setTema("Cena do beijo");
 		produto[9].setCor("Marrom");
 		produto[9].setPreco(35);
 		produto[9].setCodigo("JJJ132");
