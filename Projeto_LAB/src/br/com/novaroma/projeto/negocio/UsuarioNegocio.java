@@ -1,24 +1,37 @@
 package br.com.novaroma.projeto.negocio;
 
+import java.io.IOException;
+
+import br.com.novaroma.projeto.dados.UsuarioDados;
 import br.com.novaroma.projeto.entidades.Usuario;
 import br.com.novaroma.projeto.utills.Verificar;
 
 public class UsuarioNegocio {
 
-	public String verificacoes(Usuario usuario) {
-		if (usuario.getIdade() <= 8) {
+	private UsuarioDados usuarioDados = new UsuarioDados();
 
-			return "O Usuario " + usuario.getNome() + " não foi cadastrado pois não tem idade o suficiente";
+	public String verificacoes(Usuario usuario) throws ClassNotFoundException, IOException {
+	
+			if (Verificar.verificarCPF(usuario) == false) {
 
-		} else if (Verificar.verificarCPF(usuario) == false) {
+				return "O Usuario " + usuario.getNome() + " não foi cadastrado pois seu CPF esta incorreto";
 
-			return "O Usuario " + usuario.getNome() + " não foi cadastrado pois seu CPF esta incorreto";
+			} else if (usuario.getIdade() <= 8) {
 
-		} else if (Verificar.verificarSenha(usuario) == false) {
-			return "O Usuario " + usuario.getNome() + " não foi cadastrado pois a senha esta incorreta";
-		} else if (Verificar.VerificarEmail(usuario) == false) {
-			return "O Usuario " + usuario.getNome() + " não foi cadastrado pois o email esta incorreta";
+				return "O Usuario " + usuario.getNome() + " não foi cadastrado pois não tem idade o suficiente";
+
+			} else if (Verificar.verificarSenha(usuario) == false) {
+
+				return "O Usuario " + usuario.getNome() + " não foi cadastrado pois a senha esta incorreta";
+
+			} else if (Verificar.VerificarEmail(usuario) == false) {
+
+				return "O Usuario " + usuario.getNome() + " não foi cadastrado pois o email esta incorreta";
+
+			}
+			usuarioDados.cadastrar(usuario);
+			return "Usuario Cadastrado com sucesso";
+
 		}
-		return "Usuario Cadastrado com sucesso";
+
 	}
-}

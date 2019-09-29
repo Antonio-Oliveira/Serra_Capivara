@@ -223,7 +223,9 @@ public class CatalogoApresentacao {
 
 				}
 
-			} else {
+			} else if(tipo.equalsIgnoreCase(produtos.getCatalogo()[i].getTipo()) && tema.equalsIgnoreCase(produtos.getCatalogo()[i].getTema())
+						&& cor.equalsIgnoreCase(produtos.getCatalogo()[i].getCor())
+						&& preco >= produtos.getCatalogo()[i].getPreco()){
 				if (tipo.equalsIgnoreCase(produtos.getCatalogo()[i].getTipo())
 						&& tema.equalsIgnoreCase(produtos.getCatalogo()[i].getTema())
 						&& cor.equalsIgnoreCase(produtos.getCatalogo()[i].getCor())

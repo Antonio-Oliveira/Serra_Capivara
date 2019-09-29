@@ -1,5 +1,6 @@
 package br.com.novaroma.projeto.apresentacao;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 import br.com.novaroma.projeto.entidades.Usuario;
@@ -9,7 +10,7 @@ public class Principal {
 
 	static Scanner scan = new Scanner(System.in);
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ClassNotFoundException, IOException {
 		UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
 		int x;
 

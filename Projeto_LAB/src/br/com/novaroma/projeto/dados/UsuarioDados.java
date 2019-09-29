@@ -11,7 +11,7 @@ import br.com.novaroma.projeto.entidades.Usuario;
 
 public class UsuarioDados {
 	public void cadastrar(Usuario usuario) throws IOException, ClassNotFoundException {
-		File arquivo = new File("arqivos/alunos.txt");
+		File arquivo = new File("arquivos/alunos.txt");
 		Usuario[] colecaoUsuario;
 		 if(arquivo.exists()) {
 			 FileInputStream fis = new FileInputStream(arquivo);
@@ -38,9 +38,25 @@ public class UsuarioDados {
 		 oos.writeObject(colecaoUsuario);
 		 oos.close();
 	}
-	public Usuario consultaUsuario(String cpf) {
+	
+	public Usuario consultaUsuarioCPF(String cpf) throws IOException, ClassNotFoundException {
+		File arquivo = new File("arquivos/alunos.txt");
+		FileInputStream fis = new FileInputStream(arquivo);
+		ObjectInputStream ois = new ObjectInputStream(fis);
+		Usuario[] usuarioCadastrado = (Usuario[]) ois.readObject();
+		ois.close();
+
+		if(arquivo.exists()) {
+			for (int i = 0; i < usuarioCadastrado.length; i++) {
+				if (usuarioCadastrado[i].getCpf().equalsIgnoreCase(cpf)) {
+					return usuarioCadastrado[i];
+				}
+			}
+		}
+
 		return null;
 	}
+	
 	
 	
 	

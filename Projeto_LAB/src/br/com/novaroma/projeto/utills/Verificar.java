@@ -67,7 +67,7 @@ public class Verificar {
 	}
 
 	public static boolean VerificarEmail(Usuario usuario) {
-		
+
 		if (usuario.getEmail() != null && usuario.getEmail().length() > 0) {
 			String expressao = ".+@.+\\.[a-z]+";
 			Pattern p = Pattern.compile(expressao);
@@ -84,7 +84,7 @@ public class Verificar {
 
 	public static boolean verificarSenha(Usuario usuario) {
 		if (usuario.getSenha().length() >= 8 && usuario.getSenha().length() <= 15) {
-			String expressao = "([a-zA-Z] && [0-9])+";
+			String expressao = ".+";
 			Pattern p = Pattern.compile(expressao);
 			Matcher m = p.matcher(usuario.getSenha());
 			if (m.matches()) {
