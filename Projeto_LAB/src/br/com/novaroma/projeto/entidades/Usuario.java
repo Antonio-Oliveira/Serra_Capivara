@@ -1,6 +1,8 @@
 package br.com.novaroma.projeto.entidades;
 
-public class Usuario {
+import java.io.Serializable;
+
+public class Usuario implements Serializable {
 	private static String nome;
 	private int idade;
 	private int numTell;
@@ -11,7 +13,7 @@ public class Usuario {
 	
 
 
-	Usuario() {
+	public Usuario() {
 
 	}
 
