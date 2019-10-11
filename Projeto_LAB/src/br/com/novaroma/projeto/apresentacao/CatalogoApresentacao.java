@@ -1,5 +1,6 @@
 package br.com.novaroma.projeto.apresentacao;
 
+import java.io.ObjectInputStream.GetField;
 import java.util.Scanner;
 
 import br.com.novaroma.projeto.entidades.Catalogo;
@@ -11,8 +12,8 @@ public class CatalogoApresentacao {
 	static Scanner scanInt = new Scanner(System.in);
 
 	public static void infoPesquisa() {
-		Catalogo produtos = new Catalogo();
-		produtos.Preenchimento();
+		Catalogo produto = new Catalogo();
+		produto.Preenchimento();
 		int x;
 
 		do {
@@ -23,10 +24,10 @@ public class CatalogoApresentacao {
 
 			switch (x) {
 			case 1:
-				catalogoCompleto(produtos);
+				catalogoCompleto(produto);
 				continue;
 			case 2:
-				filtro(produtos);
+				filtro(produto);
 				continue;
 			default:
 				System.out.println("Não temos essa opções, se deseja sair digite 0");
@@ -37,210 +38,109 @@ public class CatalogoApresentacao {
 
 	}
 
-	private static void catalogoCompleto(Catalogo produtos) {
-		produtos.Preenchimento();
-		for (int i = 0; i < produtos.getCatalogo().length; i++) {
-			System.out.println(produtos.getCatalogo()[i].getTipo() + " " + produtos.getCatalogo()[i].getCor() + " ,"
-					+ produtos.getCatalogo()[i].getTema() + " ," + produtos.getCatalogo()[i].getPreco() + " R$"
-					+ " -- quantidade em estoque " + produtos.getCatalogo()[i].getQuant());
+	private static void catalogoCompleto(Catalogo produto) {
+
+		for (int i = 0; i < produto.getCatalogo().length; i++) {
+			System.out.println(produto.getCatalogo()[i].getTipo() + " " + produto.getCatalogo()[i].getCor() + " ,"
+					+ produto.getCatalogo()[i].getTema() + " ," + produto.getCatalogo()[i].getPreco() + " R$"
+					+ " -- quantidade em estoque " + produto.getCatalogo()[i].getQuant());
 			System.out.println("----------------------------------------------------------");
 		}
 
 	}
 
 	@SuppressWarnings("unused")
-	public static void filtro(Catalogo produtos) {
+	public static void filtro(Catalogo produto) {
 		String tipo = "n", tema = "n", cor = "n";
 		double preco = 0;
 		int x;
 
-		produtos.Preenchimento();
+		System.out.println("------------Digite 1 para filtrar o tipo-----------------------");
+		System.out.println("------------Digite 2 para filtrar o tema-----------------------");
+		System.out.println("------------Digite 3 para filtrar a cor------------------------");
+		System.out.println("------------Digite 4 para filtrar preço maximo-----------------");
+		System.out.println("------------Digite 5 para filtrar tipo e tema------------------");
+		System.out.println("------------Digite 6 para filtrar tipo e cor-------------------");
+		System.out.println("------------Digite 7 para filtrar tipo e preço maximo----------");
+		System.out.println("------------Digite 8 para filtrar tema e cor-------------------");
+		System.out.println("------------Digite 9 para filtrar tema e preço maximo----------");
+		System.out.println("----------- Digite 10 para filtrar cor  e preço maximo---------");
+		System.out.println("------------Digite 11 para filtrar tipo, tema e cor------------");
+		System.out.println("------------Digite 12 para filtrar tipo, tema e preço maximo---");
+		System.out.println("------------Digite 13 para filtrar tipo, cor e preço maximo----");
+		System.out.println("------------Digite 14 para filtrar tema, cor e preço maximo----");
+		System.out.println("------------Digite 0 se não deseja mais filtrar nada-----------");
+		x = scanInt.nextInt();
 
-		do {
-			System.out.println("------------Digite 1 para filtrar o tipo-----------------------");
-			System.out.println("------------Digite 2 para filtrar o tema-----------------------");
-			System.out.println("------------Digite 3 para filtrar a cor------------------------");
-			System.out.println("------------Digite 4 para filtrar preço maximo-----------------");
-			System.out.println("------------Digite 0 para sair desta opção---------------------");
-			x = scanInt.nextInt();
+		System.out.println("                                                                ");
+		switch (x) {
+		case 1:
+			System.out.println("Informe o tipo do produto que deseja");
+			tipo = scan.nextLine();
+			filtro_1(tipo, produto);
+			break;
+		case 2:
+			System.out.println("Informe o tema do produto que deseja");
+			tema = scan.nextLine();
+			filtro_2(tema, produto);
+			break;
+		case 3:
+			System.out.println("Informe a cor do produto que deseja");
+			cor = scan.nextLine();
+			break;
+		case 4:
+			System.out.println("Informe o preço maximo do produto");
+			preco = scanInt.nextInt();
+			break;
+		case 5:
 
-			System.out.println("                                                                ");
-			switch (x) {
-			case 1:
-				System.out.println("Informe o tipo do produto que deseja");
-				tipo = scan.nextLine();
-				continue;
-			case 2:
-				System.out.println("Informe o tema do produto que deseja");
-				tema = scan.nextLine();
-				continue;
-			case 3:
-				System.out.println("Informe a cor do produto que deseja");
-				cor = scan.nextLine();
-				continue;
-			case 4:
-				System.out.println("Informe o preço maximo do produto");
-				preco = scanInt.nextInt();
-				continue;
-			case 0:
-				continue;
-			default:
-				System.out.println("Não temos essa opções, se deseja sair digite 0");
+			break;
+		case 6:
+			break;
+		case 7:
+			break;
+		case 8:
+			break;
+		case 9:
+			break;
+		case 10:
+			break;
+		case 11:
+			break;
+		case 12:
+			break;
+		case 13:
+			break;
+		case 14:
+			break;
 
-			}
-		} while (x != 0);
-
-		for (int i = 0; i < produtos.getCatalogo().length; i++) {
-			if (tipo == "n" || tema == "n" || cor == "n" || preco == 0) {
-
-				if (tipo.equalsIgnoreCase(produtos.getCatalogo()[i].getTipo()) && tema == "n" && cor == "n"
-						&& preco == 0.0) {
-
-					System.out.println(produtos.getCatalogo()[i].getTipo() + " " + produtos.getCatalogo()[i].getCor()
-							+ " ," + produtos.getCatalogo()[i].getTema() + " ," + produtos.getCatalogo()[i].getPreco()
-							+ " R$" + " -- quantidade em estoque " + produtos.getCatalogo()[i].getQuant());
-					System.out.println("-------------------------------------------------------");
-					continue;
-
-				} else if (tipo == "n" && tema.equalsIgnoreCase(produtos.getCatalogo()[i].getTema()) && cor == "n"
-						&& preco == 0.0) {
-
-					System.out.println(produtos.getCatalogo()[i].getTipo() + " " + produtos.getCatalogo()[i].getCor()
-							+ " ," + produtos.getCatalogo()[i].getTema() + " ," + produtos.getCatalogo()[i].getPreco()
-							+ " R$" + " -- quantidade em estoque " + produtos.getCatalogo()[i].getQuant());
-					System.out.println("-------------------------------------------------------");
-					continue;
-
-				} else if (tipo == "n" && tema == "n" && cor.equalsIgnoreCase(produtos.getCatalogo()[i].getCor())
-						&& preco == 0.0) {
-
-					System.out.println(produtos.getCatalogo()[i].getTipo() + " " + produtos.getCatalogo()[i].getCor()
-							+ " ," + produtos.getCatalogo()[i].getTema() + " ," + produtos.getCatalogo()[i].getPreco()
-							+ " R$" + " -- quantidade em estoque " + produtos.getCatalogo()[i].getQuant());
-					System.out.println("-------------------------------------------------------");
-					continue;
-
-				} else if (tipo == "n" && tema == "n" && cor == "n" && preco >= produtos.getCatalogo()[i].getPreco()) {
-					System.out.println(produtos.getCatalogo()[i].getTipo() + " " + produtos.getCatalogo()[i].getCor()
-							+ " ," + produtos.getCatalogo()[i].getTema() + " ," + produtos.getCatalogo()[i].getPreco()
-							+ " R$" + " -- quantidade em estoque " + produtos.getCatalogo()[i].getQuant());
-					System.out.println("-------------------------------------------------------");
-					continue;
-
-				} else if (tipo.equalsIgnoreCase(produtos.getCatalogo()[i].getTipo())
-						&& tema.equalsIgnoreCase(produtos.getCatalogo()[i].getTema()) && cor == "n" && preco == 0) {
-
-					System.out.println(produtos.getCatalogo()[i].getTipo() + " " + produtos.getCatalogo()[i].getCor()
-							+ " ," + produtos.getCatalogo()[i].getTema() + " ," + produtos.getCatalogo()[i].getPreco()
-							+ " R$" + " -- quantidade em estoque " + produtos.getCatalogo()[i].getQuant());
-					System.out.println("-------------------------------------------------------");
-					continue;
-
-				} else if (tipo.equalsIgnoreCase(produtos.getCatalogo()[i].getTipo()) && tema == "n"
-						&& cor.contentEquals(produtos.getCatalogo()[i].getCor()) && preco == 0.0) {
-
-					System.out.println(produtos.getCatalogo()[i].getTipo() + " " + produtos.getCatalogo()[i].getCor()
-							+ " ," + produtos.getCatalogo()[i].getTema() + " ," + produtos.getCatalogo()[i].getPreco()
-							+ " R$" + " -- quantidade em estoque " + produtos.getCatalogo()[i].getQuant());
-					System.out.println("-------------------------------------------------------");
-					continue;
-
-				} else if (tipo.equalsIgnoreCase(produtos.getCatalogo()[i].getTipo()) && tema == "n" && cor == "n"
-						&& preco >= produtos.getCatalogo()[i].getPreco()) {
-
-					System.out.println(produtos.getCatalogo()[i].getTipo() + " " + produtos.getCatalogo()[i].getCor()
-							+ " ," + produtos.getCatalogo()[i].getTema() + " ," + produtos.getCatalogo()[i].getPreco()
-							+ " R$" + " -- quantidade em estoque " + produtos.getCatalogo()[i].getQuant());
-					System.out.println("-------------------------------------------------------");
-					continue;
-
-				} else if (tipo == "n" && tema.equalsIgnoreCase(produtos.getCatalogo()[i].getTema()) && cor == "n"
-						&& preco >= produtos.getCatalogo()[i].getPreco()) {
-
-					System.out.println(produtos.getCatalogo()[i].getTipo() + " " + produtos.getCatalogo()[i].getCor()
-							+ " ," + produtos.getCatalogo()[i].getTema() + " ," + produtos.getCatalogo()[i].getPreco()
-							+ " R$" + " -- quantidade em estoque " + produtos.getCatalogo()[i].getQuant());
-					System.out.println("-------------------------------------------------------");
-					continue;
-
-				} else if (tipo == "n" && tema.equalsIgnoreCase(produtos.getCatalogo()[i].getTema())
-						&& cor.equalsIgnoreCase(produtos.getCatalogo()[i].getCor()) && preco == 0) {
-
-					System.out.println(produtos.getCatalogo()[i].getTipo() + " " + produtos.getCatalogo()[i].getCor()
-							+ " ," + produtos.getCatalogo()[i].getTema() + " ," + produtos.getCatalogo()[i].getPreco()
-							+ " R$" + " -- quantidade em estoque " + produtos.getCatalogo()[i].getQuant());
-					System.out.println("-------------------------------------------------------");
-					continue;
-
-				} else if (tipo == "n" && tema == "n" && cor.equalsIgnoreCase(produtos.getCatalogo()[i].getCor())
-						&& preco >= produtos.getCatalogo()[i].getPreco()) {
-
-					System.out.println(produtos.getCatalogo()[i].getTipo() + " " + produtos.getCatalogo()[i].getCor()
-							+ " ," + produtos.getCatalogo()[i].getTema() + " ," + produtos.getCatalogo()[i].getPreco()
-							+ " R$" + " -- quantidade em estoque " + produtos.getCatalogo()[i].getQuant());
-					System.out.println("-------------------------------------------------------");
-					continue;
-
-				} else if (tipo.equalsIgnoreCase(produtos.getCatalogo()[i].getTipo())
-						&& tema.equalsIgnoreCase(produtos.getCatalogo()[i].getTema())
-						&& cor.equalsIgnoreCase(produtos.getCatalogo()[i].getCor()) && preco == 0) {
-
-					System.out.println(produtos.getCatalogo()[i].getTipo() + " " + produtos.getCatalogo()[i].getCor()
-							+ " ," + produtos.getCatalogo()[i].getTema() + " ," + produtos.getCatalogo()[i].getPreco()
-							+ " R$" + " -- quantidade em estoque " + produtos.getCatalogo()[i].getQuant());
-					System.out.println("-------------------------------------------------------");
-					continue;
-
-				} else if (tipo.equalsIgnoreCase(produtos.getCatalogo()[i].getTipo())
-						&& tema.equalsIgnoreCase(produtos.getCatalogo()[i].getTema()) && cor == "n"
-						&& preco >= produtos.getCatalogo()[i].getPreco()) {
-
-					System.out.println(produtos.getCatalogo()[i].getTipo() + " " + produtos.getCatalogo()[i].getCor()
-							+ " ," + produtos.getCatalogo()[i].getTema() + " ," + produtos.getCatalogo()[i].getPreco()
-							+ " R$" + " -- quantidade em estoque " + produtos.getCatalogo()[i].getQuant());
-					System.out.println("-------------------------------------------------------");
-					continue;
-
-				} else if (tipo.equalsIgnoreCase(produtos.getCatalogo()[i].getTipo()) && tema == "n"
-						&& cor.equalsIgnoreCase(produtos.getCatalogo()[i].getCor())
-						&& preco >= produtos.getCatalogo()[i].getPreco()) {
-
-					System.out.println(produtos.getCatalogo()[i].getTipo() + " " + produtos.getCatalogo()[i].getCor()
-							+ " ," + produtos.getCatalogo()[i].getTema() + " ," + produtos.getCatalogo()[i].getPreco()
-							+ " R$" + " -- quantidade em estoque " + produtos.getCatalogo()[i].getQuant());
-					System.out.println("-------------------------------------------------------");
-					continue;
-
-				} else if (tipo == "n" && tema.equalsIgnoreCase(produtos.getCatalogo()[i].getTema())
-						&& cor.equalsIgnoreCase(produtos.getCatalogo()[i].getCor())
-						&& preco >= produtos.getCatalogo()[i].getPreco()) {
-
-					System.out.println(produtos.getCatalogo()[i].getTipo() + " " + produtos.getCatalogo()[i].getCor()
-							+ " ," + produtos.getCatalogo()[i].getTema() + " ," + produtos.getCatalogo()[i].getPreco()
-							+ " R$" + " -- quantidade em estoque " + produtos.getCatalogo()[i].getQuant());
-					System.out.println("-------------------------------------------------------");
-					continue;
-
-				}
-
-			} else if(tipo.equalsIgnoreCase(produtos.getCatalogo()[i].getTipo()) && tema.equalsIgnoreCase(produtos.getCatalogo()[i].getTema())
-						&& cor.equalsIgnoreCase(produtos.getCatalogo()[i].getCor())
-						&& preco >= produtos.getCatalogo()[i].getPreco()){
-				if (tipo.equalsIgnoreCase(produtos.getCatalogo()[i].getTipo())
-						&& tema.equalsIgnoreCase(produtos.getCatalogo()[i].getTema())
-						&& cor.equalsIgnoreCase(produtos.getCatalogo()[i].getCor())
-						&& preco >= produtos.getCatalogo()[i].getPreco()) {
-
-					System.out.println(produtos.getCatalogo()[i].getTipo() + " " + produtos.getCatalogo()[i].getCor()
-							+ " ," + produtos.getCatalogo()[i].getTema() + " ," + produtos.getCatalogo()[i].getPreco()
-							+ " R$" + " -- quantidade em estoque " + produtos.getCatalogo()[i].getQuant());
-					System.out.println("-------------------------------------------------------");
-					continue;
-
-				}
-			}
+		case 0:
+			break;
+		default:
+			System.out.println("Não temos essa opções, se não deseja mais filtrar nada digite 0");
 
 		}
 
 	}
+
+	private static void filtro_2(String tema, Catalogo produto) {
+		// TODO Auto-generated method stub
+
+	}
+
+	private static void filtro_1(String tipo, Catalogo produto) {
+
+		for (int i = 0; i < produto.getCatalogo().length; i++) {
+			if (tipo.equalsIgnoreCase(produto.getCatalogo()[i].getTipo())) {
+
+				System.out.println(produto.getCatalogo()[i].getTipo() + " " + produto.getCatalogo()[i].getCor() + " ,"
+						+ produto.getCatalogo()[i].getTema() + " ," + produto.getCatalogo()[i].getPreco() + " R$"
+						+ " -- quantidade em estoque " + produto.getCatalogo()[i].getQuant());
+
+			} else {
+				System.out.println("Não foi encontrado nenhum produto com o tipo filtrado");
+			}
+		}
+	}
+
 }
