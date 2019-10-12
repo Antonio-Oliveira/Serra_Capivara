@@ -31,6 +31,11 @@ public class UsuarioDados implements Serializable {
 
 		}
 
+		if (colecaoUsuario.length == 0) {
+			
+			colecaoUsuario = new Usuario[1];
+		}
+		
 		colecaoUsuario[colecaoUsuario.length - 1] = new Usuario();
 		colecaoUsuario[colecaoUsuario.length - 1] = usuario;
 

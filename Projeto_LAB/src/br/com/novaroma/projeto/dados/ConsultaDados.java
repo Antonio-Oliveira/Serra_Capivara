@@ -48,23 +48,26 @@ public class ConsultaDados {
 	}
 
 	public Usuario consultaUsuario(String email, String senha) throws IOException, ClassNotFoundException {
-		File arquivo = new File("arquivos/alunos.txt");
+		File arquivo = new File("arquivos/Usuario.txt");
 		FileInputStream fis = new FileInputStream(arquivo);
 		ObjectInputStream ois = new ObjectInputStream(fis);
 		Usuario[] usuarioCadastrado = (Usuario[]) ois.readObject();
-		ois.close();
 
 		if (arquivo.exists()) {
 			for (int i = 0; i < usuarioCadastrado.length; i++) {
-				if (usuarioCadastrado[i].getEmail().equalsIgnoreCase(email)) {
-					if (usuarioCadastrado[i].getSenha().equals(senha)) {
+				if (usuarioCadastrado != null) {
+
+					if (usuarioCadastrado[i].getEmail().equalsIgnoreCase(email)
+							&& usuarioCadastrado[i].getSenha().equals(senha)) {
+						ois.close();
 						return usuarioCadastrado[i];
+
 					}
 				}
 			}
 
 		}
-
+		ois.close();
 		return null;
 	}
 

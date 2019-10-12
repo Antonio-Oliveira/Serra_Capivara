@@ -10,25 +10,26 @@ public class UsuarioApresentacao {
 
 	public static Usuario preencherUsuario() {
 
-		System.out.println("======================== Informe seu nome: ===============================================================");
+		System.out.println("======================== Informe seu nome: ========================");
 		String nome = scan.nextLine();
 
-		System.out.println("======================== Informe sua idade: ==============================================================");
+		System.out.println("======================== Informe sua idade: =======================");
 		int idade = scanNum.nextInt();
 
-		System.out.println("======================== Informe seu sexo: ===============================================================");
+		System.out.println("======================== Informe seu sexo: ========================");
 		String sexo = scan.nextLine();
 
-		System.out.println("======================== Informe um numero para contato: =================================================");
+		System.out.println("======================== Informe um numero para contato: ==========");
 		long numTell = scanNum.nextLong();
 
-		System.out.println("======================== Informe seu email: ==============================================================");
+		System.out.println("======================== Informe seu email: =======================");
 		String email = scan.nextLine();
 
-		System.out.println("======================== Informe seu CPF: ================================================================");
+		System.out.println("======================== Informe seu CPF: =========================");
 		String cpf = scan.nextLine();
 
-		System.out.println(	"======================= Informe sua senha (maior que 8 digitos e menor que 15 digitos): =================");
+		System.out.println("======================= Informe sua senha: ========================");
+		System.out.println("==========(maior que 8 digitos e menor que 15 digitos)=============");
 		String senha = scan.nextLine();
 
 		return new Usuario(nome, idade, numTell, email, cpf, senha, sexo);

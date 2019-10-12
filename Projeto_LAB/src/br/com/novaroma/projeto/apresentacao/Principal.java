@@ -29,7 +29,11 @@ public class Principal {
 				CatalogoApresentacao.infoPesquisa();
 				break;
 			case 2:
-				UsuarioLogin.loginUsuario();
+				UsuarioLogin login = new UsuarioLogin();
+				Usuario usuarioCadastrado = login.loginUsuario();
+				if (usuarioCadastrado != null) {
+					login.consultaLogin(usuarioCadastrado);
+				}
 				break;
 			case 3:
 				Usuario usuario = UsuarioApresentacao.preencherUsuario();
