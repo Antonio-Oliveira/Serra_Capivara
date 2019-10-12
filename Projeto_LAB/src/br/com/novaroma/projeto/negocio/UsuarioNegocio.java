@@ -2,6 +2,7 @@ package br.com.novaroma.projeto.negocio;
 
 import java.io.IOException;
 
+import br.com.novaroma.projeto.dados.ConsultaDados;
 import br.com.novaroma.projeto.dados.UsuarioDados;
 import br.com.novaroma.projeto.entidades.Usuario;
 import br.com.novaroma.projeto.utills.Verificar;
@@ -9,18 +10,18 @@ import br.com.novaroma.projeto.utills.Verificar;
 public class UsuarioNegocio {
 
 	private UsuarioDados usuarioDados = new UsuarioDados();
+	private ConsultaDados consulta = new ConsultaDados();
 
 	public String verificacoes(Usuario usuario) throws ClassNotFoundException, IOException {
 
-		if (this.usuarioDados.consultaUsuarioCPF(usuario.getCpf()) != null) {
-			return "CPF do usuario já foi cadastrado";
+		if (this.consulta.consultaUsuarioCPF(usuario.getCpf()) != null) {
+			return "Esse CPF já foi cadastrado";
 
-		}
-		if (this.usuarioDados.consultaUsuarioEmail(usuario.getEmail()) != null) {
+		} else if (this.consulta.consultaUsuarioEmail(usuario.getEmail()) != null) {
+
 			return "Esse email já foi cadastrado";
-		}
 
-		if (Verificar.verificarCPF(usuario) == false) {
+		} else if (Verificar.verificarCPF(usuario) == false) {
 
 			return "O Usuario " + usuario.getNome() + " não foi cadastrado pois seu CPF esta incorreto";
 

@@ -57,11 +57,11 @@ public class Verificar {
 
 		String prefixoNome = null;
 
-		if (Usuario.getSexo().equalsIgnoreCase("masculino")) {
-			return prefixoNome = "Sr. " + Usuario.getNome();
+		if (usuario.getSexo().equalsIgnoreCase("Masculino")) {
+			return prefixoNome = "Sr. " + usuario.getNome();
 
 		} else {
-			return prefixoNome = "Sra. " + Usuario.getNome();
+			return prefixoNome = "Sra. " + usuario.getNome();
 
 		}
 	}

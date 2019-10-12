@@ -15,13 +15,13 @@ public class Principal {
 		int x;
 
 		do {
-			System.out.println("=============== BEM-VINDO, Visitante! ===============");
-			System.out.println("=============== O que você deseja fazer? =============== \n");
-			System.out.println("=============== Digite 1 para EXPLORAR NOSSO CATALOGO ===============");
+			System.out.println("=============== BEM-VINDO, Visitante! =======================");
+			System.out.println("=============== O que você deseja fazer? ==================== \n");
+			System.out.println("=============== Digite 1 para EXPLORAR NOSSO CATALOGO =======");
 			System.out.println("=============== Digite 2 para EFETUAR O LOGIN ===============");
-			System.out.println("=============== Digite 3 para REALIZAR UM CADASTRO ===============");
-			System.out.println("=============== Digite 4 para RECUPERAR A CONTA ===============");
-			System.out.println("=============== Digite 0 para retornar ===============");
+			System.out.println("=============== Digite 3 para REALIZAR UM CADASTRO ==========");
+			System.out.println("=============== Digite 4 para RECUPERAR A CONTA =============");
+			System.out.println("=============== Digite 0 para retornar ======================");
 			x = scan.nextInt();
 
 			switch (x) {

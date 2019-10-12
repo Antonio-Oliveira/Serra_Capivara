@@ -3,13 +3,13 @@ package br.com.novaroma.projeto.entidades;
 import java.io.Serializable;
 
 public class Usuario implements Serializable {
-	private static String nome;
+	private String nome;
 	private int idade;
-	private int numTell;
+	private long numTell;
 	private String email;
 	private String cpf;
 	private String senha;
-	private static String sexo;
+	private String sexo;
 	
 
 
@@ -17,7 +17,7 @@ public class Usuario implements Serializable {
 
 	}
 
-	public Usuario(String nome, int idade, int numTell, String email, String cpf, String senha, String sexo) {
+	public Usuario(String nome, int idade, long numTell, String email, String cpf, String senha, String sexo) {
 		this.nome = nome;
 		this.idade = idade;
 		this.numTell = numTell;
@@ -27,7 +27,7 @@ public class Usuario implements Serializable {
 		this.sexo = sexo;
 	}
 
-	public static String getNome() {
+	public String getNome() {
 		return nome;
 	}
 
@@ -39,16 +39,15 @@ public class Usuario implements Serializable {
 		return idade;
 	}
 
-
 	public void setIdade(int idade) {
 		this.idade = idade;
 	}
 
-	public int getNumTell() {
+	public long getNumTell() {
 		return numTell;
 	}
 
-	public void setNumTell(int numTell) {
+	public void setNumTell(long numTell) {
 		this.numTell = numTell;
 	}
 
@@ -75,14 +74,15 @@ public class Usuario implements Serializable {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
 
-	public static String getSexo() {
+	public String getSexo() {
 		return sexo;
 	}
 
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
+
+	
 	
 }
