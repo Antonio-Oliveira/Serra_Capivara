@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 import br.com.novaroma.projeto.entidades.Usuario;
 
-public class UsuarioDados implements Serializable {
+public class UsuarioDados implements  Serializable {
 
 	public void cadastrar(Usuario usuario) throws IOException, ClassNotFoundException {
 		File arquivos = new File("arquivos/Usuario.txt");
