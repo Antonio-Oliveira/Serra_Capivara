@@ -8,7 +8,7 @@ import java.io.ObjectInputStream;
 import br.com.novaroma.projeto.entidades.Usuario;
 
 public class ConsultaDados {
-	
+
 	public Usuario consultaUsuarioCPF(String cpf) throws IOException, ClassNotFoundException {
 		File arquivos = new File("arquivos/Usuario.txt");
 		if (arquivos.exists()) {
@@ -44,6 +44,27 @@ public class ConsultaDados {
 
 			ois.close();
 		}
+		return null;
+	}
+
+	public Usuario consultaUsuario(String email, String senha) throws IOException, ClassNotFoundException {
+		File arquivo = new File("arquivos/alunos.txt");
+		FileInputStream fis = new FileInputStream(arquivo);
+		ObjectInputStream ois = new ObjectInputStream(fis);
+		Usuario[] usuarioCadastrado = (Usuario[]) ois.readObject();
+		ois.close();
+
+		if (arquivo.exists()) {
+			for (int i = 0; i < usuarioCadastrado.length; i++) {
+				if (usuarioCadastrado[i].getEmail().equalsIgnoreCase(email)) {
+					if (usuarioCadastrado[i].getSenha().equals(senha)) {
+						return usuarioCadastrado[i];
+					}
+				}
+			}
+
+		}
+
 		return null;
 	}
 

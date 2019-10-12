@@ -3,7 +3,7 @@ package br.com.novaroma.projeto.apresentacao;
 import java.io.IOException;
 import java.util.Scanner;
 
-import br.com.novaroma.projeto.dados.ConsultaUsuario;
+import br.com.novaroma.projeto.dados.ConsultaDados;
 import br.com.novaroma.projeto.entidades.Usuario;
 
 public class UsuarioLogin {
@@ -17,7 +17,7 @@ public class UsuarioLogin {
 		System.out.println("=============== Digite sua senha: ===============");
 		String senha = sc.next();
 
-		ConsultaUsuario usuarioCadastrado = new ConsultaUsuario();
+		ConsultaDados usuarioCadastrado = new ConsultaDados();
 		Usuario usuarioConta = usuarioCadastrado.consultaUsuario(email, senha);
 		if (usuarioConta != null) {
 			System.out.println("Bem-Vindo, " + usuarioConta.getNome() + "!");
