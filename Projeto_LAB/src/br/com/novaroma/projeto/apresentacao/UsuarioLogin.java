@@ -6,12 +6,16 @@ import java.util.Scanner;
 import br.com.novaroma.projeto.dados.AtualizarDados;
 import br.com.novaroma.projeto.dados.ConsultaDados;
 import br.com.novaroma.projeto.entidades.Usuario;
+import br.com.novaroma.projeto.negocio.LoginNegocio;
 import br.com.novaroma.projeto.negocio.ModificaUsuarioNegocio;
+import br.com.novaroma.projeto.negocio.RemoverUsuarioNegocio;
 
 public class UsuarioLogin {
 
 	private AtualizarDados atualizar = new AtualizarDados();
 	private ModificaUsuarioNegocio negocioModifica = new ModificaUsuarioNegocio();
+	private RemoverUsuarioNegocio remover = new RemoverUsuarioNegocio();
+	private LoginNegocio login = new LoginNegocio();
 
 	static Scanner scan = new Scanner(System.in);
 
@@ -22,13 +26,12 @@ public class UsuarioLogin {
 		System.out.println("=============== Digite sua senha: ===============");
 		String senha = scan.next();
 
-		ConsultaDados usuarioCadastrado = new ConsultaDados();
-		Usuario usuarioConta = usuarioCadastrado.consultaUsuario(email, senha);
-		if (usuarioConta != null) {
+		Usuario usuario = login.verificarLogin(email, senha);
+		if (usuario != null) {
 			System.out.println("                                                                      ");
-			System.out.println("=========== Seja Bem-Vindo! " + usuarioConta.getNome() + "=============");
+			System.out.println("=========== Seja Bem-Vindo! " + usuario.getNome() + "=============");
 			System.out.println("                                                                      ");
-			return usuarioConta;
+			return usuario;
 
 		} else {
 			System.out.println("Você não possui cadastro na loja ou dados incorretos! :(");
@@ -63,8 +66,8 @@ public class UsuarioLogin {
 
 				if (condicao = true) {
 
-					atualizar.removarDados(usuario);
-					System.out.println("Conta removida com sucesso");
+					String mensagem1 = remover.remover(usuario);
+					System.out.println(mensagem1);
 
 				}
 				x = 0;

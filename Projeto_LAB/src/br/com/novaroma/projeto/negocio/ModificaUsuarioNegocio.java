@@ -26,7 +26,7 @@ public class ModificaUsuarioNegocio {
 
 		}
 		atualizarDados.modificarDados(usuario);
-		return "==================== Usuário Modificado com sucesso=====================";
+		return "============== Usuário Modificado com sucesso ===============";
 
 	}
 

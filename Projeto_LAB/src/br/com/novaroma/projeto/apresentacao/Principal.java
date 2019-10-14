@@ -16,6 +16,7 @@ public class Principal {
 		int x;
 
 		do {
+			System.out.println("                                                             ");
 			System.out.println("=============== BEM-VINDO, Visitante! =======================");
 			System.out.println("=============== O que você deseja fazer? ==================== \n");
 			System.out.println("=============== Digite 1 para EXPLORAR NOSSO CATALOGO =======");
