@@ -519,7 +519,6 @@ public class CatalogoApresentacao {
 			}
 		}
 	
-	aaaaaaaaa;
 	
 	private static void filtro_15(String cor, double precoMin, Catalogo  produto) {
 		for (int i = 0; i < produto.getCatalogo().length; i++) {
