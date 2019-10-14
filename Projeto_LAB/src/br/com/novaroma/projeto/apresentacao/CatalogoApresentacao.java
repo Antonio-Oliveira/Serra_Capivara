@@ -16,7 +16,7 @@ public class CatalogoApresentacao implements Filtro {
 		produto.Preenchimento();
 		int x;
 		
-		aaaaaaaaaa
+	
 
 		do {
 			System.out.println("                                                                  ");
