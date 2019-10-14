@@ -21,7 +21,7 @@ public class Principal {
 			System.out.println("=============== Digite 1 para EXPLORAR NOSSO CATALOGO =======");
 			System.out.println("=============== Digite 2 para EFETUAR O LOGIN ===============");
 			System.out.println("=============== Digite 3 para REALIZAR UM CADASTRO ==========");
-			System.out.println("=============== Digite 0 para retornar ======================");
+			System.out.println("=============== Digite 0 para sair do programa ==============");
 			x = scan.nextInt();
 
 			switch (x) {
@@ -38,10 +38,16 @@ public class Principal {
 			case 3:
 				Usuario usuario = UsuarioApresentacao.preencherUsuario();
 				String mensagem = usuarioNegocio.verificacoes(usuario);
+				System.out.println("                                ");
 				System.out.println(mensagem);
+				System.out.println("                                ");
+				break;
+			case 0:
+				System.out.println("  ");
+				System.out.println("Volte Sempre!");
 				break;
 			default:
-				System.out.println("Volte Sempre!");
+				System.out.println("Não temos essa opção em nosso menu");
 
 			}
 		} while (x != 0);
