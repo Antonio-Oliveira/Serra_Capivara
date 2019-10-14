@@ -25,9 +25,9 @@ public class UsuarioLogin {
 		ConsultaDados usuarioCadastrado = new ConsultaDados();
 		Usuario usuarioConta = usuarioCadastrado.consultaUsuario(email, senha);
 		if (usuarioConta != null) {
-			System.out.println(" ");
+			System.out.println("                                                                      ");
 			System.out.println("=========== Seja bem-vindo " + usuarioConta.getNome() + "=============");
-			System.out.println(" ");
+			System.out.println("                                                                      ");
 			return usuarioConta;
 
 		} else {
