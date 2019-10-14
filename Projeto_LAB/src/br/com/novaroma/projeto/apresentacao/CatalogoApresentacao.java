@@ -15,6 +15,8 @@ public class CatalogoApresentacao implements Filtro {
 		Catalogo produto = new Catalogo();
 		produto.Preenchimento();
 		int x;
+		
+		aaaaaaaaaa
 
 		do {
 			System.out.println("                                                                  ");
