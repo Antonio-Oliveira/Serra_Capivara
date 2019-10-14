@@ -12,6 +12,7 @@ public class Principal {
 
 	public static void main(String[] args) throws ClassNotFoundException, IOException {
 		UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
+		CatalogoApresentacao catalogo = new CatalogoApresentacao();
 		int x;
 
 		do {
@@ -20,13 +21,12 @@ public class Principal {
 			System.out.println("=============== Digite 1 para EXPLORAR NOSSO CATALOGO =======");
 			System.out.println("=============== Digite 2 para EFETUAR O LOGIN ===============");
 			System.out.println("=============== Digite 3 para REALIZAR UM CADASTRO ==========");
-			System.out.println("=============== Digite 4 para RECUPERAR A CONTA =============");
 			System.out.println("=============== Digite 0 para retornar ======================");
 			x = scan.nextInt();
 
 			switch (x) {
 			case 1:
-				CatalogoApresentacao.infoPesquisa();
+				catalogo.infoPesquisa();
 				break;
 			case 2:
 				UsuarioLogin login = new UsuarioLogin();
@@ -39,9 +39,6 @@ public class Principal {
 				Usuario usuario = UsuarioApresentacao.preencherUsuario();
 				String mensagem = usuarioNegocio.verificacoes(usuario);
 				System.out.println(mensagem);
-				break;
-			case 4:
-
 				break;
 			default:
 				System.out.println("Volte Sempre!");

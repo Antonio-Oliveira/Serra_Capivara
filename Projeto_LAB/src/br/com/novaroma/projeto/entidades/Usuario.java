@@ -10,8 +10,6 @@ public class Usuario implements Serializable {
 	private String cpf;
 	private String senha;
 	private String sexo;
-	
-
 
 	public Usuario() {
 
@@ -83,6 +81,4 @@ public class Usuario implements Serializable {
 		this.sexo = sexo;
 	}
 
-	
-	
 }

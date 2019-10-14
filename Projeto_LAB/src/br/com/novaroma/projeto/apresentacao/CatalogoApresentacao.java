@@ -6,17 +6,18 @@ import java.util.Scanner;
 import br.com.novaroma.projeto.entidades.Catalogo;
 import br.com.novaroma.projeto.entidades.Produto;
 
-public class CatalogoApresentacao {
+public class CatalogoApresentacao implements Filtro {
 
 	static Scanner scan = new Scanner(System.in);
 	static Scanner scanNum = new Scanner(System.in);
 
-	public static void infoPesquisa() {
+	public void infoPesquisa() {
 		Catalogo produto = new Catalogo();
 		produto.Preenchimento();
 		int x;
 
 		do {
+			System.out.println("                                                                  ");
 			System.out.println("------------Digite 1 para para apresentar Catalogo completo-------");
 			System.out.println("------------Digite 2 para filtrar informacões---------------------");
 			System.out.println("------------Digite 0 para sair desta opção------------------------");
@@ -38,7 +39,7 @@ public class CatalogoApresentacao {
 
 	}
 
-	private static void catalogoCompleto(Catalogo produto) {
+	private void catalogoCompleto(Catalogo produto) {
 
 		for (int i = 0; i < produto.getCatalogo().length; i++) {
 			System.out.println(produto.getCatalogo()[i].getTipo() + " " + produto.getCatalogo()[i].getCor() + " ,"
@@ -50,7 +51,7 @@ public class CatalogoApresentacao {
 	}
 
 	@SuppressWarnings("unused")
-	public static void filtro(Catalogo produto) {
+	public void filtro(Catalogo produto) {
 		String tipo, tema, cor;
 		double precoMax, precoMin;
 		int x;
@@ -139,7 +140,7 @@ public class CatalogoApresentacao {
 			break;
 		case 9:
 			System.out.println("Informe o tipo do produto que deseja: ");
-			tipo= scan.nextLine();
+			tipo = scan.nextLine();
 			System.out.println("Informe o preço mínimo do produto que deseja: ");
 			precoMin = scanNum.nextDouble();
 			filtro_9(tipo, precoMin, produto);
@@ -319,7 +320,7 @@ public class CatalogoApresentacao {
 			System.out.println("Informe o preço mínimo do produto que deseja: ");
 			precoMin = scanNum.nextDouble();
 			filtro_29(tipo, cor, precoMax, precoMin, produto);
-			
+
 			break;
 		case 30:
 			System.out.println("Informe o tema do produto que deseja: ");
@@ -355,393 +356,559 @@ public class CatalogoApresentacao {
 
 	}
 
-	private static void filtro_2(String tema, Catalogo produto) {
+	public void filtro_2(String tema, Catalogo produto) {
+		int aux = 0;
 		for (int i = 0; i < produto.getCatalogo().length; i++) {
 			if (tema.equalsIgnoreCase(produto.getCatalogo()[i].getTema())) {
+				aux++;
 
 				System.out.println(produto.getCatalogo()[i].getTipo() + " " + produto.getCatalogo()[i].getCor() + " ,"
 						+ produto.getCatalogo()[i].getTema() + " ," + produto.getCatalogo()[i].getPreco() + " R$"
 						+ " -- quantidade em estoque " + produto.getCatalogo()[i].getQuant());
-			} 
+			}
 
+		}
+		if (aux == 0) {
+			System.out.println("Nenhum produto foi encontrado com essa informação");
 		}
 
 	}
 
-	private static void filtro_1(String tipo, Catalogo produto) {
+	 public void filtro_1(String tipo, Catalogo produto) {
+		int aux = 0;
 
 		for (int i = 0; i < produto.getCatalogo().length; i++) {
 			if (tipo.equalsIgnoreCase(produto.getCatalogo()[i].getTipo())) {
+				aux++;
 
 				System.out.println(produto.getCatalogo()[i].getTipo() + " " + produto.getCatalogo()[i].getCor() + " ,"
 						+ produto.getCatalogo()[i].getTema() + " ," + produto.getCatalogo()[i].getPreco() + " R$"
 						+ " -- quantidade em estoque " + produto.getCatalogo()[i].getQuant());
 
-			} 
+			}
+		}
+		if (aux == 0) {
+			System.out.println("Nenhum produto foi encontrado com essa informação");
 		}
 
 	}
 
-	private static void filtro_3(String cor, Catalogo produto) {
+	public void filtro_3(String cor, Catalogo produto) {
+		int aux = 0;
 		for (int i = 0; i < produto.getCatalogo().length; i++) {
 			if (cor.equalsIgnoreCase(produto.getCatalogo()[i].getCor())) {
+				aux++;
 
 				System.out.println(produto.getCatalogo()[i].getTipo() + " " + produto.getCatalogo()[i].getCor() + " ,"
 						+ produto.getCatalogo()[i].getTema() + " ," + produto.getCatalogo()[i].getPreco() + " R$"
 						+ " -- quantidade em estoque " + produto.getCatalogo()[i].getQuant());
 
-			} 		}
+			}
+		}
+		if (aux == 0) {
+			System.out.println("Nenhum produto foi encontrado com essa informação");
+		}
 
 	}
-	
 
-	private static void filtro_4(double precoMax, Catalogo produto) {
+	public void filtro_4(double precoMax, Catalogo produto) {
+		int aux = 0;
 		for (int i = 0; i < produto.getCatalogo().length; i++) {
 			if (precoMax >= produto.getCatalogo()[i].getPreco()) {
+				aux++;
 
 				System.out.println(produto.getCatalogo()[i].getTipo() + " " + produto.getCatalogo()[i].getCor() + " ,"
 						+ produto.getCatalogo()[i].getTema() + " ," + produto.getCatalogo()[i].getPreco() + " R$"
 						+ " -- quantidade em estoque " + produto.getCatalogo()[i].getQuant());
 
-			} 
+			}
+		}
+		if (aux == 0) {
+			System.out.println("Nenhum produto foi encontrado com essa informação");
 		}
 	}
 
-	private static void filtro_5(double precoMin, Catalogo produto) {
+	public void filtro_5(double precoMin, Catalogo produto) {
+		int aux = 0;
 		for (int i = 0; i < produto.getCatalogo().length; i++) {
-			if (precoMin <= produto.getCatalogo()[i].getPreco()){
+			if (precoMin <= produto.getCatalogo()[i].getPreco()) {
+				aux++;
 
 				System.out.println(produto.getCatalogo()[i].getTipo() + " " + produto.getCatalogo()[i].getCor() + " ,"
 						+ produto.getCatalogo()[i].getTema() + " ," + produto.getCatalogo()[i].getPreco() + " R$"
 						+ " -- quantidade em estoque " + produto.getCatalogo()[i].getQuant());
-			} 
+			}
+		}
+		if (aux == 0) {
+			System.out.println("Nenhum produto foi encontrado com essa informação");
 		}
 
 	}
-	private static void filtro_6(String tipo, String tema, Catalogo produto) {
+
+	public void filtro_6(String tipo, String tema, Catalogo produto) {
+		int aux = 0;
 		for (int i = 0; i < produto.getCatalogo().length; i++) {
 			if (tipo.equalsIgnoreCase(produto.getCatalogo()[i].getTipo())
 					&& tema.equalsIgnoreCase(produto.getCatalogo()[i].getTema())) {
-				
+				aux++;
+
 				System.out.println(produto.getCatalogo()[i].getTipo() + " " + produto.getCatalogo()[i].getCor() + " ,"
 						+ produto.getCatalogo()[i].getTema() + " ," + produto.getCatalogo()[i].getPreco() + " R$"
 						+ " -- quantidade em estoque " + produto.getCatalogo()[i].getQuant());
-			} 
-				
 			}
+
 		}
-	private static void filtro_7(String tipo, String cor, Catalogo produto) {
+		if (aux == 0) {
+			System.out.println("Nenhum produto foi encontrado com essas informações");
+		}
+	}
+
+	public void filtro_7(String tipo, String cor, Catalogo produto) {
+		int aux = 0;
 		for (int i = 0; i < produto.getCatalogo().length; i++) {
-			if(tipo.equalsIgnoreCase(produto.getCatalogo()[i].getTipo())
+			if (tipo.equalsIgnoreCase(produto.getCatalogo()[i].getTipo())
 					&& cor.equalsIgnoreCase(produto.getCatalogo()[i].getCor())) {
-			
+				aux++;
+
 				System.out.println(produto.getCatalogo()[i].getTipo() + " " + produto.getCatalogo()[i].getCor() + " ,"
 						+ produto.getCatalogo()[i].getTema() + " ," + produto.getCatalogo()[i].getPreco() + " R$"
 						+ " -- quantidade em estoque " + produto.getCatalogo()[i].getQuant());
-			} 
 			}
 		}
-	private static void filtro_8(String tipo, double precoMax, Catalogo produto) {
+		if (aux == 0) {
+			System.out.println("Nenhum produto foi encontrado com essas informações");
+		}
+	}
+
+	public void filtro_8(String tipo, double precoMax, Catalogo produto) {
+		int aux = 0;
 		for (int i = 0; i < produto.getCatalogo().length; i++) {
-			if(tipo.equalsIgnoreCase(produto.getCatalogo()[i].getTipo())
+			if (tipo.equalsIgnoreCase(produto.getCatalogo()[i].getTipo())
 					&& precoMax >= produto.getCatalogo()[i].getPreco()) {
-			
+				aux++;
+
 				System.out.println(produto.getCatalogo()[i].getTipo() + " " + produto.getCatalogo()[i].getCor() + " ,"
 						+ produto.getCatalogo()[i].getTema() + " ," + produto.getCatalogo()[i].getPreco() + " R$"
 						+ " -- quantidade em estoque " + produto.getCatalogo()[i].getQuant());
-			} 
 			}
 		}
-	private static void filtro_9(String tipo, double precoMin, Catalogo produto) {
+		if (aux == 0) {
+			System.out.println("Nenhum produto foi encontrado com essas informações");
+		}
+	}
+
+	public void filtro_9(String tipo, double precoMin, Catalogo produto) {
+		int aux = 0;
 		for (int i = 0; i < produto.getCatalogo().length; i++) {
-			if(tipo.equalsIgnoreCase(produto.getCatalogo()[i].getTipo())
+			if (tipo.equalsIgnoreCase(produto.getCatalogo()[i].getTipo())
 					&& precoMin <= produto.getCatalogo()[i].getPreco()) {
-			
+				aux++;
+
 				System.out.println(produto.getCatalogo()[i].getTipo() + " " + produto.getCatalogo()[i].getCor() + " ,"
 						+ produto.getCatalogo()[i].getTema() + " ," + produto.getCatalogo()[i].getPreco() + " R$"
 						+ " -- quantidade em estoque " + produto.getCatalogo()[i].getQuant());
-			} 
 			}
 		}
-	private static void filtro_10(double precoMax,double precoMin, Catalogo produto) {
+		if (aux == 0) {
+			System.out.println("Nenhum produto foi encontrado com essas informações");
+		}
+	}
+
+	public void filtro_10(double precoMax, double precoMin, Catalogo produto) {
+		int aux = 0;
 		for (int i = 0; i < produto.getCatalogo().length; i++) {
-			if(precoMax >= produto.getCatalogo()[i].getPreco()
-					&& precoMin <= produto.getCatalogo()[i].getPreco()) {
-			
+			if (precoMax >= produto.getCatalogo()[i].getPreco() && precoMin <= produto.getCatalogo()[i].getPreco()) {
+				aux++;
+
 				System.out.println(produto.getCatalogo()[i].getTipo() + " " + produto.getCatalogo()[i].getCor() + " ,"
 						+ produto.getCatalogo()[i].getTema() + " ," + produto.getCatalogo()[i].getPreco() + " R$"
 						+ " -- quantidade em estoque " + produto.getCatalogo()[i].getQuant());
-			} 
 			}
 		}
-	private static void filtro_11(String tema, String cor, Catalogo produto) {
+		if (aux == 0) {
+			System.out.println("Nenhum produto foi encontrado com essas informações");
+		}
+	}
+
+	public void filtro_11(String tema, String cor, Catalogo produto) {
+		int aux = 0;
 		for (int i = 0; i < produto.getCatalogo().length; i++) {
-			if(tema.equalsIgnoreCase(produto.getCatalogo()[i].getTema())
+			if (tema.equalsIgnoreCase(produto.getCatalogo()[i].getTema())
 					&& cor.equalsIgnoreCase(produto.getCatalogo()[i].getCor())) {
-			
+				aux++;
+
 				System.out.println(produto.getCatalogo()[i].getTipo() + " " + produto.getCatalogo()[i].getCor() + " ,"
 						+ produto.getCatalogo()[i].getTema() + " ," + produto.getCatalogo()[i].getPreco() + " R$"
 						+ " -- quantidade em estoque " + produto.getCatalogo()[i].getQuant());
-			} 
 			}
 		}
-	private static void filtro_12(String tema, double precoMax, Catalogo produto) {
+		if (aux == 0) {
+			System.out.println("Nenhum produto foi encontrado com essas informações");
+		}
+	}
+
+	public void filtro_12(String tema, double precoMax, Catalogo produto) {
+		int aux = 0;
 		for (int i = 0; i < produto.getCatalogo().length; i++) {
-			if(tema.equalsIgnoreCase(produto.getCatalogo()[i].getTema())
+			if (tema.equalsIgnoreCase(produto.getCatalogo()[i].getTema())
 					&& precoMax >= produto.getCatalogo()[i].getPreco()) {
-			
+				aux++;
+
 				System.out.println(produto.getCatalogo()[i].getTipo() + " " + produto.getCatalogo()[i].getCor() + " ,"
 						+ produto.getCatalogo()[i].getTema() + " ," + produto.getCatalogo()[i].getPreco() + " R$"
 						+ " -- quantidade em estoque " + produto.getCatalogo()[i].getQuant());
-			} 
 			}
 		}
-	private static void filtro_13(String tema, double precoMin, Catalogo produto) {
+		if (aux == 0) {
+			System.out.println("Nenhum produto foi encontrado com essas informações");
+		}
+	}
+
+	public void filtro_13(String tema, double precoMin, Catalogo produto) {
+		int aux = 0;
 		for (int i = 0; i < produto.getCatalogo().length; i++) {
-			if(tema.equalsIgnoreCase(produto.getCatalogo()[i].getTema())
+			if (tema.equalsIgnoreCase(produto.getCatalogo()[i].getTema())
 					&& precoMin <= produto.getCatalogo()[i].getPreco()) {
-			
+				aux++;
+
 				System.out.println(produto.getCatalogo()[i].getTipo() + " " + produto.getCatalogo()[i].getCor() + " ,"
 						+ produto.getCatalogo()[i].getTema() + " ," + produto.getCatalogo()[i].getPreco() + " R$"
 						+ " -- quantidade em estoque " + produto.getCatalogo()[i].getQuant());
-			} 
 			}
 		}
-	private static void filtro_14(String cor, double precoMax, Catalogo produto) {
+		if (aux == 0) {
+			System.out.println("Nenhum produto foi encontrado com essas informações");
+		}
+	}
+
+	public void filtro_14(String cor, double precoMax, Catalogo produto) {
+		int aux = 0;
 		for (int i = 0; i < produto.getCatalogo().length; i++) {
-			if(cor.equalsIgnoreCase(produto.getCatalogo()[i].getCor())
+			if (cor.equalsIgnoreCase(produto.getCatalogo()[i].getCor())
 					&& precoMax >= produto.getCatalogo()[i].getPreco()) {
-			
+				aux++;
+
 				System.out.println(produto.getCatalogo()[i].getTipo() + " " + produto.getCatalogo()[i].getCor() + " ,"
 						+ produto.getCatalogo()[i].getTema() + " ," + produto.getCatalogo()[i].getPreco() + " R$"
 						+ " -- quantidade em estoque " + produto.getCatalogo()[i].getQuant());
-			} 
 			}
 		}
-	
-	
-	private static void filtro_15(String cor, double precoMin, Catalogo  produto) {
+		if (aux == 0) {
+			System.out.println("Nenhum produto foi encontrado com essas informações");
+		}
+	}
+
+	public void filtro_15(String cor, double precoMin, Catalogo produto) {
+		int aux = 0;
 		for (int i = 0; i < produto.getCatalogo().length; i++) {
-			if(cor.equalsIgnoreCase(produto.getCatalogo()[i].getCor())
+			if (cor.equalsIgnoreCase(produto.getCatalogo()[i].getCor())
 					&& precoMin <= produto.getCatalogo()[i].getPreco()) {
-			
+				aux++;
+
 				System.out.println(produto.getCatalogo()[i].getTipo() + " " + produto.getCatalogo()[i].getCor() + " ,"
 						+ produto.getCatalogo()[i].getTema() + " ," + produto.getCatalogo()[i].getPreco() + " R$"
 						+ " -- quantidade em estoque " + produto.getCatalogo()[i].getQuant());
-			} 
 			}
 		}
-	private static void filtro_16(String tipo, String tema, String cor, Catalogo produto) {
+		if (aux == 0) {
+			System.out.println("Nenhum produto foi encontrado com essas informações");
+		}
+	}
+
+	public void filtro_16(String tipo, String tema, String cor, Catalogo produto) {
+		int aux = 0;
 		for (int i = 0; i < produto.getCatalogo().length; i++) {
-			if(tipo.equalsIgnoreCase(produto.getCatalogo()[i].getTipo())
+			if (tipo.equalsIgnoreCase(produto.getCatalogo()[i].getTipo())
 					&& tema.equalsIgnoreCase(produto.getCatalogo()[i].getTema())
 					&& cor.equalsIgnoreCase(produto.getCatalogo()[i].getCor())) {
-			
+				aux++;
+
 				System.out.println(produto.getCatalogo()[i].getTipo() + " " + produto.getCatalogo()[i].getCor() + " ,"
 						+ produto.getCatalogo()[i].getTema() + " ," + produto.getCatalogo()[i].getPreco() + " R$"
 						+ " -- quantidade em estoque " + produto.getCatalogo()[i].getQuant());
-			} 
 			}
 		}
-	private static void filtro_17(String tipo, String tema, double precoMax, Catalogo produto) {
+		if (aux == 0) {
+			System.out.println("Nenhum produto foi encontrado com essas informações");
+		}
+	}
+
+	public void filtro_17(String tipo, String tema, double precoMax, Catalogo produto) {
+		int aux = 0;
 		for (int i = 0; i < produto.getCatalogo().length; i++) {
-			if(tipo.equalsIgnoreCase(produto.getCatalogo()[i].getTipo())
+			if (tipo.equalsIgnoreCase(produto.getCatalogo()[i].getTipo())
 					&& tema.equalsIgnoreCase(produto.getCatalogo()[i].getTema())
 					&& precoMax >= produto.getCatalogo()[i].getPreco()) {
-			
+				aux++;
+
 				System.out.println(produto.getCatalogo()[i].getTipo() + " " + produto.getCatalogo()[i].getCor() + " ,"
 						+ produto.getCatalogo()[i].getTema() + " ," + produto.getCatalogo()[i].getPreco() + " R$"
 						+ " -- quantidade em estoque " + produto.getCatalogo()[i].getQuant());
-			} 
 			}
 		}
-	private static void filtro_18(String tipo, String tema, double precoMin, Catalogo produto) {
+		if (aux == 0) {
+			System.out.println("Nenhum produto foi encontrado com essas informações");
+		}
+	}
+
+	public void filtro_18(String tipo, String tema, double precoMin, Catalogo produto) {
+		int aux = 0;
 		for (int i = 0; i < produto.getCatalogo().length; i++) {
-			if(tipo.equalsIgnoreCase(produto.getCatalogo()[i].getTipo())
+			if (tipo.equalsIgnoreCase(produto.getCatalogo()[i].getTipo())
 					&& tema.equalsIgnoreCase(produto.getCatalogo()[i].getTema())
 					&& precoMin <= produto.getCatalogo()[i].getPreco()) {
-			
+				aux++;
+
 				System.out.println(produto.getCatalogo()[i].getTipo() + " " + produto.getCatalogo()[i].getCor() + " ,"
 						+ produto.getCatalogo()[i].getTema() + " ," + produto.getCatalogo()[i].getPreco() + " R$"
 						+ " -- quantidade em estoque " + produto.getCatalogo()[i].getQuant());
-			} 
 			}
 		}
-	private static void filtro_19(String tipo, String cor, double precoMax, Catalogo produto) {
+		if (aux == 0) {
+			System.out.println("Nenhum produto foi encontrado com essas informações");
+		}
+	}
+
+	public void filtro_19(String tipo, String cor, double precoMax, Catalogo produto) {
+		int aux = 0;
 		for (int i = 0; i < produto.getCatalogo().length; i++) {
-			if(tipo.equalsIgnoreCase(produto.getCatalogo()[i].getTipo())
+			if (tipo.equalsIgnoreCase(produto.getCatalogo()[i].getTipo())
 					&& cor.equalsIgnoreCase(produto.getCatalogo()[i].getCor())
 					&& precoMax >= produto.getCatalogo()[i].getPreco()) {
-			
+				aux++;
+
 				System.out.println(produto.getCatalogo()[i].getTipo() + " " + produto.getCatalogo()[i].getCor() + " ,"
 						+ produto.getCatalogo()[i].getTema() + " ," + produto.getCatalogo()[i].getPreco() + " R$"
 						+ " -- quantidade em estoque " + produto.getCatalogo()[i].getQuant());
-			} 
 			}
 		}
-	private static void filtro_20(String tipo, String cor, double precoMin, Catalogo produto) {
+		if (aux == 0) {
+			System.out.println("Nenhum produto foi encontrado com essas informações");
+		}
+	}
+
+	public void filtro_20(String tipo, String cor, double precoMin, Catalogo produto) {
+		int aux = 0;
 		for (int i = 0; i < produto.getCatalogo().length; i++) {
-			if(tipo.equalsIgnoreCase(produto.getCatalogo()[i].getTipo())
+			if (tipo.equalsIgnoreCase(produto.getCatalogo()[i].getTipo())
 					&& cor.equalsIgnoreCase(produto.getCatalogo()[i].getCor())
 					&& precoMin <= produto.getCatalogo()[i].getPreco()) {
-			
+				aux++;
+
 				System.out.println(produto.getCatalogo()[i].getTipo() + " " + produto.getCatalogo()[i].getCor() + " ,"
 						+ produto.getCatalogo()[i].getTema() + " ," + produto.getCatalogo()[i].getPreco() + " R$"
 						+ " -- quantidade em estoque " + produto.getCatalogo()[i].getQuant());
-			} 
 			}
 		}
-	private static void filtro_21(String tipo, double precoMax, double precoMin, Catalogo produto) {
+		if (aux == 0) {
+			System.out.println("Nenhum produto foi encontrado com essas informações");
+		}
+	}
+
+	public void filtro_21(String tipo, double precoMax, double precoMin, Catalogo produto) {
+		int aux = 0;
 		for (int i = 0; i < produto.getCatalogo().length; i++) {
-			if(tipo.equalsIgnoreCase(produto.getCatalogo()[i].getTipo())
+			if (tipo.equalsIgnoreCase(produto.getCatalogo()[i].getTipo())
 					&& precoMax >= produto.getCatalogo()[i].getPreco()
 					&& precoMin <= produto.getCatalogo()[i].getPreco()) {
-			
+				aux++;
+
 				System.out.println(produto.getCatalogo()[i].getTipo() + " " + produto.getCatalogo()[i].getCor() + " ,"
 						+ produto.getCatalogo()[i].getTema() + " ," + produto.getCatalogo()[i].getPreco() + " R$"
 						+ " -- quantidade em estoque " + produto.getCatalogo()[i].getQuant());
-			} 
 			}
 		}
-	private static void filtro_22(String tema, String cor, double precoMax, Catalogo produto) {
+		if (aux == 0) {
+			System.out.println("Nenhum produto foi encontrado com essas informações");
+		}
+	}
+
+	public void filtro_22(String tema, String cor, double precoMax, Catalogo produto) {
+		int aux = 0;
 		for (int i = 0; i < produto.getCatalogo().length; i++) {
-			if(tema.equalsIgnoreCase(produto.getCatalogo()[i].getTema())
+			if (tema.equalsIgnoreCase(produto.getCatalogo()[i].getTema())
 					&& cor.equalsIgnoreCase(produto.getCatalogo()[i].getCor())
 					&& precoMax >= produto.getCatalogo()[i].getPreco()) {
-			
+				aux++;
+
 				System.out.println(produto.getCatalogo()[i].getTipo() + " " + produto.getCatalogo()[i].getCor() + " ,"
 						+ produto.getCatalogo()[i].getTema() + " ," + produto.getCatalogo()[i].getPreco() + " R$"
 						+ " -- quantidade em estoque " + produto.getCatalogo()[i].getQuant());
-			} 
 			}
 		}
-	private static void filtro_23(String tema, double precoMax, double precoMin, Catalogo produto) {
+		if (aux == 0) {
+			System.out.println("Nenhum produto foi encontrado com essas informações");
+		}
+	}
+
+	public void filtro_23(String tema, double precoMax, double precoMin, Catalogo produto) {
+		int aux = 0;
 		for (int i = 0; i < produto.getCatalogo().length; i++) {
-			if(tema.equalsIgnoreCase(produto.getCatalogo()[i].getTema())
-					&& precoMax >=produto.getCatalogo()[i].getPreco()
+			if (tema.equalsIgnoreCase(produto.getCatalogo()[i].getTema())
+					&& precoMax >= produto.getCatalogo()[i].getPreco()
 					&& precoMin <= produto.getCatalogo()[i].getPreco()) {
-			
+				aux++;
+
 				System.out.println(produto.getCatalogo()[i].getTipo() + " " + produto.getCatalogo()[i].getCor() + " ,"
 						+ produto.getCatalogo()[i].getTema() + " ," + produto.getCatalogo()[i].getPreco() + " R$"
 						+ " -- quantidade em estoque " + produto.getCatalogo()[i].getQuant());
-			} 
 			}
 		}
-	private static void filtro_24(String tema, String cor, double precoMin, Catalogo produto) {
+		if (aux == 0) {
+			System.out.println("Nenhum produto foi encontrado com essas informações");
+		}
+	}
+
+	public void filtro_24(String tema, String cor, double precoMin, Catalogo produto) {
+		int aux = 0;
 		for (int i = 0; i < produto.getCatalogo().length; i++) {
-			if(tema.equalsIgnoreCase(produto.getCatalogo()[i].getTema())
+			if (tema.equalsIgnoreCase(produto.getCatalogo()[i].getTema())
 					&& cor.equalsIgnoreCase(produto.getCatalogo()[i].getCor())
 					&& precoMin <= produto.getCatalogo()[i].getPreco()) {
-			
+				aux++;
+
 				System.out.println(produto.getCatalogo()[i].getTipo() + " " + produto.getCatalogo()[i].getCor() + " ,"
 						+ produto.getCatalogo()[i].getTema() + " ," + produto.getCatalogo()[i].getPreco() + " R$"
 						+ " -- quantidade em estoque " + produto.getCatalogo()[i].getQuant());
-			} 
 			}
 		}
-	private static void filtro_25(String cor, double precoMax, double precoMin, Catalogo produto) {
+		if (aux == 0) {
+			System.out.println("Nenhum produto foi encontrado com essas informações");
+		}
+	}
+
+	public void filtro_25(String cor, double precoMax, double precoMin, Catalogo produto) {
+		int aux = 0;
 		for (int i = 0; i < produto.getCatalogo().length; i++) {
-			if(cor.equalsIgnoreCase(produto.getCatalogo()[i].getCor())
-					&& precoMax >=produto.getCatalogo()[i].getPreco()
+			if (cor.equalsIgnoreCase(produto.getCatalogo()[i].getCor())
+					&& precoMax >= produto.getCatalogo()[i].getPreco()
 					&& precoMin <= produto.getCatalogo()[i].getPreco()) {
-			
+				aux++;
+
 				System.out.println(produto.getCatalogo()[i].getTipo() + " " + produto.getCatalogo()[i].getCor() + " ,"
 						+ produto.getCatalogo()[i].getTema() + " ," + produto.getCatalogo()[i].getPreco() + " R$"
 						+ " -- quantidade em estoque " + produto.getCatalogo()[i].getQuant());
-			} 
 			}
 		}
-	private static void filtro_26(String tipo, String tema, String cor, double precoMax, Catalogo produto) {
+		if (aux == 0) {
+			System.out.println("Nenhum produto foi encontrado com essas informações");
+		}
+	}
+
+	public void filtro_26(String tipo, String tema, String cor, double precoMax, Catalogo produto) {
+		int aux = 0;
 		for (int i = 0; i < produto.getCatalogo().length; i++) {
-			if(tipo.equalsIgnoreCase(produto.getCatalogo()[i].getTipo())
+
+			if (tipo.equalsIgnoreCase(produto.getCatalogo()[i].getTipo())
 					&& tema.equalsIgnoreCase(produto.getCatalogo()[i].getTema())
 					&& cor.equalsIgnoreCase(produto.getCatalogo()[i].getCor())
 					&& precoMax >= produto.getCatalogo()[i].getPreco()) {
-			
+				aux++;
+
 				System.out.println(produto.getCatalogo()[i].getTipo() + " " + produto.getCatalogo()[i].getCor() + " ,"
 						+ produto.getCatalogo()[i].getTema() + " ," + produto.getCatalogo()[i].getPreco() + " R$"
 						+ " -- quantidade em estoque " + produto.getCatalogo()[i].getQuant());
-			} 
 			}
 		}
-	private static void filtro_27(String tipo, String tema, String cor, double precoMin, Catalogo produto) {
+		if (aux == 0) {
+			System.out.println("Nenhum produto foi encontrado com essas informações");
+		}
+	}
+
+	public void filtro_27(String tipo, String tema, String cor, double precoMin, Catalogo produto) {
+		int aux = 0;
 		for (int i = 0; i < produto.getCatalogo().length; i++) {
-			if(tipo.equalsIgnoreCase(produto.getCatalogo()[i].getTipo())
+			if (tipo.equalsIgnoreCase(produto.getCatalogo()[i].getTipo())
 					&& tema.equalsIgnoreCase(produto.getCatalogo()[i].getTema())
 					&& cor.equalsIgnoreCase(produto.getCatalogo()[i].getCor())
 					&& precoMin <= produto.getCatalogo()[i].getPreco()) {
-			
+				aux++;
+
 				System.out.println(produto.getCatalogo()[i].getTipo() + " " + produto.getCatalogo()[i].getCor() + " ,"
 						+ produto.getCatalogo()[i].getTema() + " ," + produto.getCatalogo()[i].getPreco() + " R$"
 						+ " -- quantidade em estoque " + produto.getCatalogo()[i].getQuant());
-			} 
 			}
 		}
-	private static void filtro_28(String tipo, String tema, double precoMax, double precoMin, Catalogo produto) {
+		if (aux == 0) {
+			System.out.println("Nenhum produto foi encontrado com essas informações");
+		}
+	}
+
+	public void filtro_28(String tipo, String tema, double precoMax, double precoMin, Catalogo produto) {
+		int aux = 0;
 		for (int i = 0; i < produto.getCatalogo().length; i++) {
-			if(tipo.equalsIgnoreCase(produto.getCatalogo()[i].getTipo())
+			if (tipo.equalsIgnoreCase(produto.getCatalogo()[i].getTipo())
 					&& tema.equalsIgnoreCase(produto.getCatalogo()[i].getTema())
 					&& precoMax >= produto.getCatalogo()[i].getPreco()
-			        && precoMin <= produto.getCatalogo()[i].getPreco()){
-			
+					&& precoMin <= produto.getCatalogo()[i].getPreco()) {
+				aux++;
+
 				System.out.println(produto.getCatalogo()[i].getTipo() + " " + produto.getCatalogo()[i].getCor() + " ,"
 						+ produto.getCatalogo()[i].getTema() + " ," + produto.getCatalogo()[i].getPreco() + " R$"
 						+ " -- quantidade em estoque " + produto.getCatalogo()[i].getQuant());
-			} 
 			}
 		}
-	private static void filtro_29(String tipo, String cor, double precoMax, double precoMin, Catalogo produto) {
+		if (aux == 0) {
+			System.out.println("Nenhum produto foi encontrado com essas informações");
+		}
+	}
+
+	public void filtro_29(String tipo, String cor, double precoMax, double precoMin, Catalogo produto) {
+		int aux = 0;
 		for (int i = 0; i < produto.getCatalogo().length; i++) {
-			if(tipo.equalsIgnoreCase(produto.getCatalogo()[i].getTipo())
+			if (tipo.equalsIgnoreCase(produto.getCatalogo()[i].getTipo())
 					&& cor.equalsIgnoreCase(produto.getCatalogo()[i].getCor())
 					&& precoMax >= produto.getCatalogo()[i].getPreco()
-			        && precoMin <= produto.getCatalogo()[i].getPreco()){
-			
+					&& precoMin <= produto.getCatalogo()[i].getPreco()) {
+				aux++;
+
 				System.out.println(produto.getCatalogo()[i].getTipo() + " " + produto.getCatalogo()[i].getCor() + " ,"
 						+ produto.getCatalogo()[i].getTema() + " ," + produto.getCatalogo()[i].getPreco() + " R$"
 						+ " -- quantidade em estoque " + produto.getCatalogo()[i].getQuant());
-			} 
 			}
 		}
-	private static void filtro_30(String tema, String cor, double precoMax, double precoMin, Catalogo produto) {
+		if (aux == 0) {
+			System.out.println("Nenhum produto foi encontrado com essas informações");
+		}
+	}
+
+	public void filtro_30(String tema, String cor, double precoMax, double precoMin, Catalogo produto) {
+		int aux = 0;
 		for (int i = 0; i < produto.getCatalogo().length; i++) {
-			if(tema.equalsIgnoreCase(produto.getCatalogo()[i].getTema())
+			if (tema.equalsIgnoreCase(produto.getCatalogo()[i].getTema())
 					&& cor.equalsIgnoreCase(produto.getCatalogo()[i].getCor())
 					&& precoMax >= produto.getCatalogo()[i].getPreco()
-			        && precoMin <= produto.getCatalogo()[i].getPreco()){
-			
+					&& precoMin <= produto.getCatalogo()[i].getPreco()) {
+				aux++;
+
 				System.out.println(produto.getCatalogo()[i].getTipo() + " " + produto.getCatalogo()[i].getCor() + " ,"
 						+ produto.getCatalogo()[i].getTema() + " ," + produto.getCatalogo()[i].getPreco() + " R$"
 						+ " -- quantidade em estoque " + produto.getCatalogo()[i].getQuant());
-			} 
 			}
 		}
-	private static void filtro_31(String tipo, String tema, String cor, double precoMax, double precoMin, Catalogo produto) {
+		if (aux == 0) {
+			System.out.println("Nenhum produto foi encontrado com essas informações");
+		}
+	}
+
+	public void filtro_31(String tipo, String tema, String cor, double precoMax, double precoMin, Catalogo produto) {
+		int aux = 0;
 		for (int i = 0; i < produto.getCatalogo().length; i++) {
-			if(tema.equalsIgnoreCase(produto.getCatalogo()[i].getTema())
+			if (tema.equalsIgnoreCase(produto.getCatalogo()[i].getTema())
 					&& tipo.equalsIgnoreCase(produto.getCatalogo()[i].getTipo())
 					&& cor.equalsIgnoreCase(produto.getCatalogo()[i].getCor())
 					&& precoMax >= produto.getCatalogo()[i].getPreco()
-			        && precoMin <= produto.getCatalogo()[i].getPreco()){
-			
+					&& precoMin <= produto.getCatalogo()[i].getPreco()) {
+				aux++;
+
 				System.out.println(produto.getCatalogo()[i].getTipo() + " " + produto.getCatalogo()[i].getCor() + " ,"
 						+ produto.getCatalogo()[i].getTema() + " ," + produto.getCatalogo()[i].getPreco() + " R$"
 						+ " -- quantidade em estoque " + produto.getCatalogo()[i].getQuant());
-			} 
 			}
 		}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		if (aux == 0) {
+			System.out.println("Nenhum produto foi encontrado com essas informações");
+		}
 	}
-	
-	
 
-
+}

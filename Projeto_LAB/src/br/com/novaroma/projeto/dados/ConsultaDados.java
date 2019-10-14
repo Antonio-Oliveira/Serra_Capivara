@@ -55,7 +55,7 @@ public class ConsultaDados {
 
 		if (arquivo.exists()) {
 			for (int i = 0; i < usuarioCadastrado.length; i++) {
-				if (usuarioCadastrado != null) {
+				if (usuarioCadastrado[i] != null) {
 
 					if (usuarioCadastrado[i].getEmail().equalsIgnoreCase(email)
 							&& usuarioCadastrado[i].getSenha().equals(senha)) {

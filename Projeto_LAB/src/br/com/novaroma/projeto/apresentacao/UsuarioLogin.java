@@ -25,7 +25,7 @@ public class UsuarioLogin {
 		ConsultaDados usuarioCadastrado = new ConsultaDados();
 		Usuario usuarioConta = usuarioCadastrado.consultaUsuario(email, senha);
 		if (usuarioConta != null) {
-
+			System.out.println("=========== Seja bem-vindo " + usuarioConta.getNome() + "=============");
 			return usuarioConta;
 
 		} else {
@@ -39,7 +39,7 @@ public class UsuarioLogin {
 	public void consultaLogin(Usuario usuario) throws ClassNotFoundException, IOException {
 		int x;
 		do {
-			System.out.println("========== Seja bem-vindo " + usuario.getNome() + " =========");
+			System.out.println("========== Ola " + usuario.getNome() + " ======================");
 			System.out.println("========== Oque de seja fazer ===============================");
 			System.out.println("========== Digite 1 para modificar a conta ==================");
 			System.out.println("========== Digite 2 para removar a conta ====================");
@@ -51,8 +51,9 @@ public class UsuarioLogin {
 			case 1:
 				Usuario usuarioNovo = modificarConta(usuario);
 				String mensagem = negocioModifica.verificacoes(usuarioNovo);
+				System.out.println("                                                         ");
 				System.out.println(mensagem);
-				x = 0;
+				System.out.println("                                                         ");
 
 				break;
 			case 2:
@@ -101,40 +102,37 @@ public class UsuarioLogin {
 
 	private static Usuario modificarConta(Usuario usuario) {
 		int x;
-		do {
-			System.out.println("======== Oque deseja modificar ==========================");
-			System.out.println("======== Digite 1 para modificar a idade ================");
-			System.out.println("======== Digite 2 para modificar a senha ================");
-			System.out.println("======== Digite 3 para modificar o numero de telefone ===");
-			System.out.println("======== Digite 0 para sair desse menu ==================");
-			x = scan.nextInt();
 
-			switch (x) {
-			case 1:
-				System.out.println(" Informe sua idade atual ");
-				int idade = scan.nextInt();
-				usuario.setIdade(idade);
-				break;
-		
-			case 2:
-				System.out.println(" Informe seu nova senha ");
-				String senha = scan.next();
-				usuario.setSenha(senha);
-				break;
-			case 3:
-				System.out.println(" Informe o novo numero de Telefone");
-				long numTell = scan.nextLong();
-				usuario.setNumTell(numTell);
-				break;
-			case 0:
-				System.out.println(usuario.getNome() + " você retornara ao menu principal");
-				break;
-			default:
-				System.out.println("Esse opção não existe(Informe um numero de acordo com o menu)");
-				break;
-			}
+		System.out.println("======== Oque deseja modificar ==========================");
+		System.out.println("======== Digite 1 para modificar a idade ================");
+		System.out.println("======== Digite 2 para modificar a senha ================");
+		System.out.println("======== Digite 3 para modificar o numero de telefone ===");
+		System.out.println("======== Digite 0 para sair desse menu ==================");
+		x = scan.nextInt();
 
-		} while (x != 0);
+		switch (x) {
+		case 1:
+			System.out.println(" Informe sua idade atual ");
+			int idade = scan.nextInt();
+			usuario.setIdade(idade);
+			break;
+
+		case 2:
+			System.out.println(" Informe seu nova senha ");
+			String senha = scan.next();
+			usuario.setSenha(senha);
+			break;
+		case 3:
+			System.out.println(" Informe o novo numero de Telefone");
+			long numTell = scan.nextLong();
+			usuario.setNumTell(numTell);
+			break;
+		case 0:
+			break;
+		default:
+			System.out.println("Esse opção não existe(Informe um numero de acordo com o menu)");
+			break;
+		}
 
 		return usuario;
 	}

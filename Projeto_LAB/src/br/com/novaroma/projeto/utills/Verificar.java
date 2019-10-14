@@ -53,19 +53,6 @@ public class Verificar {
 
 	}
 
-	public static String verificarPrefixo(Usuario usuario) {
-
-		String prefixoNome = null;
-
-		if (usuario.getSexo().equalsIgnoreCase("Masculino")) {
-			return prefixoNome = "Sr. " + usuario.getNome();
-
-		} else {
-			return prefixoNome = "Sra. " + usuario.getNome();
-
-		}
-	}
-
 	public static boolean VerificarEmail(Usuario usuario) {
 
 		if (usuario.getEmail() != null && usuario.getEmail().length() > 0) {

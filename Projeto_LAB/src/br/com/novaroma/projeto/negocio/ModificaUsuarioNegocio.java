@@ -3,18 +3,15 @@ package br.com.novaroma.projeto.negocio;
 import java.io.IOException;
 
 import br.com.novaroma.projeto.dados.AtualizarDados;
-import br.com.novaroma.projeto.dados.ConsultaDados;
-import br.com.novaroma.projeto.dados.UsuarioDados;
 import br.com.novaroma.projeto.entidades.Usuario;
 import br.com.novaroma.projeto.utills.Verificar;
 
 public class ModificaUsuarioNegocio {
 
 	private AtualizarDados atualizarDados = new AtualizarDados();
-	private ConsultaDados consulta = new ConsultaDados();
 
 	public String verificacoes(Usuario usuario) throws ClassNotFoundException, IOException {
-		
+
 		if (usuario.getIdade() <= 8) {
 
 			return "O Usuario não podê ser modificado pois não tem idade o suficiente";
@@ -29,7 +26,7 @@ public class ModificaUsuarioNegocio {
 
 		}
 		atualizarDados.modificarDados(usuario);
-		return "Usuario Modificado com sucesso";
+		return "==================== Usuario Modificado com sucesso=====================";
 
 	}
 
