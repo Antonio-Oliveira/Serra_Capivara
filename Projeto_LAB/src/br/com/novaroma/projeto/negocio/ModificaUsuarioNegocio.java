@@ -14,19 +14,19 @@ public class ModificaUsuarioNegocio {
 
 		if (usuario.getIdade() <= 8) {
 
-			return "O Usuario não podê ser modificado pois não tem idade o suficiente";
+			return "O Usuário não pode ser modificado pois não tem idade suficiente";
 
 		} else if (Verificar.verificarSenha(usuario) == false) {
 
-			return "O Usuario não podê ser modificado pois a senha esta incorreta";
+			return "O Usuário não pode ser modificado pois a senha esta incorreta";
 
 		} else if (Verificar.VerificarEmail(usuario) == false) {
 
-			return "O Usuario não podê ser modificado pois o email esta incorreta";
+			return "O Usuário não pode ser modificado pois o email esta incorreto";
 
 		}
 		atualizarDados.modificarDados(usuario);
-		return "==================== Usuario Modificado com sucesso=====================";
+		return "==================== Usuário Modificado com sucesso=====================";
 
 	}
 

@@ -23,23 +23,23 @@ public class UsuarioNegocio {
 
 		} else if (Verificar.verificarCPF(usuario) == false) {
 
-			return "O Usuario " + usuario.getNome() + " não foi cadastrado pois seu CPF esta incorreto";
+			return "O Usuário " + usuario.getNome() + " não foi cadastrado, pois seu CPF está incorreto";
 
 		} else if (usuario.getIdade() <= 8) {
 
-			return "O Usuario " + usuario.getNome() + " não foi cadastrado pois não tem idade o suficiente";
+			return "O Usuário " + usuario.getNome() + " não foi cadastrado pois não tem idade o suficiente";
 
 		} else if (Verificar.verificarSenha(usuario) == false) {
 
-			return "O Usuario " + usuario.getNome() + " não foi cadastrado pois a senha esta incorreta";
+			return "O Usuario " + usuario.getNome() + " não foi cadastrado pois a senha está incorreta";
 
 		} else if (Verificar.VerificarEmail(usuario) == false) {
 
-			return "O Usuario " + usuario.getNome() + " não foi cadastrado pois o email esta incorreta";
+			return "O Usuario " + usuario.getNome() + " não foi cadastrado pois o email está incorreto";
 
 		}
 		usuarioDados.cadastrar(usuario);
-		return "Usuario Cadastrado com sucesso";
+		return "Usuário Cadastrado com sucesso!";
 
 	}
 

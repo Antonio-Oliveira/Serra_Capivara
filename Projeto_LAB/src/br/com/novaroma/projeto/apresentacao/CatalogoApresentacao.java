@@ -20,7 +20,7 @@ public class CatalogoApresentacao implements Filtro {
 
 		do {
 			System.out.println("                                                                  ");
-			System.out.println("------------Digite 1 para para apresentar Catalogo completo-------");
+			System.out.println("------------Digite 1 para apresentar o Catalogo Completo----------");
 			System.out.println("------------Digite 2 para filtrar informacões---------------------");
 			System.out.println("------------Digite 0 para sair desta opção------------------------");
 			x = scanNum.nextInt();
