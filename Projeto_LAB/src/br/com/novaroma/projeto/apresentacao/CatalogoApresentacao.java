@@ -518,7 +518,10 @@ public class CatalogoApresentacao {
 			} 
 			}
 		}
-	private static void filtro_15(String cor, double precoMin, Catalogo produto) {
+	
+	aaaaaaaaa;
+	
+	private static void filtro_15(String cor, double precoMin, Catalogo  produto) {
 		for (int i = 0; i < produto.getCatalogo().length; i++) {
 			if(cor.equalsIgnoreCase(produto.getCatalogo()[i].getCor())
 					&& precoMin <= produto.getCatalogo()[i].getPreco()) {
