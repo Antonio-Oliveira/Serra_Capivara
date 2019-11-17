@@ -2,13 +2,13 @@ package br.com.novaroma.projeto.negocio;
 
 import java.io.IOException;
 
-import br.com.novaroma.projeto.dados.AtualizarDados;
+import br.com.novaroma.projeto.dados.UsuarioDados;
 import br.com.novaroma.projeto.entidades.Usuario;
 import br.com.novaroma.projeto.utills.Verificar;
 
 public class ModificaUsuarioNegocio {
 
-	private AtualizarDados atualizarDados = new AtualizarDados();
+	private UsuarioDados atualizarDados = new UsuarioDados();
 
 	public String verificacoes(Usuario usuario) throws ClassNotFoundException, IOException {
 

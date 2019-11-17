@@ -2,12 +2,12 @@ package br.com.novaroma.projeto.negocio;
 
 import java.io.IOException;
 
-import br.com.novaroma.projeto.dados.AtualizarDados;
+import br.com.novaroma.projeto.dados.UsuarioDados;
 import br.com.novaroma.projeto.entidades.Usuario;
 
 public class RemoverUsuarioNegocio {
 
-	private AtualizarDados remover = new AtualizarDados();
+	private UsuarioDados remover = new UsuarioDados();
 
 	public String remover(Usuario usuario) throws ClassNotFoundException, IOException {
 

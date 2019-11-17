@@ -3,8 +3,7 @@ package br.com.novaroma.projeto.apresentacao;
 import java.io.IOException;
 import java.util.Scanner;
 
-import br.com.novaroma.projeto.dados.AtualizarDados;
-import br.com.novaroma.projeto.dados.ConsultaDados;
+import br.com.novaroma.projeto.dados.UsuarioDados;
 import br.com.novaroma.projeto.entidades.Usuario;
 import br.com.novaroma.projeto.negocio.LoginNegocio;
 import br.com.novaroma.projeto.negocio.ModificaUsuarioNegocio;
@@ -12,7 +11,7 @@ import br.com.novaroma.projeto.negocio.RemoverUsuarioNegocio;
 
 public class UsuarioLogin {
 
-	private AtualizarDados atualizar = new AtualizarDados();
+	private UsuarioDados atualizar = new UsuarioDados();
 	private ModificaUsuarioNegocio negocioModifica = new ModificaUsuarioNegocio();
 	private RemoverUsuarioNegocio remover = new RemoverUsuarioNegocio();
 	private LoginNegocio login = new LoginNegocio();

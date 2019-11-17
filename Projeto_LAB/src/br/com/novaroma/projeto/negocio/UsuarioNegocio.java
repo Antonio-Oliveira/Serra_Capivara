@@ -2,7 +2,6 @@ package br.com.novaroma.projeto.negocio;
 
 import java.io.IOException;
 
-import br.com.novaroma.projeto.dados.ConsultaDados;
 import br.com.novaroma.projeto.dados.UsuarioDados;
 import br.com.novaroma.projeto.entidades.Usuario;
 import br.com.novaroma.projeto.utills.Verificar;
@@ -10,7 +9,7 @@ import br.com.novaroma.projeto.utills.Verificar;
 public class UsuarioNegocio {
 
 	private UsuarioDados usuarioDados = new UsuarioDados();
-	private ConsultaDados consulta = new ConsultaDados();
+	private UsuarioDados consulta = new UsuarioDados();
 
 	public String verificacoes(Usuario usuario) throws ClassNotFoundException, IOException {
 
