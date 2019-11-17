@@ -8,6 +8,7 @@ import br.com.novaroma.projeto.entidades.Usuario;
 public class Verificar {
 
 	public static boolean verificarCPF(Usuario usuario) {
+
 		char dig10, dig11;
 		int soma = 0, r, num, peso = 10;
 
@@ -38,18 +39,24 @@ public class Verificar {
 		} else {
 			dig11 = (char) (r + 48);
 		}
+		
 		if (usuario.getCpf().equals("00000000000") || usuario.getCpf().equals("11111111111")
 				|| usuario.getCpf().equals("22222222222") || usuario.getCpf().equals("33333333333")
 				|| usuario.getCpf().equals("44444444444") || usuario.getCpf().equals("55555555555")
 				|| usuario.getCpf().equals("66666666666") || usuario.getCpf().equals("77777777777")
 				|| usuario.getCpf().equals("88888888888") || usuario.getCpf().equals("99999999999")
-				|| usuario.getCpf().length() < 11) {
+				|| usuario.getCpf().length() != 11) {
 			return false;
+			
 		} else if (usuario.getCpf().charAt(9) != dig10 || usuario.getCpf().charAt(10) != dig11) {
+			
 			return false;
-		}
+			
+		} else {
 
-		return true;
+			return true;
+			
+		}
 
 	}
 

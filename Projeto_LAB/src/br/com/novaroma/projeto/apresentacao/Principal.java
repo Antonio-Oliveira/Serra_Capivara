@@ -38,7 +38,7 @@ public class Principal {
 				break;
 			case 3:
 				Usuario usuario = UsuarioApresentacao.preencherUsuario();
-				String mensagem = usuarioNegocio.verificacoes(usuario);
+				String mensagem = usuarioNegocio.verificarModificacoes(usuario);
 				System.out.println("                                ");
 				System.out.println(mensagem);
 				System.out.println("                                ");

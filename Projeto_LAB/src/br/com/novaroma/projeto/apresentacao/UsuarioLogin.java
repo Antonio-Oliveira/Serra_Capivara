@@ -3,18 +3,12 @@ package br.com.novaroma.projeto.apresentacao;
 import java.io.IOException;
 import java.util.Scanner;
 
-import br.com.novaroma.projeto.dados.UsuarioDados;
 import br.com.novaroma.projeto.entidades.Usuario;
-import br.com.novaroma.projeto.negocio.LoginNegocio;
-import br.com.novaroma.projeto.negocio.ModificaUsuarioNegocio;
-import br.com.novaroma.projeto.negocio.RemoverUsuarioNegocio;
+import br.com.novaroma.projeto.negocio.UsuarioNegocio;
 
 public class UsuarioLogin {
 
-	private UsuarioDados atualizar = new UsuarioDados();
-	private ModificaUsuarioNegocio negocioModifica = new ModificaUsuarioNegocio();
-	private RemoverUsuarioNegocio remover = new RemoverUsuarioNegocio();
-	private LoginNegocio login = new LoginNegocio();
+	private UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
 
 	static Scanner scan = new Scanner(System.in);
 
@@ -25,7 +19,7 @@ public class UsuarioLogin {
 		System.out.println("=============== Digite sua senha: ===============");
 		String senha = scan.next();
 
-		Usuario usuario = login.verificarLogin(email, senha);
+		Usuario usuario = usuarioNegocio.verificarLogin(email, senha);
 		if (usuario != null) {
 			System.out.println("                                                                      ");
 			System.out.println("=========== Seja Bem-Vindo! " + usuario.getNome() + "=============");
@@ -54,7 +48,7 @@ public class UsuarioLogin {
 			switch (x) {
 			case 1:
 				Usuario usuarioNovo = modificarConta(usuario);
-				String mensagem = negocioModifica.verificacoes(usuarioNovo);
+				String mensagem = usuarioNegocio.verificarModificacoes(usuarioNovo);
 				System.out.println("                                                         ");
 				System.out.println(mensagem);
 				System.out.println("                                                         ");
@@ -65,7 +59,7 @@ public class UsuarioLogin {
 
 				if (condicao = true) {
 
-					String mensagem1 = remover.remover(usuario);
+					String mensagem1 = usuarioNegocio.verificarRemocao(usuario);
 					System.out.println(mensagem1);
 
 				}

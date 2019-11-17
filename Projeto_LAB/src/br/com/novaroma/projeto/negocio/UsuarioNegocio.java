@@ -9,14 +9,13 @@ import br.com.novaroma.projeto.utills.Verificar;
 public class UsuarioNegocio {
 
 	private UsuarioDados usuarioDados = new UsuarioDados();
-	private UsuarioDados consulta = new UsuarioDados();
 
-	public String verificacoes(Usuario usuario) throws ClassNotFoundException, IOException {
+	public String verificarCadastro(Usuario usuario) throws ClassNotFoundException, IOException {
 
-		if (this.consulta.consultaUsuarioCPF(usuario.getCpf()) != null) {
+		if (usuarioDados.consultaUsuarioCPF(usuario.getCpf()) != null) {
 			return "Esse CPF já foi cadastrado";
 
-		} else if (this.consulta.consultaUsuarioEmail(usuario.getEmail()) != null) {
+		} else if (usuarioDados.consultaUsuarioEmail(usuario.getEmail()) != null) {
 
 			return "Esse email já foi cadastrado";
 
@@ -39,6 +38,38 @@ public class UsuarioNegocio {
 		}
 		usuarioDados.cadastrar(usuario);
 		return "Usuário Cadastrado com sucesso!";
+
+	}
+
+	public Usuario verificarLogin(String email, String senha) throws ClassNotFoundException, IOException {
+		Usuario usuario = usuarioDados.consultaUsuario(email, senha);
+		return usuario;
+	}
+
+	public String verificarModificacoes(Usuario usuario) throws ClassNotFoundException, IOException {
+
+		if (usuario.getIdade() <= 8) {
+
+			return "O Usuário não pode ser modificado pois não tem idade suficiente";
+
+		} else if (Verificar.verificarSenha(usuario) == false) {
+
+			return "O Usuário não pode ser modificado pois a senha esta incorreta";
+
+		} else if (Verificar.VerificarEmail(usuario) == false) {
+
+			return "O Usuário não pode ser modificado pois o email esta incorreto";
+
+		}
+		usuarioDados.modificarDados(usuario);
+		return "============== Usuário Modificado com sucesso ===============";
+
+	}
+
+	public String verificarRemocao(Usuario usuario) throws ClassNotFoundException, IOException {
+
+		usuarioDados.removarDados(usuario);
+		return "----Conta removida com sucesso!-----";
 
 	}
 
