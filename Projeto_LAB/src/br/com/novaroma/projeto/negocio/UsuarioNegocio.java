@@ -36,6 +36,7 @@ public class UsuarioNegocio {
 			return "O Usuario " + usuario.getNome() + " não foi cadastrado pois o email está incorreto";
 
 		}
+
 		usuarioDados.cadastrar(usuario);
 		return "Usuário Cadastrado com sucesso!";
 
@@ -46,30 +47,35 @@ public class UsuarioNegocio {
 		return usuario;
 	}
 
-	public String verificarModificacoes(Usuario usuario) throws ClassNotFoundException, IOException {
+	public String verificarModificacoes(Usuario usuarioNovo, Usuario usuarioAntigo)
+			throws ClassNotFoundException, IOException {
 
-		if (usuario.getIdade() <= 8) {
+		if (usuarioDados.consultaUsuarioEmail(usuarioNovo.getEmail()) != null && !usuarioNovo.equals(usuarioAntigo)) {
 
-			return "O Usuário não pode ser modificado pois não tem idade suficiente";
+			return "Email já está sendo utilizado";
 
-		} else if (Verificar.verificarSenha(usuario) == false) {
+		} else if (Verificar.VerificarEmail(usuarioNovo) == false) {
 
-			return "O Usuário não pode ser modificado pois a senha esta incorreta";
+			return "O Usuário não pode ser modificado pois o email esta incorreto ou ja foi cadastrado";
 
-		} else if (Verificar.VerificarEmail(usuario) == false) {
+		} else if (usuarioNovo.getIdade() < usuarioAntigo.getIdade()) {
 
-			return "O Usuário não pode ser modificado pois o email esta incorreto";
+			return "O Usuário não pode ser modificado pois a modificação estar abaixo da informada anteriormente";
+
+		} else if (Verificar.verificarSenha(usuarioNovo) == false) {
+
+			return "O Usuário não pode ser modificado pois a senha não esta nos padrões aceitos";
 
 		}
-		usuarioDados.modificarDados(usuario);
-		return "============== Usuário Modificado com sucesso ===============";
+		usuarioDados.modificarDados(usuarioNovo);
+		return "---- Usuário Modificado com sucesso!!! -----";
 
 	}
 
 	public String verificarRemocao(Usuario usuario) throws ClassNotFoundException, IOException {
 
 		usuarioDados.removarDados(usuario);
-		return "----Conta removida com sucesso!-----";
+		return "---- Conta removida com sucesso!!! -----";
 
 	}
 

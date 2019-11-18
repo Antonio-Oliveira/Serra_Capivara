@@ -9,73 +9,57 @@ import br.com.novaroma.projeto.negocio.UsuarioNegocio;
 public class UsuarioLogin {
 
 	private UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
-
 	static Scanner scan = new Scanner(System.in);
-
-	public Usuario loginUsuario() throws ClassNotFoundException, IOException {
-		System.out.println("===================== LOGIN: ====================");
-		System.out.println("=============== Digite seu Email: ===============");
-		String email = scan.next();
-		System.out.println("=============== Digite sua senha: ===============");
-		String senha = scan.next();
-
-		Usuario usuario = usuarioNegocio.verificarLogin(email, senha);
-		if (usuario != null) {
-			System.out.println("                                                                      ");
-			System.out.println("=========== Seja Bem-Vindo! " + usuario.getNome() + "=============");
-			System.out.println("                                                                      ");
-			return usuario;
-
-		} else {
-			System.out.println("Você não possui cadastro na loja ou dados incorretos! :(");
-			return null;
-
-		}
-
-	}
 
 	public void consultaLogin(Usuario usuario) throws ClassNotFoundException, IOException {
 		int x;
+
 		do {
-			System.out.println("========== Olá! " + usuario.getNome() + " ===================");
-			System.out.println("========== O que deseja fazer? ==============================");
-			System.out.println("========== Digite 1 para modificar a conta ==================");
-			System.out.println("========== Digite 2 para remover a conta ====================");
-			System.out.println("========== Digite 3 para verificar as informações ===========");
-			System.out.println("========== Digite 0 para sair do Menu =======================");
+			System.out.println("_____________________________________________");
+			System.out.println("|	   O que você deseja fazer?          |");
+			System.out.println("|                                            |");
+			System.out.println("|(Digite 1) -- para verificar as informações |");
+			System.out.println("|(Digite 2) -- para para modificar a conta   |");
+			System.out.println("|(Digite 3) -- para remover a conta          |");
+			System.out.println("|(Digite 0) -- para sair desse menu          |");
+			System.out.println("|____________________________________________|");
 			x = scan.nextInt();
 
 			switch (x) {
 			case 1:
-				Usuario usuarioNovo = modificarConta(usuario);
-				String mensagem = usuarioNegocio.verificarModificacoes(usuarioNovo);
-				System.out.println("                                                         ");
-				System.out.println(mensagem);
-				System.out.println("                                                         ");
-
+				verificarConta(usuario);
 				break;
 			case 2:
-				boolean condicao = removerConta(usuario);
+				Usuario usuarioNovo = modificarConta(usuario);
+				String mensagemMod = usuarioNegocio.verificarModificacoes(usuarioNovo, usuario);
+				System.out.println("      ");
+				System.out.println(mensagemMod);
+				System.out.println("      ");
+				break;
+			case 3:
+				System.out.println(
+						"Tem certeza que deseja excluir sua conta? (Se deseja digite |Sim|, se não digite |Não|)");
+				String condicao = scan.next();
 
-				if (condicao = true) {
+				if (condicao.equalsIgnoreCase("Sim")) {
 
-					String mensagem1 = usuarioNegocio.verificarRemocao(usuario);
-					System.out.println(mensagem1);
+					String mensagemRemov = usuarioNegocio.verificarRemocao(usuario);
+					System.out.println(mensagemRemov);
 
 				}
 				x = 0;
 				break;
-			case 3:
-				verificarConta(usuario);
+			case 0:
+				break;
 			default:
+				System.out.println("Por favor... Digite apenas numeros de acordo com o menu acima!!!");
 				break;
 			}
-
 		} while (x != 0);
 	}
 
 	private static void verificarConta(Usuario usuario) {
-		System.out.println("--------------------------------------");
+		System.out.println("____________________________________________");
 		System.out.println("|Nome: " + usuario.getNome());
 		System.out.println("|Idade: " + usuario.getIdade());
 		System.out.println("|Sexo: " + usuario.getSexo());
@@ -83,56 +67,80 @@ public class UsuarioLogin {
 		System.out.println("|Email: " + usuario.getEmail());
 		System.out.println("|CPF: " + usuario.getCpf());
 		System.out.println("|Senha: " + usuario.getSenha());
-		System.out.println("--------------------------------------");
-
-	}
-
-	private static boolean removerConta(Usuario usuario) {
-		System.out.println("Tem certeza que deseja excluir a conta? (Se deseja digite Sim, se não deseja digite Não)");
-		String condicao = scan.next();
-		if (condicao.equalsIgnoreCase("Sim")) {
-			return true;
-		} else {
-			return false;
-		}
+		System.out.println("|___________________________________________");
 
 	}
 
 	private static Usuario modificarConta(Usuario usuario) {
 		int x;
 
-		System.out.println("======== O que deseja modificar?=========================");
-		System.out.println("======== Digite 1 para modificar a idade ================");
-		System.out.println("======== Digite 2 para modificar a senha ================");
-		System.out.println("======== Digite 3 para modificar o número de telefone ===");
-		System.out.println("======== Digite 0 para sair desse Menu ==================");
-		x = scan.nextInt();
+		do {
 
-		switch (x) {
-		case 1:
-			System.out.println(" Informe sua idade atual ");
-			int idade = scan.nextInt();
-			usuario.setIdade(idade);
-			break;
+			System.out.println("____________________________________________________");
+			System.out.println("|	   O que você deseja fazer?                |");
+			System.out.println("|                                                  |");
+			System.out.println("|(Digite 1) -- para modificar a idade              |");
+			System.out.println("|(Digite 2) -- para modificar a senha              |");
+			System.out.println("|(Digite 3) -- para modificar o número de telefone |");
+			System.out.println("|(Digite 4) -- para modificar o email              |");
+			System.out.println("|(Digite 0) -- para sair desse Menu                |");
+			System.out.println("|__________________________________________________|");
+			x = scan.nextInt();
 
-		case 2:
-			System.out.println(" Informe sua nova senha ");
-			String senha = scan.next();
-			usuario.setSenha(senha);
-			break;
-		case 3:
-			System.out.println(" Informe o novo número de Telefone");
-			long numTell = scan.nextLong();
-			usuario.setNumTell(numTell);
-			break;
-		case 0:
-			break;
-		default:
-			System.out.println("Esse opção não existe (Informe um número de acordo com o Menu!)");
-			break;
-		}
+			switch (x) {
+			case 1:
+				System.out.println(" Informe sua idade atual ");
+				int idade = scan.nextInt();
+				usuario.setIdade(idade);
+				break;
+			case 2:
+				System.out.println(" Informe sua nova senha ");
+				String senha = scan.next();
+				usuario.setSenha(senha);
+				break;
+			case 3:
+				System.out.println(" Informe o novo número de Telefone");
+				long numTell = scan.nextLong();
+				usuario.setNumTell(numTell);
+				break;
+			case 4:
+				System.out.println("Informe o novo email");
+				String email = scan.next();
+				usuario.setEmail(email);
+				break;
+			case 0:
+				break;
+			default:
+				System.out.println("Por favor... Digite apenas numeros de acordo com o menu acima!!!");
+				break;
+			}
+
+		} while (x != 0);
 
 		return usuario;
+	}
+
+	public Usuario loginUsuario() throws ClassNotFoundException, IOException {
+
+		System.out.println("--------------- LOGIN: ---------------");
+		System.out.println("--------- Digite seu Email: ----------");
+		String email = scan.next();
+		System.out.println("--------- Digite sua senha: ----------");
+		String senha = scan.next();
+
+		Usuario usuario = usuarioNegocio.verificarLogin(email, senha);
+
+		if (usuario != null) {
+
+			System.out.println("                                    ");
+			System.out.println("Seja Bem-Vindo! " + usuario.getNome());
+			System.out.println("                                    ");
+			return usuario;
+
+		}
+
+		return null;
+
 	}
 
 }

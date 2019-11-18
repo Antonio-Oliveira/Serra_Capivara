@@ -33,7 +33,7 @@ public class CatalogoApresentacao implements Filtro {
 				filtro(produto);
 				continue;
 			default:
-				System.out.println("Não temos essas opções, caso deseja sair digite 0");
+				System.out.println("Por favor... Digite apenas numeros de acordo com o menu acima!!!");
 				continue;
 			}
 
