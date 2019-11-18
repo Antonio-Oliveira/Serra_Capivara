@@ -135,7 +135,6 @@ public class UsuarioDados implements Serializable {
 		return null;
 	}
 
-	@SuppressWarnings("unchecked")
 	public Usuario consultaUsuario(String email, String senha) throws IOException, ClassNotFoundException {
 		File arquivo = new File("arquivos/Usuario.txt");
 		ArrayList<Usuario> colecaoUsuario;
@@ -146,6 +145,8 @@ public class UsuarioDados implements Serializable {
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			ois.close();
 			colecaoUsuario = (ArrayList<Usuario>) ois.readObject();
+
+
 
 			for (int i = 0; i < colecaoUsuario.size(); i++) {
 				if (colecaoUsuario.get(i).getEmail().equalsIgnoreCase(email)
