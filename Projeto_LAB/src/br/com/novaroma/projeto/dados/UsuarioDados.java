@@ -103,8 +103,8 @@ public class UsuarioDados implements Serializable {
 		if (arquivos.exists()) {
 			FileInputStream fis = new FileInputStream(arquivos);
 			ObjectInputStream ois = new ObjectInputStream(fis);
-			ois.close();
 			colecaoUsuario = (ArrayList<Usuario>) ois.readObject();
+			ois.close();
 
 			for (int i = 0; i < colecaoUsuario.size(); i++) {
 				if (colecaoUsuario.get(i).getCpf().equals(cpf)) {
@@ -123,8 +123,8 @@ public class UsuarioDados implements Serializable {
 		if (arquivos.exists()) {
 			FileInputStream fis = new FileInputStream(arquivos);
 			ObjectInputStream ois = new ObjectInputStream(fis);
-			ois.close();
 			colecaoUsuario = (ArrayList<Usuario>) ois.readObject();
+			ois.close();
 
 			for (int i = 0; i < colecaoUsuario.size(); i++) {
 				if (colecaoUsuario.get(i).getEmail().equalsIgnoreCase(email)) {
@@ -143,10 +143,8 @@ public class UsuarioDados implements Serializable {
 
 			FileInputStream fis = new FileInputStream(arquivo);
 			ObjectInputStream ois = new ObjectInputStream(fis);
-			ois.close();
 			colecaoUsuario = (ArrayList<Usuario>) ois.readObject();
-
-
+			ois.close();
 
 			for (int i = 0; i < colecaoUsuario.size(); i++) {
 				if (colecaoUsuario.get(i).getEmail().equalsIgnoreCase(email)
