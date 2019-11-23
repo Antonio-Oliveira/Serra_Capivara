@@ -82,7 +82,7 @@ public class ClienteDados implements Serializable {
 			for (int i = 0; i < colecaoUsuario.size(); i++) {
 
 				if (usuario.getCpf().equals(colecaoUsuario.get(i).getCpf())) {
-					colecaoUsuario.remove(i);
+					colecaoUsuario.set(i, usuario);
 				}
 
 			}
