@@ -43,7 +43,7 @@ public class Principal {
 				}
 				break;
 			case 3:
-				Usuario usuario = ClinteApresentacao.preencherUsuario();
+				Usuario usuario = ClienteApresentacao.preencherUsuario();
 				String mensagem = clienteNegocio.verificarCadastro(usuario);
 				System.out.println("      ");
 				System.out.println(mensagem);

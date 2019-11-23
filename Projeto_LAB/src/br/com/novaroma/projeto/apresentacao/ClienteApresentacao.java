@@ -5,7 +5,7 @@ import java.util.Scanner;
 import br.com.novaroma.projeto.entidades.Cliente;
 import br.com.novaroma.projeto.entidades.Usuario;
 
-public class ClinteApresentacao {
+public class ClienteApresentacao {
 
 	static Scanner scan = new Scanner(System.in);
 	static Scanner scanNum = new Scanner(System.in);
