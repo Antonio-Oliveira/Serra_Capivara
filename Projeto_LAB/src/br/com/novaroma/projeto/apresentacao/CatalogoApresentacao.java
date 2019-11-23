@@ -42,11 +42,12 @@ public class CatalogoApresentacao {
 
 	private void catalogoCompleto(Catalogo produto) {
 
+		System.out.println("________________________________________________________________________");
 		for (int i = 0; i < produto.getCatalogo().length; i++) {
-			System.out.println(produto.getCatalogo()[i].getTipo() + " " + produto.getCatalogo()[i].getCor() + " ,"
-					+ produto.getCatalogo()[i].getTema() + " ," + produto.getCatalogo()[i].getPreco() + " R$"
+			System.out.println(i + " - " + produto.getCatalogo()[i].getTipo() + " " + produto.getCatalogo()[i].getCor()
+					+ " ," + produto.getCatalogo()[i].getTema() + " ," + produto.getCatalogo()[i].getPreco() + " R$"
 					+ " -- quantidade em estoque " + produto.getCatalogo()[i].getQuant());
-			System.out.println("----------------------------------------------------------");
+			System.out.println("________________________________________________________________________");
 		}
 
 	}
@@ -109,23 +110,23 @@ public class CatalogoApresentacao {
 	@SuppressWarnings("unused")
 	private void filtragem(String tipo, String tema, String cor, double precoMaximo, double precoMinimo,
 			Catalogo produto) {
-		int aux = 0;
+		int aux = 0, cont = 1;
 
+		System.out.println("________________________________________________________________________");
 		for (int i = 0; i < produto.getCatalogo().length; i++) {
 			if ((tipo.equalsIgnoreCase(produto.getCatalogo()[i].getTipo()) || tipo.equals(""))
 					&& (tema.equalsIgnoreCase(produto.getCatalogo()[i].getTema()) || tema.equals(""))
 					&& (cor.equalsIgnoreCase(produto.getCatalogo()[i].getCor()) || cor.equals(""))
 					&& (precoMaximo >= produto.getCatalogo()[i].getPreco() || precoMaximo == 0)
 					&& (precoMinimo <= produto.getCatalogo()[i].getPreco() || precoMinimo == 0)) {
-				aux++;
 
 				System.out.println(
-						"_____________________________________________________________________________________");
-				System.out.println(produto.getCatalogo()[i].getTipo() + " " + produto.getCatalogo()[i].getCor() + " ,"
-						+ produto.getCatalogo()[i].getTema() + " ," + produto.getCatalogo()[i].getPreco() + " R$"
-						+ " -- quantidade em estoque " + produto.getCatalogo()[i].getQuant());
-				System.out.println(
-						"_____________________________________________________________________________________");
+						cont + " - " + produto.getCatalogo()[i].getTipo() + " " + produto.getCatalogo()[i].getCor()
+								+ " ," + produto.getCatalogo()[i].getTema() + " ," + produto.getCatalogo()[i].getPreco()
+								+ " R$" + " -- quantidade em estoque " + produto.getCatalogo()[i].getQuant());
+				System.out.println("________________________________________________________________________");
+				cont++;
+				aux++;
 
 			}
 		}
