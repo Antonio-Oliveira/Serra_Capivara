@@ -4,13 +4,13 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import br.com.novaroma.projeto.entidades.Usuario;
-import br.com.novaroma.projeto.negocio.UsuarioNegocio;
+import br.com.novaroma.projeto.negocio.ClienteNegocio;
 
 public class Principal {
 
 	private static Scanner scan = new Scanner(System.in);
-	private static UsuarioLogin login = new UsuarioLogin();
-	private static UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
+	private static Login login = new Login();
+	private static ClienteNegocio clienteNegocio = new ClienteNegocio();
 	private static CatalogoApresentacao catalogo = new CatalogoApresentacao();
 
 	public static void main(String[] args) throws ClassNotFoundException, IOException {
@@ -43,8 +43,8 @@ public class Principal {
 				}
 				break;
 			case 3:
-				Usuario usuario = UsuarioApresentacao.preencherUsuario();
-				String mensagem = usuarioNegocio.verificarCadastro(usuario);
+				Usuario usuario = ClinteApresentacao.preencherUsuario();
+				String mensagem = clienteNegocio.verificarCadastro(usuario);
 				System.out.println("      ");
 				System.out.println(mensagem);
 				System.out.println("      ");

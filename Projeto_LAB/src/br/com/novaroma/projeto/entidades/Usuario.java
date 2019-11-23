@@ -2,7 +2,7 @@ package br.com.novaroma.projeto.entidades;
 
 import java.io.Serializable;
 
-public class Usuario implements Serializable {
+public abstract class Usuario implements Serializable {
 	private String nome;
 	private int idade;
 	private long numTell;

@@ -1,10 +1,8 @@
 package br.com.novaroma.projeto.apresentacao;
 
-import java.io.ObjectInputStream.GetField;
 import java.util.Scanner;
 
 import br.com.novaroma.projeto.entidades.Catalogo;
-import br.com.novaroma.projeto.entidades.Produto;
 
 public class CatalogoApresentacao implements Filtro {
 

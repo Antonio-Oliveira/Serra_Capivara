@@ -4,11 +4,11 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import br.com.novaroma.projeto.entidades.Usuario;
-import br.com.novaroma.projeto.negocio.UsuarioNegocio;
+import br.com.novaroma.projeto.negocio.ClienteNegocio;
 
-public class UsuarioLogin {
+public class Login {
 
-	private UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
+	private ClienteNegocio clienteNegocio = new ClienteNegocio();
 	static Scanner scan = new Scanner(System.in);
 
 	public void consultaLogin(Usuario usuario) throws ClassNotFoundException, IOException {
@@ -31,7 +31,7 @@ public class UsuarioLogin {
 				break;
 			case 2:
 				Usuario usuarioNovo = modificarConta(usuario);
-				String mensagemMod = usuarioNegocio.verificarModificacoes(usuarioNovo, usuario);
+				String mensagemMod = clienteNegocio.verificarModificacoes(usuarioNovo, usuario);
 				System.out.println("      ");
 				System.out.println(mensagemMod);
 				System.out.println("      ");
@@ -43,7 +43,7 @@ public class UsuarioLogin {
 
 				if (condicao.equalsIgnoreCase("Sim")) {
 
-					String mensagemRemov = usuarioNegocio.verificarRemocao(usuario);
+					String mensagemRemov = clienteNegocio.verificarRemocao(usuario);
 					System.out.println(mensagemRemov);
 
 				}
@@ -128,7 +128,7 @@ public class UsuarioLogin {
 		System.out.println("--------- Digite sua senha: ----------");
 		String senha = scan.next();
 
-		Usuario usuario = usuarioNegocio.verificarLogin(email, senha);
+		Usuario usuario = clienteNegocio.verificarLogin(email, senha);
 
 		if (usuario != null) {
 

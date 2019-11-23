@@ -1,9 +1,11 @@
 package br.com.novaroma.projeto.apresentacao;
 
 import java.util.Scanner;
+
+import br.com.novaroma.projeto.entidades.Cliente;
 import br.com.novaroma.projeto.entidades.Usuario;
 
-public class UsuarioApresentacao {
+public class ClinteApresentacao {
 
 	static Scanner scan = new Scanner(System.in);
 	static Scanner scanNum = new Scanner(System.in);
@@ -32,7 +34,7 @@ public class UsuarioApresentacao {
 		System.out.println("OBSERVAÇÃO!!! - maior que 8 digitos e menor que 15 digitos");
 		String senha = scan.nextLine();
 
-		return new Usuario(nome, idade, numTell, email, cpf, senha, sexo);
+		return new Cliente(nome, idade, numTell, email, cpf, senha, sexo);
 
 	}
 
