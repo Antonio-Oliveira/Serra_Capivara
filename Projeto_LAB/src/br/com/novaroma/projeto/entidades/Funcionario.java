@@ -3,6 +3,7 @@ package br.com.novaroma.projeto.entidades;
 public class Funcionario extends Usuario {
 	private String CTPS;
 	private String RG;
+	private boolean adm = false;
 
 	public Funcionario(String nome, int idade, long numTell, String email, String cpf, String senha, String sexo,
 			String CTPS, String RG) {

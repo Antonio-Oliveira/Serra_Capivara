@@ -3,7 +3,7 @@ package br.com.novaroma.projeto.apresentacao;
 import java.io.IOException;
 import java.util.Scanner;
 
-import br.com.novaroma.projeto.entidades.Usuario;
+import br.com.novaroma.projeto.entidades.Cliente;
 import br.com.novaroma.projeto.negocio.ClienteNegocio;
 
 public class Principal {
@@ -14,7 +14,7 @@ public class Principal {
 	private static CatalogoApresentacao catalogo = new CatalogoApresentacao();
 
 	public static void main(String[] args) throws ClassNotFoundException, IOException {
-		
+
 		int x;
 
 		do {
@@ -35,19 +35,13 @@ public class Principal {
 				catalogo.infoPesquisa();
 				break;
 			case 2:
-				Usuario usuarioCadastrado = login.loginUsuario();
-				if (usuarioCadastrado != null) {
-					login.consultaLogin(usuarioCadastrado);
-				}else {
-					System.out.println("Ops... você não tem cadastro");
-				}
+				login.loginInicial();
 				break;
 			case 3:
-				Usuario usuario = ClienteApresentacao.preencherUsuario();
-				String mensagem = clienteNegocio.verificarCadastro(usuario);
+				Cliente cliente = ClienteApresentacao.preencherCliente();
+				String mensagem = clienteNegocio.verificarCadastro(cliente);
 				System.out.println("      ");
 				System.out.println(mensagem);
-				System.out.println("      ");
 				break;
 			case 0:
 				System.out.println("             ");

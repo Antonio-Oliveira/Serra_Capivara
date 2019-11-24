@@ -10,7 +10,7 @@ public class ClienteApresentacao {
 	static Scanner scan = new Scanner(System.in);
 	static Scanner scanNum = new Scanner(System.in);
 
-	public static Usuario preencherUsuario() {
+	public static Cliente preencherCliente() {
 
 		System.out.println("----------- Informe seu nome: --------------");
 		String nome = scan.nextLine();
