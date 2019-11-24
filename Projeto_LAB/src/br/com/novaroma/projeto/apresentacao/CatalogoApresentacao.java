@@ -16,7 +16,7 @@ public class CatalogoApresentacao {
 
 		do {
 			System.out.println("___________________________________________________________");
-			System.out.println("|	   O que você deseja fazer?                       |");
+			System.out.println("|	   O que você deseja fazer?                           |");
 			System.out.println("|                                                         |");
 			System.out.println("|(Digite 1) -- para apresentar o catalogo completo        |");
 			System.out.println("|(Digite 2) -- para filtrar as informações do produto     |");
