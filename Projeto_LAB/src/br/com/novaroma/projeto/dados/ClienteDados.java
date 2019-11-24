@@ -16,7 +16,6 @@ public class ClienteDados implements Serializable {
 
 	public void cadastrar(Cliente cliente) throws IOException, ClassNotFoundException {
 
-<<<<<<< HEAD
 		ArrayList<Usuario> colecaoUsuario;
 		File arquivos = new File("arquivos/Usuario.txt");
 
@@ -140,10 +139,9 @@ public class ClienteDados implements Serializable {
 	public Usuario consultaUsuario(String email, String senha) throws IOException, ClassNotFoundException {
 		File arquivo = new File("arquivos/Usuario.txt");
 		ArrayList<Usuario> colecaoUsuario;
-=======
+
 		ArrayList<Cliente> colecaoCliente;
 		File arquivo = new File("arquivos/Cliente.txt");
->>>>>>> branch 'master' of https://github.com/Eivrens/Serra_Da_Capivara
 
 		if (arquivo.exists()) {
 
