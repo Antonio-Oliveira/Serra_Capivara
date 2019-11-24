@@ -29,4 +29,12 @@ public class Funcionario extends Usuario {
 		RG = rG;
 	}
 
+	public boolean getAdm() {
+		return adm;
+	}
+
+	public void setAdm(boolean adm) {
+		this.adm = adm;
+	}
+
 }
