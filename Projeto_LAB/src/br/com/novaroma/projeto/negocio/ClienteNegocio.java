@@ -69,14 +69,8 @@ public class ClienteNegocio {
 	}
 
 	public String verificarRemocao(Cliente cliente) throws ClassNotFoundException, IOException {
-
-<<<<<<< HEAD
-		clienteDados.removerDados(usuario);
-		return "---- Conta removida com sucesso!!! -----";
-=======
-		clienteDados.removarDados(cliente);
+		clienteDados.removerDados(cliente);
 		return "Conta removida!!!";
->>>>>>> branch 'master' of https://github.com/Eivrens/Serra_Da_Capivara
 
 	}
 

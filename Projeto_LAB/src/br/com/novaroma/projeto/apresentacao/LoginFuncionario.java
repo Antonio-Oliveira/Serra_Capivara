@@ -11,7 +11,7 @@ import br.com.novaroma.projeto.negocio.FuncionarioNegocio;
 public class LoginFuncionario {
 	static Scanner scan = new Scanner(System.in);
 	static Scanner scanNum = new Scanner(System.in);
-	private FuncionarioNegocio funcNegocio = new FuncionarioNegocio();
+	private FuncionarioNegocio funcsNegocio = new FuncionarioNegocio();
 
 	public void consultaLogin(Funcionario func) throws ClassNotFoundException, IOException {
 		int x;
@@ -27,6 +27,7 @@ public class LoginFuncionario {
 			if (func.getAdm() == true) {
 				System.out.println("|(Digite 4) -- para adicionar um novo funcionario|");
 				System.out.println("|(Digite 5) -- para remover um funcionario       |");
+				System.out.println("|(Digite 6) -- para listar funcionario           |");
 			}
 			System.out.println("|(Digite 0) -- para sair desse menu                  |");
 			System.out.println("|____________________________________________________|");
@@ -41,7 +42,9 @@ public class LoginFuncionario {
 				break;
 			case 4:
 				if (func.getAdm() == true) {
+
 					Funcionario novoFuncionario = adicionarFuncionario();
+					System.out.println(funcsNegocio.verificarCadastro(novoFuncionario));
 
 				} else {
 					System.out.println("Por favor... Digite apenas numeros de acordo com o menu acima!!!");
@@ -49,11 +52,16 @@ public class LoginFuncionario {
 				break;
 			case 5:
 				if (func.getAdm() == true) {
+					
+					System.out.println("Informe qual O CPF do funcionario que deseja remover");
+					String cpf = scan.next();
+					System.out.println(funcsNegocio.verificarRemocao(cpf));
 
 				} else {
 					System.out.println("Por favor... Digite apenas numeros de acordo com o menu acima!!!");
 				}
 				break;
+
 			case 0:
 				break;
 			default:

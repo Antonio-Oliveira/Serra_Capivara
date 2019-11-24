@@ -1,14 +1,11 @@
 package br.com.novaroma.projeto.entidades;
 
 public class Funcionario extends Usuario {
-<<<<<<< HEAD
 	private String ctps;
 	private String rg;
-=======
 	private String CTPS;
 	private String RG;
 	private boolean adm = false;
->>>>>>> branch 'master' of https://github.com/Eivrens/Serra_Da_Capivara
 
 	public Funcionario(String nome, int idade, long numTell, String email, String cpf, String senha, String sexo,
 			String ctps, String rg) {
@@ -18,11 +15,16 @@ public class Funcionario extends Usuario {
 
 	}
 	
+	public Funcionario() {
+		
+	}
+
 	public void Adm() {
 		setNome("Admin");
 		setEmail("admin@admin.com");
 		setSenha("AdminDaSerra01");
-		
+		setAdm(true);
+
 	}
 
 	public String getCtps() {

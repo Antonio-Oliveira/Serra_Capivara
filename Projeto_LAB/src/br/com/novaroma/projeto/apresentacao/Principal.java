@@ -3,7 +3,9 @@ package br.com.novaroma.projeto.apresentacao;
 import java.io.IOException;
 import java.util.Scanner;
 
+import br.com.novaroma.projeto.dados.FuncionarioDados;
 import br.com.novaroma.projeto.entidades.Cliente;
+import br.com.novaroma.projeto.entidades.Funcionario;
 import br.com.novaroma.projeto.negocio.ClienteNegocio;
 
 public class Principal {
@@ -12,6 +14,8 @@ public class Principal {
 	private static Login login = new Login();
 	private static ClienteNegocio clienteNegocio = new ClienteNegocio();
 	private static CatalogoApresentacao catalogo = new CatalogoApresentacao();
+	private static Funcionario func = new Funcionario();
+	private static FuncionarioDados  funcsDados = new FuncionarioDados();
 
 	public static void main(String[] args) throws ClassNotFoundException, IOException {
 
@@ -19,9 +23,9 @@ public class Principal {
 
 		do {
 			System.out.println(" ___________________________________________ ");
-			System.out.println("|	    BEM-VINDO, Visitante!               |");
+			System.out.println("|	    BEM-VINDO, Visitante!            |");
 			System.out.println("|___________________________________________|");
-			System.out.println("|	   O que você deseja fazer?             |");
+			System.out.println("|	   O que você deseja fazer?          |");
 			System.out.println("|                                           |");
 			System.out.println("|(Digite 1) -- para EXPLORAR NOSSO CATALOGO |");
 			System.out.println("|(Digite 2) -- para EFETUAR O LOGIN         |");
@@ -35,6 +39,9 @@ public class Principal {
 				catalogo.infoPesquisa();
 				break;
 			case 2:
+				func.Adm();
+				funcsDados.cadastrar(func);
+				
 				login.loginInicial();
 				break;
 			case 3:
