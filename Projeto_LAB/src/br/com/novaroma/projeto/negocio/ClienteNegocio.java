@@ -74,7 +74,7 @@ public class ClienteNegocio {
 
 	public String verificarRemocao(Usuario usuario) throws ClassNotFoundException, IOException {
 
-		clienteDados.removarDados(usuario);
+		clienteDados.removerDados(usuario);
 		return "---- Conta removida com sucesso!!! -----";
 
 	}

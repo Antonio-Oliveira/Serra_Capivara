@@ -40,7 +40,7 @@ public class ClienteDados implements Serializable {
 		oos.close();
 	}
 
-	public void removarDados(Usuario usuario) throws IOException, ClassNotFoundException {
+	public void removerDados(Usuario usuario) throws IOException, ClassNotFoundException {
 		File arquivos = new File("arquivos/Usuario.txt");
 		ArrayList<Usuario> colecaoUsuario;
 
