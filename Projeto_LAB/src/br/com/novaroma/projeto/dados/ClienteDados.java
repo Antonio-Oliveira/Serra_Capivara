@@ -9,12 +9,14 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import br.com.novaroma.projeto.entidades.Cliente;
 import br.com.novaroma.projeto.entidades.Usuario;
 
 public class ClienteDados implements Serializable {
 
-	public void cadastrar(Usuario usuario) throws IOException, ClassNotFoundException {
+	public void cadastrar(Cliente cliente) throws IOException, ClassNotFoundException {
 
+<<<<<<< HEAD
 		ArrayList<Usuario> colecaoUsuario;
 		File arquivos = new File("arquivos/Usuario.txt");
 
@@ -138,19 +140,147 @@ public class ClienteDados implements Serializable {
 	public Usuario consultaUsuario(String email, String senha) throws IOException, ClassNotFoundException {
 		File arquivo = new File("arquivos/Usuario.txt");
 		ArrayList<Usuario> colecaoUsuario;
+=======
+		ArrayList<Cliente> colecaoCliente;
+		File arquivo = new File("arquivos/Cliente.txt");
+>>>>>>> branch 'master' of https://github.com/Eivrens/Serra_Da_Capivara
 
 		if (arquivo.exists()) {
 
 			FileInputStream fis = new FileInputStream(arquivo);
 			ObjectInputStream ois = new ObjectInputStream(fis);
-			colecaoUsuario = (ArrayList<Usuario>) ois.readObject();
+			colecaoCliente = (ArrayList<Cliente>) ois.readObject();
 			ois.close();
 
-			for (int i = 0; i < colecaoUsuario.size(); i++) {
-				if (colecaoUsuario.get(i).getEmail().equalsIgnoreCase(email)
-						&& colecaoUsuario.get(i).getSenha().equals(senha)) {
+		} else {
 
-					return colecaoUsuario.get(i);
+			arquivo.createNewFile();
+			colecaoCliente = new ArrayList<Cliente>();
+
+		}
+
+		colecaoCliente.add(cliente);
+		FileOutputStream fos = new FileOutputStream(arquivo);
+		ObjectOutputStream oos = new ObjectOutputStream(fos);
+		oos.writeObject(colecaoCliente);
+		oos.flush();
+		oos.close();
+	}
+
+	public void removarDados(Cliente cliente) throws IOException, ClassNotFoundException {
+		File arquivo = new File("arquivos/Cliente.txt");
+		ArrayList<Cliente> colecaoCliente;
+
+		if (arquivo.exists()) {
+
+			FileInputStream fis = new FileInputStream(arquivo);
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			colecaoCliente = (ArrayList<Cliente>) ois.readObject();
+			ois.close();
+
+			for (int i = 0; i < colecaoCliente.size(); i++) {
+
+				if (cliente.getCpf().equals(colecaoCliente.get(i).getCpf())) {
+					colecaoCliente.remove(i);
+				}
+
+			}
+
+			if (colecaoCliente.size() == 0) {
+				arquivo.delete();
+			}
+			FileOutputStream fos = new FileOutputStream(arquivo);
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+			oos.writeObject(colecaoCliente);
+			oos.flush();
+			oos.close();
+
+		}
+	}
+
+	public void modificarDados(Cliente cliente) throws IOException, ClassNotFoundException {
+		File arquivo = new File("arquivos/Cliente.txt");
+		ArrayList<Cliente> colecaoCliente;
+
+		if (arquivo.exists()) {
+
+			FileInputStream fis = new FileInputStream(arquivo);
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			colecaoCliente = (ArrayList<Cliente>) ois.readObject();
+			ois.close();
+
+			for (int i = 0; i < colecaoCliente.size(); i++) {
+
+				if (cliente.getCpf().equals(colecaoCliente.get(i).getCpf())) {
+					colecaoCliente.set(i, cliente);
+				}
+
+			}
+
+			FileOutputStream fos = new FileOutputStream(arquivo);
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+			oos.writeObject(colecaoCliente);
+			oos.flush();
+			oos.close();
+
+		}
+	}
+
+	public boolean consultaClienteCPF(String cpf) throws IOException, ClassNotFoundException {
+		File arquivo = new File("arquivos/Cliente.txt");
+		ArrayList<Cliente> colecaoCliente;
+
+		if (arquivo.exists()) {
+			FileInputStream fis = new FileInputStream(arquivo);
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			colecaoCliente = (ArrayList<Cliente>) ois.readObject();
+			ois.close();
+
+			for (int i = 0; i < colecaoCliente.size(); i++) {
+				if (colecaoCliente.get(i).getCpf().equals(cpf)) {
+					return true;
+				}
+			}
+
+		}
+		return false;
+	}
+
+	public boolean consultaClienteEmail(String email) throws IOException, ClassNotFoundException {
+		File arquivo = new File("arquivos/Cliente.txt");
+		ArrayList<Cliente> colecaoCliente;
+
+		if (arquivo.exists()) {
+			FileInputStream fis = new FileInputStream(arquivo);
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			colecaoCliente = (ArrayList<Cliente>) ois.readObject();
+			ois.close();
+
+			for (int i = 0; i < colecaoCliente.size(); i++) {
+				if (colecaoCliente.get(i).getEmail().equalsIgnoreCase(email)) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	public Usuario consultaUsuario(String email, String senha) throws IOException, ClassNotFoundException {
+		File arquivo = new File("arquivos/Cliente.txt");
+		ArrayList<Cliente> colecaoCliente;
+
+		if (arquivo.exists()) {
+
+			FileInputStream fis = new FileInputStream(arquivo);
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			colecaoCliente = (ArrayList<Cliente>) ois.readObject();
+			ois.close();
+
+			for (int i = 0; i < colecaoCliente.size(); i++) {
+				if (colecaoCliente.get(i).getEmail().equalsIgnoreCase(email)
+						&& colecaoCliente.get(i).getSenha().equals(senha)) {
+
+					return colecaoCliente.get(i);
 				}
 			}
 		}
