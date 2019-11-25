@@ -23,12 +23,13 @@ public class FuncionarioLogado {
 			System.out.println("|(Digite 1) -- para verificar o catalogo atual           |");
 			System.out.println("|(Digite 2) -- para adicionar um produto no catalogo     |");
 			System.out.println("|(Digite 3) -- para remover um produto no catalogo       |");
+			System.out.println("|(Digite 4) -- para modificar produtos do catalogo       |");
 			if (func.getAdm() == true) {
 				System.out.println("|	                                                 |");
 				System.out.println("|	   O que você deseja fazer, com os FUNCIONARIOS? |");
-				System.out.println("|(Digite 4) -- para listar funcionario                   |");
-				System.out.println("|(Digite 5) -- para remover um funcionario               |");
-				System.out.println("|(Digite 6) -- para adicionar um novo funcionario        |");
+				System.out.println("|(Digite 5) -- para listar funcionario                   |");
+				System.out.println("|(Digite 6) -- para remover um funcionario               |");
+				System.out.println("|(Digite 7) -- para adicionar um novo funcionario        |");
 			}
 			System.out.println("|                                                        |");
 			System.out.println("|(Digite 0) -- para sair desse menu                      |");
@@ -43,13 +44,15 @@ public class FuncionarioLogado {
 			case 3:
 				break;
 			case 4:
+				break;
+			case 5:
 				if (func.getAdm() == true) {
 					listarFuncionarios();
 				} else {
 					System.out.println("Por favor... Digite apenas numeros de acordo com o menu acima!!!");
 				}
 				break;
-			case 5:
+			case 6:
 				if (func.getAdm() == true) {
 
 					System.out.println("Informe qual O CPF do funcionario que deseja remover");
@@ -60,7 +63,7 @@ public class FuncionarioLogado {
 					System.out.println("Por favor... Digite apenas numeros de acordo com o menu acima!!!");
 				}
 				break;
-			case 6:
+			case 7:
 				if (func.getAdm() == true) {
 
 					Funcionario novoFuncionario = adicionarFuncionario();
