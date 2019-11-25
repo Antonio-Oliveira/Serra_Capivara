@@ -1,13 +1,14 @@
 package br.com.novaroma.projeto.negocio;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import br.com.novaroma.projeto.dados.FuncionarioDados;
 import br.com.novaroma.projeto.entidades.Funcionario;
 import br.com.novaroma.projeto.utills.Verificar;
 
 public class FuncionarioNegocio {
-	
+
 	private FuncionarioDados funcsDados = new FuncionarioDados();
 
 	public String verificarCadastro(Funcionario func) throws ClassNotFoundException, IOException {
@@ -36,13 +37,20 @@ public class FuncionarioNegocio {
 	}
 
 	public Funcionario verificarLogin(String email, String senha) throws ClassNotFoundException, IOException {
-		Funcionario func = (Funcionario) funcsDados.consultaFuncionario(email, senha);
-		return func;
+		Funcionario funcionario = (Funcionario) funcsDados.consultaFuncionario(email, senha);
+		return funcionario;
 	}
 
 	public String verificarRemocao(String cpf) throws ClassNotFoundException, IOException {
 		funcsDados.removerDados(cpf);
 		return "Funcionario removido";
+	}
+
+	public ArrayList<Funcionario> listarNegocio() throws ClassNotFoundException, IOException {
+
+		ArrayList<Funcionario> colecaoFuncs = funcsDados.listarFuncionarios();
+		return colecaoFuncs;
+
 	}
 
 }

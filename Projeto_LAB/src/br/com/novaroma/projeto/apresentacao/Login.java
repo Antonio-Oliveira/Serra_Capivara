@@ -12,9 +12,9 @@ public class Login {
 
 	static Scanner scan = new Scanner(System.in);
 	private ClienteNegocio clienteNegocio = new ClienteNegocio();
-	private LoginCliente loginCliente = new LoginCliente();
+	private ClienteLogado clienteLogado = new ClienteLogado();
 	private FuncionarioNegocio funcsNegocio = new FuncionarioNegocio();
-	private LoginFuncionario loginFuncs = new LoginFuncionario();
+	private FuncionarioLogado loginFuncs = new FuncionarioLogado();
 
 	public void loginInicial() throws ClassNotFoundException, IOException {
 
@@ -52,7 +52,7 @@ public class Login {
 				System.out.println("                                    ");
 				System.out.println("Seja Bem-Vindo! " + cliente.getNome());
 				System.out.println("                                    ");
-				loginCliente.consultaLogin(cliente);
+				clienteLogado.consultaLogin(cliente);
 
 			} else {
 				System.out.println("Ops... você não tem cadastro");

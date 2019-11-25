@@ -7,7 +7,7 @@ import br.com.novaroma.projeto.entidades.Cliente;
 import br.com.novaroma.projeto.entidades.Usuario;
 import br.com.novaroma.projeto.negocio.ClienteNegocio;
 
-public class LoginCliente {
+public class ClienteLogado {
 
 	private ClienteNegocio clienteNegocio = new ClienteNegocio();
 	static Scanner scan = new Scanner(System.in);

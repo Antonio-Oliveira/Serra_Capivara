@@ -3,14 +3,12 @@ package br.com.novaroma.projeto.entidades;
 public class Funcionario extends Usuario {
 	private String ctps;
 	private String rg;
-	private String CTPS;
-	private String RG;
 	private boolean adm = false;
 
 	public Funcionario(String nome, int idade, long numTell, String email, String cpf, String senha, String sexo,
 			String ctps, String rg) {
 		super(nome, idade, numTell, email, cpf, senha, sexo);
-		this.ctps = ctps;
+		this.ctps =ctps;
 		this.rg = rg;
 
 	}
@@ -31,8 +29,8 @@ public class Funcionario extends Usuario {
 		return ctps;
 	}
 
-	public void setCTPS(String ctps) {
-		ctps = ctps;
+	public void setCTPS(String CTPS) {
+		this.ctps = ctps;
 	}
 
 	public String getRg() {
@@ -40,7 +38,7 @@ public class Funcionario extends Usuario {
 	}
 
 	public void setRG(String rg) {
-		rg = rg;
+		this.rg= rg;
 	}
 
 	public boolean getAdm() {
@@ -50,5 +48,13 @@ public class Funcionario extends Usuario {
 	public void setAdm(boolean adm) {
 		this.adm = adm;
 	}
+
+	@Override
+	public String toString() {
+		return "Funcionario : Nome =" + getNome() + ", Idade=" + getIdade() + ", Sexo=" + getSexo()
+				+ ", Numero de telefone=" + getNumTell() + ", Email=" + getEmail() + ", Cpf()=" + getCpf() + ", RG="
+				+ rg + ", CTPS=" + ctps+".";
+	}
+	
 
 }

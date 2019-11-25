@@ -1,14 +1,13 @@
 package br.com.novaroma.projeto.apresentacao;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
-import br.com.novaroma.projeto.entidades.Cliente;
 import br.com.novaroma.projeto.entidades.Funcionario;
-import br.com.novaroma.projeto.entidades.Usuario;
 import br.com.novaroma.projeto.negocio.FuncionarioNegocio;
 
-public class LoginFuncionario {
+public class FuncionarioLogado {
 	static Scanner scan = new Scanner(System.in);
 	static Scanner scanNum = new Scanner(System.in);
 	private FuncionarioNegocio funcsNegocio = new FuncionarioNegocio();
@@ -18,20 +17,23 @@ public class LoginFuncionario {
 
 		do {
 
-			System.out.println(" ____________________________________________________");
-			System.out.println("|	   O que você deseja fazer?                  |");
-			System.out.println("|                                                    |");
-			System.out.println("|(Digite 1) -- para verificar o catalogo atual       |");
-			System.out.println("|(Digite 2) -- para adicionar um produto no catalogo |");
-			System.out.println("|(Digite 3) -- para remover um produto no catalogo   |");
+			System.out.println(" ________________________________________________________");
+			System.out.println("|	   O que você deseja fazer, com os PRODUTOS?     |");
+			System.out.println("|                                                        |");
+			System.out.println("|(Digite 1) -- para verificar o catalogo atual           |");
+			System.out.println("|(Digite 2) -- para adicionar um produto no catalogo     |");
+			System.out.println("|(Digite 3) -- para remover um produto no catalogo       |");
 			if (func.getAdm() == true) {
-				System.out.println("|(Digite 4) -- para adicionar um novo funcionario|");
-				System.out.println("|(Digite 5) -- para remover um funcionario       |");
-				System.out.println("|(Digite 6) -- para listar funcionario           |");
+				System.out.println("|	                                                 |");
+				System.out.println("|	   O que você deseja fazer, com os FUNCIONARIOS? |");
+				System.out.println("|(Digite 4) -- para listar funcionario                   |");
+				System.out.println("|(Digite 5) -- para remover um funcionario               |");
+				System.out.println("|(Digite 6) -- para adicionar um novo funcionario        |");
 			}
-			System.out.println("|(Digite 0) -- para sair desse menu                  |");
-			System.out.println("|____________________________________________________|");
-			x = scan.nextInt();
+			System.out.println("|                                                        |");
+			System.out.println("|(Digite 0) -- para sair desse menu                      |");
+			System.out.println("|________________________________________________________|");
+			x = scanNum.nextInt();
 
 			switch (x) {
 			case 1:
@@ -42,6 +44,24 @@ public class LoginFuncionario {
 				break;
 			case 4:
 				if (func.getAdm() == true) {
+					listarFuncionarios();
+				} else {
+					System.out.println("Por favor... Digite apenas numeros de acordo com o menu acima!!!");
+				}
+				break;
+			case 5:
+				if (func.getAdm() == true) {
+
+					System.out.println("Informe qual O CPF do funcionario que deseja remover");
+					String cpf = scan.nextLine();
+					System.out.println(funcsNegocio.verificarRemocao(cpf));
+
+				} else {
+					System.out.println("Por favor... Digite apenas numeros de acordo com o menu acima!!!");
+				}
+				break;
+			case 6:
+				if (func.getAdm() == true) {
 
 					Funcionario novoFuncionario = adicionarFuncionario();
 					System.out.println(funcsNegocio.verificarCadastro(novoFuncionario));
@@ -50,18 +70,6 @@ public class LoginFuncionario {
 					System.out.println("Por favor... Digite apenas numeros de acordo com o menu acima!!!");
 				}
 				break;
-			case 5:
-				if (func.getAdm() == true) {
-					
-					System.out.println("Informe qual O CPF do funcionario que deseja remover");
-					String cpf = scan.next();
-					System.out.println(funcsNegocio.verificarRemocao(cpf));
-
-				} else {
-					System.out.println("Por favor... Digite apenas numeros de acordo com o menu acima!!!");
-				}
-				break;
-
 			case 0:
 				break;
 			default:
@@ -69,6 +77,13 @@ public class LoginFuncionario {
 				break;
 			}
 		} while (x != 0);
+	}
+
+	private void listarFuncionarios() throws ClassNotFoundException, IOException {
+		ArrayList<Funcionario> colecaoFuncs = funcsNegocio.listarNegocio();
+		for (Funcionario f : colecaoFuncs) {
+			System.out.println(f.toString());
+		}
 	}
 
 	private Funcionario adicionarFuncionario() {
@@ -91,10 +106,10 @@ public class LoginFuncionario {
 		String cpf = scan.nextLine();
 
 		System.out.println("----------- Informe a RG: --------------");
-		String RG = scan.next();
+		String RG = scan.nextLine();
 
 		System.out.println("----------- Informe a CTPS: --------------");
-		String CTPS = scan.next();
+		String CTPS = scan.nextLine();
 
 		System.out.println("----------- Informe a senha: -------------");
 		System.out.println("OBSERVAÇÃO!!! - maior que 8 digitos e menor que 15 digitos");

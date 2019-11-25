@@ -8,6 +8,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
+import br.com.novaroma.projeto.entidades.Cliente;
 import br.com.novaroma.projeto.entidades.Funcionario;
 import br.com.novaroma.projeto.entidades.Usuario;
 
@@ -139,8 +140,8 @@ public class FuncionarioDados {
 		return false;
 	}
 
-	public Usuario consultaFuncionario(String email, String senha) throws IOException, ClassNotFoundException {
-		File arquivo = new File("arquivos/Funcionarios.txt");
+	public Funcionario consultaFuncionario(String email, String senha) throws IOException, ClassNotFoundException {
+		File arquivo = new File("arquivos/Funcionario.txt");
 		ArrayList<Funcionario> colecaoFuncs;
 
 		if (arquivo.exists()) {
@@ -157,6 +158,21 @@ public class FuncionarioDados {
 					return colecaoFuncs.get(i);
 				}
 			}
+		}
+		return null;
+	}
+	public ArrayList<Funcionario> listarFuncionarios() throws IOException, ClassNotFoundException {
+		File arquivo = new File("arquivos/Funcionario.txt");
+		ArrayList<Funcionario> colecaoFuncs;
+
+		if (arquivo.exists()) {
+
+			FileInputStream fis = new FileInputStream(arquivo);
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			colecaoFuncs = (ArrayList<Funcionario>) ois.readObject();
+			ois.close();
+			return colecaoFuncs;
+			
 		}
 		return null;
 	}
