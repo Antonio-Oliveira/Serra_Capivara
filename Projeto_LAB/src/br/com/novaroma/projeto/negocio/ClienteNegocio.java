@@ -13,26 +13,31 @@ public class ClienteNegocio {
 
 	public String verificarCadastro(Cliente cliente) throws ClassNotFoundException, IOException {
 
-		if (clienteDados.consultaClienteCPF(cliente.getCpf()) == true) {
+		if (clienteDados.consultaClienteCPF(cliente.getCpf())) {
 			return "Esse CPF já foi cadastrado";
 
-		} else if (clienteDados.consultaClienteEmail(cliente.getEmail()) == true) {
+		} 
+		if (clienteDados.consultaClienteEmail(cliente.getEmail())) {
 
 			return "Esse email já foi cadastrado";
 
-		} else if (Verificar.verificarCPF(cliente) == false) {
+		} 
+		if (Verificar.verificarCPF(cliente) ) {
 
 			return "O Cliente " + cliente.getNome() + " não foi cadastrado, pois seu CPF está incorreto";
 
-		} else if (cliente.getIdade() <= 8) {
+		} 
+		if (cliente.getIdade() <= 8) {
 
 			return "O Cliente " + cliente.getNome() + " não foi cadastrado pois não tem idade o suficiente";
 
-		} else if (Verificar.verificarSenha(cliente) == false) {
+		} 
+		if (Verificar.verificarSenha(cliente) ) {
 
 			return "O Cliente " + cliente.getNome() + " não foi cadastrado pois a senha está incorreta";
 
-		} else if (Verificar.VerificarEmail(cliente) == false) {
+		} 
+		if (Verificar.VerificarEmail(cliente)) {
 
 			return "O Cliente " + cliente.getNome() + " não foi cadastrado pois o email está incorreto";
 
@@ -54,11 +59,13 @@ public class ClienteNegocio {
 
 			return "O Usuário não pode ser modificado pois o email esta incorreto ou ja foi cadastrado";
 
-		} else if (cliente.getIdade() < cliente.getIdade()) {
+		} 
+		if (cliente.getIdade() < cliente.getIdade()) {
 
 			return "O Usuário não pode ser modificado pois a modificação estar abaixo da informada anteriormente";
 
-		} else if (Verificar.verificarSenha(cliente) == false) {
+		} 
+		if (Verificar.verificarSenha(cliente) == false) {
 
 			return "O Usuário não pode ser modificado pois a senha não esta nos padrões aceitos";
 

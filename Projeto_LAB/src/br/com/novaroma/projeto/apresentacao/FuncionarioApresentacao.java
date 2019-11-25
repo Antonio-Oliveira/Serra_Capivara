@@ -7,12 +7,12 @@ import java.util.Scanner;
 import br.com.novaroma.projeto.entidades.Funcionario;
 import br.com.novaroma.projeto.negocio.FuncionarioNegocio;
 
-public class FuncionarioLogado {
+public class FuncionarioApresentacao {
 	static Scanner scan = new Scanner(System.in);
 	static Scanner scanNum = new Scanner(System.in);
 	private FuncionarioNegocio funcsNegocio = new FuncionarioNegocio();
 
-	public void consultaLogin(Funcionario func) throws ClassNotFoundException, IOException {
+	public void contaLogada(Funcionario func) throws ClassNotFoundException, IOException {
 		int x;
 
 		do {
@@ -24,10 +24,10 @@ public class FuncionarioLogado {
 			System.out.println("|(Digite 2) -- para adicionar um produto no catalogo     |");
 			System.out.println("|(Digite 3) -- para remover um produto no catalogo       |");
 			System.out.println("|(Digite 4) -- para modificar produtos do catalogo       |");
-			if (func.getAdm() == true) {
+			if (func.getAdm()) {
 				System.out.println("|	                                                 |");
 				System.out.println("|	   O que você deseja fazer, com os FUNCIONARIOS? |");
-				System.out.println("|(Digite 5) -- para listar funcionario                   |");
+				System.out.println("|(Digite 5) -- para listar funcionarios                  |");
 				System.out.println("|(Digite 6) -- para remover um funcionario               |");
 				System.out.println("|(Digite 7) -- para adicionar um novo funcionario        |");
 			}
@@ -46,14 +46,14 @@ public class FuncionarioLogado {
 			case 4:
 				break;
 			case 5:
-				if (func.getAdm() == true) {
+				if (func.getAdm()) {
 					listarFuncionarios();
 				} else {
 					System.out.println("Por favor... Digite apenas numeros de acordo com o menu acima!!!");
 				}
 				break;
 			case 6:
-				if (func.getAdm() == true) {
+				if (func.getAdm()) {
 
 					System.out.println("Informe qual O CPF do funcionario que deseja remover");
 					String cpf = scan.nextLine();
@@ -64,7 +64,7 @@ public class FuncionarioLogado {
 				}
 				break;
 			case 7:
-				if (func.getAdm() == true) {
+				if (func.getAdm()) {
 
 					Funcionario novoFuncionario = adicionarFuncionario();
 					System.out.println(funcsNegocio.verificarCadastro(novoFuncionario));

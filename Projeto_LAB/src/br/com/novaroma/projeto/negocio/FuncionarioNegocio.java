@@ -46,7 +46,7 @@ public class FuncionarioNegocio {
 		return "Funcionario removido";
 	}
 
-	public ArrayList<Funcionario> listarNegocio() throws ClassNotFoundException, IOException {
+	public ArrayList<Funcionario> listarFuncsNegocio() throws ClassNotFoundException, IOException {
 
 		ArrayList<Funcionario> colecaoFuncs = funcsDados.listarFuncionarios();
 		return colecaoFuncs;

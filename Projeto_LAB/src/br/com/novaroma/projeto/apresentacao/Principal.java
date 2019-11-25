@@ -3,17 +3,19 @@ package br.com.novaroma.projeto.apresentacao;
 import java.io.IOException;
 import java.util.Scanner;
 
-import br.com.novaroma.projeto.dados.FuncionarioDados;
 import br.com.novaroma.projeto.entidades.Cliente;
 import br.com.novaroma.projeto.entidades.Funcionario;
 import br.com.novaroma.projeto.negocio.ClienteNegocio;
+import br.com.novaroma.projeto.negocio.FuncionarioNegocio;
 
 public class Principal {
 
 	private static Scanner scan = new Scanner(System.in);
-	private static Login login = new Login();
 	private static ClienteNegocio clienteNegocio = new ClienteNegocio();
+	private static FuncionarioNegocio funcionarioNegocio = new FuncionarioNegocio();
 	private static CatalogoApresentacao catalogo = new CatalogoApresentacao();
+	private static FuncionarioApresentacao funcApresentacao = new FuncionarioApresentacao();
+	private static ClienteApresentacao clienteApresentacao = new ClienteApresentacao();
 
 	public static void main(String[] args) throws ClassNotFoundException, IOException {
 
@@ -37,7 +39,7 @@ public class Principal {
 				catalogo.infoPesquisa();
 				break;
 			case 2:
-				login.loginInicial();
+				Login();
 				break;
 			case 3:
 				Cliente cliente = ClienteApresentacao.preencherCliente();
@@ -54,6 +56,55 @@ public class Principal {
 
 			}
 		} while (x != 0);
+	}
+
+	private static void Login() {
+		System.out.println("--------------- LOGIN: ---------------");
+		System.out.println("------ Digite 1 para funcionario -----");
+		System.out.println("------ Digite 2 para cliente ---------");
+		int x = scan.nextInt();
+		System.out.println("--------- Digite seu Email: ----------");
+		String email = scan.next();
+		System.out.println("--------- Digite sua senha: ----------");
+		String senha = scan.next();
+
+		switch (x) {
+		case 1:
+
+			Funcionario funcionario = funcionarioNegocio.verificarLogin(email, senha);
+			if (funcionario != null) {
+
+				System.out.println("                                    ");
+				System.out.println("Seja Bem-Vindo! " + funcionario.getNome());
+				System.out.println("                                    ");
+				funcApresentacao.contaLogada(funcionario);
+
+			} else {
+				System.out.println("Ops... você não tem cadastro");
+			}
+
+			break;
+		case 2:
+
+			Cliente cliente = clienteNegocio.verificarLogin(email, senha);
+
+			if (cliente != null) {
+
+				System.out.println("                                    ");
+				System.out.println("Seja Bem-Vindo! " + cliente.getNome());
+				System.out.println("                                    ");
+				clienteLogado.consultaLogin(cliente);
+
+			} else {
+				System.out.println("Ops... você não tem cadastro");
+			}
+
+			break;
+		default:
+			System.out.println("Não existe tal opção escolhida");
+
+		}
+
 	}
 
 }
