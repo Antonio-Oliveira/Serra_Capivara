@@ -12,27 +12,27 @@ public class ClienteApresentacao {
 	static Scanner scan = new Scanner(System.in);
 	static Scanner scanNum = new Scanner(System.in);
 
-	public static Cliente preencherCliente() {
+	public Cliente preencherCliente() {
 
-		System.out.println("----------- Informe seu nome: --------------");
+		System.out.println("Informe seu nome:");
 		String nome = scan.nextLine();
 
-		System.out.println("----------- Informe sua idade: -------------");
+		System.out.println("Informe sua idade:");
 		int idade = scanNum.nextInt();
-
-		System.out.println("----------- Informe seu sexo: --------------");
+		
+		System.out.println("Informe seu sexo:");
 		String sexo = scan.nextLine();
 
-		System.out.println("----- Informe um numero para contato: ------");
+		System.out.println("Informe um numero telefonico: ");
 		long numTell = scanNum.nextLong();
 
-		System.out.println("----------- Informe seu email: -------------");
+		System.out.println("Informe seu email:");
 		String email = scan.nextLine();
 
-		System.out.println("----------- Informe seu CPF: ---------------");
+		System.out.println("Informe seu CPF:");
 		String cpf = scan.nextLine();
 
-		System.out.println("----------- Informe sua senha: -------------");
+		System.out.println("Informe sua senha:");
 		System.out.println("OBSERVAÇÃO!!! - maior que 8 digitos e menor que 15 digitos");
 		String senha = scan.nextLine();
 
@@ -40,8 +40,7 @@ public class ClienteApresentacao {
 
 	}
 
-
-	public void consultaLogin(Cliente cliente) throws ClassNotFoundException, IOException {
+	public void contaLogado(Cliente cliente) throws ClassNotFoundException, IOException {
 		int x;
 
 		do {
@@ -150,6 +149,5 @@ public class ClienteApresentacao {
 
 		return cliente;
 	}
-
 
 }

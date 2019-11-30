@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import br.com.novaroma.projeto.dados.FuncionarioDados;
 import br.com.novaroma.projeto.entidades.Funcionario;
+import br.com.novaroma.projeto.entidades.Produto;
 import br.com.novaroma.projeto.utills.Verificar;
 
 public class FuncionarioNegocio {
@@ -52,5 +53,7 @@ public class FuncionarioNegocio {
 		return colecaoFuncs;
 
 	}
+	
+
 
 }

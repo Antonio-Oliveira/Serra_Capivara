@@ -13,6 +13,7 @@ import br.com.novaroma.projeto.entidades.Funcionario;
 import br.com.novaroma.projeto.entidades.Usuario;
 
 public class FuncionarioDados {
+	private Funcionario adm = new Funcionario();
 
 	public void cadastrar(Funcionario funcs) throws IOException, ClassNotFoundException {
 
@@ -30,6 +31,8 @@ public class FuncionarioDados {
 
 			arquivo.createNewFile();
 			colecaoFuncs = new ArrayList<Funcionario>();
+			adm.Adm();
+			colecaoFuncs.add(adm);
 
 		}
 
@@ -158,9 +161,23 @@ public class FuncionarioDados {
 					return colecaoFuncs.get(i);
 				}
 			}
+		} else {
+
+			arquivo.createNewFile();
+			colecaoFuncs = new ArrayList<Funcionario>();
+			adm.Adm();
+			colecaoFuncs.add(adm);
+			FileOutputStream fos = new FileOutputStream(arquivo);
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+			oos.writeObject(colecaoFuncs);
+			oos.flush();
+			oos.close();
+
 		}
-		return null;
+		return adm;
+
 	}
+
 	public ArrayList<Funcionario> listarFuncionarios() throws IOException, ClassNotFoundException {
 		File arquivo = new File("arquivos/Funcionario.txt");
 		ArrayList<Funcionario> colecaoFuncs;
@@ -172,7 +189,7 @@ public class FuncionarioDados {
 			colecaoFuncs = (ArrayList<Funcionario>) ois.readObject();
 			ois.close();
 			return colecaoFuncs;
-			
+
 		}
 		return null;
 	}

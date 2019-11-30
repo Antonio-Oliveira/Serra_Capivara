@@ -32,8 +32,9 @@ public class ProdutoDados implements Serializable {
 			System.out.println(
 					"|____________|__________________________________________|_________________|____________|_______|_____________|");
 			for (int i = 0, c = 1; i < colecaoProduto.size(); i++, c++) {
-				System.out.printf("| %-10s | %-40s | %-15s | %-10s | %5d | R$ %-8.2f |", colecaoProduto.get(i).getCodigo(),
-						colecaoProduto.get(i).getTema(), colecaoProduto.get(i).getCor(), colecaoProduto.get(i).getTipo(),
+				System.out.printf("| %-10s | %-40s | %-15s | %-10s | %5d | R$ %-8.2f |",
+						colecaoProduto.get(i).getCodigo(), colecaoProduto.get(i).getTema(),
+						colecaoProduto.get(i).getCor(), colecaoProduto.get(i).getTipo(),
 						colecaoProduto.get(i).getQuant(), colecaoProduto.get(i).getPreco());
 				System.out.println();
 
@@ -50,7 +51,7 @@ public class ProdutoDados implements Serializable {
 
 	}
 
-	public void removerProduto(Produto produto) throws IOException, ClassNotFoundException {
+	public void removerProduto(long codigo) throws IOException, ClassNotFoundException {
 
 		ArrayList<Produto> colecaoProduto;
 		File arquivos = new File("arquivos/Produtos.txt");
@@ -64,7 +65,7 @@ public class ProdutoDados implements Serializable {
 
 			for (int i = 0; i < colecaoProduto.size(); i++) {
 
-				if (produto.getCodigo().equals(colecaoProduto.get(i).getCodigo())) {
+				if (codigo == colecaoProduto.get(i).getCodigo()) {
 					colecaoProduto.remove(i);
 
 				}
@@ -105,4 +106,47 @@ public class ProdutoDados implements Serializable {
 
 	}
 
+	public ArrayList<Produto> listarProduto() throws IOException, ClassNotFoundException {
+
+		ArrayList<Produto> colecaoProduto;
+		File arquivos = new File("arquivos/Produtos.txt");
+
+		if (arquivos.exists()) {
+
+			FileInputStream fis = new FileInputStream(arquivos);
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			colecaoProduto = (ArrayList<Produto>) ois.readObject();
+			ois.close();
+			return colecaoProduto;
+
+		}
+		return null;
+
+	}
+
+	public Produto modificarProduto(long id) throws IOException, ClassNotFoundException {
+
+		ArrayList<Produto> colecaoProduto;
+		File arquivos = new File("arquivos/Produtos.txt");
+
+		if (arquivos.exists()) {
+
+			FileInputStream fis = new FileInputStream(arquivos);
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			colecaoProduto = (ArrayList<Produto>) ois.readObject();
+			ois.close();
+
+			for (int i = 0; i < colecaoProduto.size(); i++) {
+
+				if (id == colecaoProduto.get(i).getCodigo()) {
+					return colecaoProduto.get(i);
+
+				}
+
+			}
+
+		}
+		return null;
+
+	}
 }

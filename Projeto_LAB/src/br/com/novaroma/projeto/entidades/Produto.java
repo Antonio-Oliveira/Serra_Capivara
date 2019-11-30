@@ -5,15 +5,15 @@ public class Produto {
 	private String tema;
 	private String cor;
 	private double preco;
-	private String codigo;
+	private long codigo;
 	private int quant;
 
-	Produto() {
+	public Produto() {
 
 	}
 
-	Produto(String tipo,String tema,String cor,double preco,String codigo,int quant) {
-		
+	public Produto(String tipo, String tema, String cor, double preco, long codigo, int quant) {
+
 		this.tipo = tipo;
 		this.tema = tema;
 		this.cor = cor;
@@ -55,11 +55,11 @@ public class Produto {
 		this.preco = preco;
 	}
 
-	public String getCodigo() {
+	public long getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(String codigo) {
+	public void setCodigo(long codigo) {
 		this.codigo = codigo;
 	}
 

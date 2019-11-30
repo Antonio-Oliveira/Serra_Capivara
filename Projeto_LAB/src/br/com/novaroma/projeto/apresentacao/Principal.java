@@ -42,14 +42,14 @@ public class Principal {
 				Login();
 				break;
 			case 3:
-				Cliente cliente = ClienteApresentacao.preencherCliente();
+				Cliente cliente = clienteApresentacao.preencherCliente();
 				String mensagem = clienteNegocio.verificarCadastro(cliente);
 				System.out.println("      ");
 				System.out.println(mensagem);
 				break;
 			case 0:
-				System.out.println("             ");
 				System.out.println("Volte Sempre!");
+				System.exit(x);
 				break;
 			default:
 				System.out.println("Não temos essa opção em nosso menu");
@@ -58,7 +58,7 @@ public class Principal {
 		} while (x != 0);
 	}
 
-	private static void Login() {
+	private static void Login() throws ClassNotFoundException, IOException {
 		System.out.println("--------------- LOGIN: ---------------");
 		System.out.println("------ Digite 1 para funcionario -----");
 		System.out.println("------ Digite 2 para cliente ---------");
@@ -93,7 +93,7 @@ public class Principal {
 				System.out.println("                                    ");
 				System.out.println("Seja Bem-Vindo! " + cliente.getNome());
 				System.out.println("                                    ");
-				clienteLogado.consultaLogin(cliente);
+				clienteApresentacao.contaLogado(cliente);
 
 			} else {
 				System.out.println("Ops... você não tem cadastro");
