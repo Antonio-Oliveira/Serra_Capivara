@@ -1,24 +1,32 @@
 package br.com.novaroma.projeto.entidades;
 
-public class Produto {
+import java.io.Serializable;
+
+public class Produto implements Serializable {
 	private String tipo;
 	private String tema;
 	private String cor;
 	private double preco;
-	private long codigo;
+	private long id;
 	private int quant;
+
+	@Override
+	public String toString() {
+		return "Produto [tipo=" + tipo + ", tema=" + tema + ", cor=" + cor + ", preço=" + preco + ", id=" + id
+				+ ", quantidade em estoque=" + quant + "]";
+	}
 
 	public Produto() {
 
 	}
 
-	public Produto(String tipo, String tema, String cor, double preco, long codigo, int quant) {
+	public Produto(String tipo, String tema, String cor, double preco, long id, int quant) {
 
 		this.tipo = tipo;
 		this.tema = tema;
 		this.cor = cor;
 		this.preco = preco;
-		this.codigo = codigo;
+		this.id = id;
 		this.quant = quant;
 
 	}
@@ -55,12 +63,12 @@ public class Produto {
 		this.preco = preco;
 	}
 
-	public long getCodigo() {
-		return codigo;
+	public long getId() {
+		return id;
 	}
 
-	public void setCodigo(long codigo) {
-		this.codigo = codigo;
+	public void setCodigo(long id) {
+		this.id= id;
 	}
 
 	public int getQuant() {

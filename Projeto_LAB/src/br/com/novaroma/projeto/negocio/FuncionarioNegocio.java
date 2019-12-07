@@ -18,15 +18,18 @@ public class FuncionarioNegocio {
 
 			return "O Funcionario não foi cadastrado, pois seu CPF está incorreto";
 
-		} else if (func.getIdade() <= 18) {
+		}
+		if (func.getIdade() < 17) {
 
 			return "O Funcionario não foi cadastrado pois não tem idade o suficiente";
 
-		} else if (Verificar.verificarSenha(func) == false) {
+		}
+		if (Verificar.verificarSenha(func) == false) {
 
 			return "O Funcionario não foi cadastrado pois a senha está incorreta";
 
-		} else if (Verificar.VerificarEmail(func) == false) {
+		}
+		if (Verificar.VerificarEmail(func) == false) {
 
 			return "O Funcionario não foi cadastrado pois o email está incorreto";
 
@@ -48,12 +51,7 @@ public class FuncionarioNegocio {
 	}
 
 	public ArrayList<Funcionario> listarFuncsNegocio() throws ClassNotFoundException, IOException {
-
-		ArrayList<Funcionario> colecaoFuncs = funcsDados.listarFuncionarios();
-		return colecaoFuncs;
-
+		return funcsDados.listarFuncionarios();
 	}
-	
-
 
 }

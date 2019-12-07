@@ -23,26 +23,26 @@ public class FuncionarioApresentacao {
 			System.out.println(" ________________________________________________________");
 			System.out.println("|	   O que você deseja fazer, com os PRODUTOS?     |");
 			System.out.println("|                                                        |");
-			System.out.println("|(Digite 1) -- para VERIFICAR CATALOGO ATUAL             |");
+			System.out.println("|(Digite 1) -- para LISTAR    CATALOGO ATUAL             |");
 			System.out.println("|(Digite 2) -- para ADICIONAR PRODUTO                    |");
 			System.out.println("|(Digite 3) -- para MODIFICAR PRODUTO                    |");
 			System.out.println("|(Digite 4) -- para REMOVER   PRODUTO                    |");
 			if (func.getAdm()) {
 				System.out.println("|	                                                 |");
 				System.out.println("|	   O que você deseja fazer, com os FUNCIONARIOS? |");
+				System.out.println("|                                                        |");
 				System.out.println("|(Digite 5) -- para LISTAR    FUNCIONARIOS               |");
 				System.out.println("|(Digite 6) -- para ADICIONAR FUNCIONARIO                |");
 				System.out.println("|(Digite 7) -- para REMOVER   FUNCIONARIO                |");
 			}
 			System.out.println("|                                                        |");
-			System.out.println("|(Digite 0) -- para sair desse menu                      |");
+			System.out.println("|(Digite 0) -- para SAIR DO MENU                         |");
 			System.out.println("|________________________________________________________|");
 			x = scanNum.nextInt();
 
 			switch (x) {
 			case 1:
-				ArrayList<Produto> catalogo = produtoNegocio.listarProduto();
-				listarProdutos(catalogo);
+				listarProdutos(produtoNegocio.listarProduto());
 				break;
 			case 2:
 				Produto novoProduto = cadastrarProduto();
@@ -51,18 +51,19 @@ public class FuncionarioApresentacao {
 			case 3:
 				System.out.println("Informe o id do produto que deseja modificar");
 				long id = scanNum.nextLong();
-				Produto produto = produtoNegocio.modificarProduto(id);
+				Produto produto = produtoNegocio.buscaProduto(id);
 				produto = modificarProdutos(produto);
-
+				System.out.println(produtoNegocio.modificarProduto(produto));
 				break;
 			case 4:
 				System.out.println("Informe o codigo do produto que deseja remover");
-				long codigo = scanNum.nextLong();
-				System.out.println(produtoNegocio.removerProduto(codigo));
+				long idd = scanNum.nextLong();
+				System.out.println(produtoNegocio.removerProduto(idd));
 				break;
 			case 5:
 				if (func.getAdm()) {
-					listarFuncionarios();
+					ArrayList<Funcionario> colecaoFuncs = funcsNegocio.listarFuncsNegocio();
+					listarFuncionarios(colecaoFuncs);
 				} else {
 					System.out.println("Por favor... Digite apenas numeros de acordo com o menu acima!!!");
 				}
@@ -98,22 +99,18 @@ public class FuncionarioApresentacao {
 		} while (x != 0);
 	}
 
-	private Produto modificarProdutos(Produto produto) {
-		int x;
-		do {
-			
-			
-			
-		}while(x!=0);
+	private void listarFuncionarios(ArrayList<Funcionario> colecaoFuncs) {
+		for (Funcionario f : colecaoFuncs) {
+			System.out.println(f.toString());
+		}
 
-		
-		
-		
-		
-		
-		
-		
-		return produto;
+	}
+
+	private void listarProdutos(ArrayList<Produto> catalogoAtual) {
+		for (int i = 0; i < catalogoAtual.size(); i++) {
+			System.out.println((i + 1) + " " + catalogoAtual.get(i).toString());
+		}
+
 	}
 
 	private Produto cadastrarProduto() {
@@ -133,15 +130,55 @@ public class FuncionarioApresentacao {
 		return new Produto(tipo, tema, cor, preco, codigo, quant);
 	}
 
-	private void listarProdutos(ArrayList<Produto> colecaoProduto) {
+	private Produto modificarProdutos(Produto produto) {
+		int x = 0;
+		do {
 
-	}
+			System.out.println("                                                                   ");
+			System.out.println("OBSERVAÇÃO - O  PRODUTO SERA MODIFICADO DE ACORDO COM SUAS ESCOLHAS");
+			System.out.println("              QUANDO TIVER ACABADO DE MODIFICAR DIGITE '0'         ");
+			System.out.println(" ________________________________________________________");
+			System.out.println("|                                                        |");
+			System.out.println("|(Digite 1) -- para modificar o tipo  do produto         |");
+			System.out.println("|(Digite 2) -- para modificar o tema  do produto         |");
+			System.out.println("|(Digite 3) -- para modificar a cor   do produto         |");
+			System.out.println("|(Digite 4) -- para modificar o preço do produto         |");
+			System.out.println("|(Digite 5) -- para modificar a quantidade do produto    |");
+			System.out.println("|(Digite 0) -- para sair do programa                     |");
+			System.out.println("|________________________________________________________|");
+			x = scanNum.nextInt();
 
-	private void listarFuncionarios() throws ClassNotFoundException, IOException {
-		ArrayList<Funcionario> colecaoFuncs = funcsNegocio.listarFuncsNegocio();
-		for (Funcionario f : colecaoFuncs) {
-			System.out.println(f.toString());
-		}
+			switch (x) {
+			case 1:
+				System.out.println("Informe o tipo do produto para modificação");
+				produto.setTipo(scan.nextLine());
+				continue;
+			case 2:
+				System.out.println("Informe o tema do produto para modificação");
+				produto.setTema(scan.nextLine());
+				continue;
+
+			case 3:
+				System.out.println("Informe a cor do produto para modificação");
+				produto.setCor(scan.nextLine());
+				continue;
+			case 4:
+				System.out.println("Informe o preço do produto para modificação");
+				produto.setPreco(scanNum.nextDouble());
+				continue;
+			case 5:
+				System.out.println("Informe a quantidade do produto para modificação");
+				produto.setQuant(scanNum.nextInt());
+				continue;
+			case 0:
+				break;
+			default:
+				System.out.println("Digite apenas numeros de acordo com a tabela acima !!!");
+			}
+
+		} while (x != 0);
+
+		return produto;
 	}
 
 	private Funcionario adicionarFuncionario() {

@@ -41,6 +41,7 @@ public class FuncionarioDados {
 		ObjectOutputStream oos = new ObjectOutputStream(fos);
 		oos.writeObject(colecaoFuncs);
 		oos.flush();
+
 		oos.close();
 	}
 
@@ -164,17 +165,18 @@ public class FuncionarioDados {
 		} else {
 
 			arquivo.createNewFile();
-			colecaoFuncs = new ArrayList<Funcionario>();
 			adm.Adm();
+			colecaoFuncs = new ArrayList<Funcionario>();
 			colecaoFuncs.add(adm);
 			FileOutputStream fos = new FileOutputStream(arquivo);
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 			oos.writeObject(colecaoFuncs);
 			oos.flush();
 			oos.close();
+			return colecaoFuncs.get(0);
 
 		}
-		return adm;
+		return null;
 
 	}
 

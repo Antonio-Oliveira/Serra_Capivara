@@ -10,8 +10,7 @@ public class ProdutoNegocio {
 	private ProdutoDados produtoDados = new ProdutoDados();
 
 	public ArrayList<Produto> listarProduto() throws ClassNotFoundException, IOException {
-		ArrayList<Produto> colecaoProduto = produtoDados.listarProduto();
-		return colecaoProduto;
+		return produtoDados.listarProduto();
 	}
 
 	public String cadastrarProduto(Produto produto) throws ClassNotFoundException, IOException {
@@ -19,14 +18,18 @@ public class ProdutoNegocio {
 		return "Produto Cadastrado";
 	}
 
-	public String removerProduto(long codigo) throws ClassNotFoundException, IOException {
-		produtoDados.removerProduto(codigo);
-		return "Produto Removido";
+	public String removerProduto(long id) throws ClassNotFoundException, IOException {
+		return produtoDados.removerProduto(id);
 	}
 
-	public Produto modificarProduto(long id) throws ClassNotFoundException, IOException {
-		Produto produto = produtoDados.modificarProduto(id);
+	public Produto buscaProduto(long id) throws ClassNotFoundException, IOException {
+		Produto produto = produtoDados.buscarProduto(id);
 		return produto;
+	}
+
+	public String modificarProduto(Produto produto) throws ClassNotFoundException, IOException {
+		produtoDados.modificarProduto(produto);
+		return "Produto modificado com sucesso!!!";
 	}
 
 }
