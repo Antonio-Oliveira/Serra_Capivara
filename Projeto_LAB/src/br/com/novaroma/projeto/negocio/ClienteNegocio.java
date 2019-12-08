@@ -8,22 +8,11 @@ import br.com.novaroma.projeto.utills.Verificar;
 
 public class ClienteNegocio {
 
-	// private ClienteDados clienteDados = new ClienteDados();
 	private Dados dados = new Dados();
 	private Cliente ajuda = new Cliente();
 
 	public String verificarCadastro(Cliente cliente) throws ClassNotFoundException, IOException {
 
-		/*
-		 * if (clienteDados.consultaClienteCPF(cliente.getCpf())) { return
-		 * "Esse CPF já foi cadastrado";
-		 * 
-		 * } if (clienteDados.consultaClienteEmail(cliente.getEmail())) {
-		 * 
-		 * return "Esse email já foi cadastrado";
-		 * 
-		 * }
-		 */
 		if (Verificar.verificarCPF(cliente)) {
 
 			return "O Cliente " + cliente.getNome() + " não foi cadastrado, pois seu CPF está incorreto";
@@ -45,7 +34,6 @@ public class ClienteNegocio {
 
 		}
 
-		//clienteDados.cadastrar(cliente);
 		dados.cadastrar(cliente);
 		
 		return "Usuário Cadastrado com sucesso!";
@@ -53,21 +41,18 @@ public class ClienteNegocio {
 	}
 
 	public Cliente verificarLogin(String email, String senha) throws ClassNotFoundException, IOException {
-	//	Cliente cliente = (Cliente) clienteDados.consultaUsuario(email, senha);
 		
 		return (Cliente) dados.consultarLogin(email, senha, ajuda);
 	}
 
 	public String verificarModificacoes(Cliente cliente) throws ClassNotFoundException, IOException {
 		
-		//clienteDados.modificarDados(cliente);
 		dados.modificar(cliente);
 		return "---- Usuário Modificado com sucesso!!! -----";
 
 	}
 
 	public String verificarRemocao(Cliente cliente) throws ClassNotFoundException, IOException {
-		//clienteDados.removerDados(cliente);
 		dados.remover(cliente);
 		return "Conta removida!!!";
 

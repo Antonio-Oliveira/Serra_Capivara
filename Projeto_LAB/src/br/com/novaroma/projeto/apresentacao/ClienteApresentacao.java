@@ -9,6 +9,7 @@ import br.com.novaroma.projeto.negocio.ClienteNegocio;
 
 public class ClienteApresentacao {
 	private ClienteNegocio clienteNegocio = new ClienteNegocio();
+	private CatalogoApresentacao catalogo = new CatalogoApresentacao();
 	static Scanner scan = new Scanner(System.in);
 	static Scanner scanNum = new Scanner(System.in);
 
@@ -19,7 +20,7 @@ public class ClienteApresentacao {
 
 		System.out.println("Informe sua idade:");
 		int idade = scanNum.nextInt();
-		
+
 		System.out.println("Informe seu sexo:");
 		String sexo = scan.nextLine();
 
@@ -51,6 +52,9 @@ public class ClienteApresentacao {
 			System.out.println("|(Digite 1) -- para verificar as informações |");
 			System.out.println("|(Digite 2) -- para para modificar a conta   |");
 			System.out.println("|(Digite 3) -- para remover a conta          |");
+			System.out.println("|                                            |");
+			System.out.println("|(Digite 4) -- para acessar nosso catalogo   |");
+			System.out.println("|                                            |");
 			System.out.println("|(Digite 0) -- para sair desse menu          |");
 			System.out.println("|____________________________________________|");
 			x = scan.nextInt();
@@ -59,7 +63,7 @@ public class ClienteApresentacao {
 			case 1:
 				verificarConta(cliente);
 				Thread.sleep(1000);
-			
+
 				break;
 			case 2:
 				Usuario usuarioNovo = modificarConta(cliente);
@@ -81,6 +85,8 @@ public class ClienteApresentacao {
 				}
 				x = 0;
 				break;
+			case 4:
+				catalogo.principal(cliente);
 			case 0:
 				break;
 			default:

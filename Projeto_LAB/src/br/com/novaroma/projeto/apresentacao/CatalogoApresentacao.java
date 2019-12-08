@@ -1,36 +1,53 @@
 package br.com.novaroma.projeto.apresentacao;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
-import br.com.novaroma.projeto.entidades.Catalogo;
+import br.com.novaroma.projeto.entidades.Cliente;
+import br.com.novaroma.projeto.entidades.Produto;
+import br.com.novaroma.projeto.negocio.ProdutoNegocio;
 
 public class CatalogoApresentacao {
 
 	static Scanner scan = new Scanner(System.in);
 	static Scanner scanNum = new Scanner(System.in);
+	private ArrayList<Produto> catalogo;
+	private ProdutoNegocio negocio = new ProdutoNegocio();
+	private Cliente cliente;
+	private ArrayList<Produto> carrinho = new ArrayList<Produto>();
 
-	public void infoPesquisa() {
-		Catalogo produto = new Catalogo();
-		produto.Preenchimento();
+	public void principal(Cliente cliente) throws ClassNotFoundException, IOException {
+		catalogo = negocio.listarProduto();
+
+		this.cliente = cliente;
 		int x;
 
 		do {
-			System.out.println("___________________________________________________________");
-			System.out.println("|	   O que você deseja fazer?                           |");
-			System.out.println("|                                                         |");
-			System.out.println("|(Digite 1) -- para apresentar o catalogo completo        |");
-			System.out.println("|(Digite 2) -- para filtrar as informações do produto     |");
-			System.out.println("|(Digite 0) -- para sair do programa                      |");
-			System.out.println("|_________________________________________________________|");
+			System.out.println(" ____________________________________________________________________");
+			System.out.println("|           O que você deseja fazer?                                 |");
+			System.out.println("|                                                                    |");
+			System.out.println("|(Digite 1) -- para apresentar o catalogo completo                   |");
+			System.out.println("|(Digite 2) -- para filtrar as informações do produto                |");
+			if (cliente != null) {
+				System.out.println("|(Digite 3) -- para acessar opcões do carrinho de compras            |");
+			}
+			System.out.println("|(Digite 0) -- para sair do menu                                     |");
+			System.out.println("|____________________________________________________________________|");
 			x = scanNum.nextInt();
 
 			switch (x) {
 			case 1:
-				catalogoCompleto(produto);
+				catalogoCompleto();
 				continue;
 			case 2:
-				filtro(produto);
+				filtro();
 				continue;
+			case 3:
+				carrinhoDeCompras();
+
+			case 0:
+				break;
 			default:
 				System.out.println("Por favor... Digite apenas numeros de acordo com o menu acima!!!");
 				continue;
@@ -40,20 +57,116 @@ public class CatalogoApresentacao {
 
 	}
 
-	private void catalogoCompleto(Catalogo produto) {
+	private void carrinhoDeCompras() {
+		int x;
+		do {
+			System.out.println(" ______________________________________________");
+			System.out.println("|           O que você deseja fazer?           |");
+			System.out.println("|                                              |");
+			System.out.println("|(Digite 1) -- para visualizar carrinho        |");
+			System.out.println("|(Digite 2) -- para remover produto            |");
+			System.out.println("|(Digite 3) -- para adicionar produto          |");
+			System.out.println("|(Digite 4) -- para finalizar compra           |");
+			System.out.println("|                                              |");
+			System.out.println("|(Digite 0) -- para sair do menu               |");
+			System.out.println("|______________________________________________|");
+			x = scanNum.nextInt();
+
+			switch (x) {
+			case 1:
+				for (int i = 0; i < carrinho.size(); i++) {
+					System.out.println((i + 1) + " " + carrinho.get(i).toString());
+				}
+				break;
+			case 2:
+				for (int i = 0; i < carrinho.size(); i++) {
+					System.out.println((i + 1) + carrinho.get(i).toString());
+				}
+				System.out.println("informe o produto o numero do produto que desejua remover");
+				int removerProduto = scanNum.nextInt();
+
+				for (int i = 0; i < carrinho.size(); i++) {
+					if ((removerProduto - 1) == i) {
+						carrinho.remove(i);
+					}
+				}
+
+				break;
+			case 3:
+				System.out.println(" ________________________________________________________");
+				System.out.println("|          Como deseja visualizar o catalogo?            |");
+				System.out.println("|                                                        |");
+				System.out.println("|(Digite 1) -- para apresentar o catalogo completo       |");
+				System.out.println("|(Digite 2) -- para filtrar as informações do catalogo   |");
+				System.out.println("|(Digite 0) -- para sair do menu                         |");
+				System.out.println("|________________________________________________________|");
+				x = scanNum.nextInt();
+
+				switch (x) {
+				case 1:
+					catalogoCompleto();
+					break;
+				case 2:
+					filtro();
+				case 0:
+					break;
+				default:
+					System.out.println("Digite apenas de acordo com as opções acima!!!");
+				}
+
+				break;
+			case 4:
+				break;
+			case 0:
+				break;
+			default:
+				System.out.println("Digite apenas de acordo com oo menu acima!!!");
+
+			}
+		} while (x != 0);
+
+	}
+
+	private void catalogoCompleto() {
 
 		System.out.println("________________________________________________________________________");
-		for (int i = 0; i < produto.getCatalogo().length; i++) {
-			System.out.println(i + " - " + produto.getCatalogo()[i].getTipo() + " " + produto.getCatalogo()[i].getCor()
-					+ " ," + produto.getCatalogo()[i].getTema() + " ," + produto.getCatalogo()[i].getPreco() + " R$"
-					+ " -- quantidade em estoque " + produto.getCatalogo()[i].getQuant());
+		for (int i = 0; i < catalogo.size(); i++) {
+			System.out.println((i + 1) + " - " + catalogo.get(i).getTipo() + " " + catalogo.get(i).getCor() + " ,"
+					+ catalogo.get(i).getTema() + " ," + catalogo.get(i).getPreco() + " R$"
+					+ " -- quantidade disponivel " + catalogo.get(i).getQuant());
 			System.out.println("________________________________________________________________________");
+		}
+
+		if (cliente != null) {
+			System.out.println("Deseja adicionar algum produto no carrinho de compras");
+			System.out.println("Se sim digite 'Sim' se não digite'Não'");
+			String condicao = scan.nextLine();
+
+			if (condicao.equalsIgnoreCase("Sim")) {
+				System.out.println("________________________________________________________________________");
+				for (int i = 0; i < catalogo.size(); i++) {
+					System.out.println((i + 1) + " - " + catalogo.get(i).getTipo() + " " + catalogo.get(i).getCor()
+							+ " ," + catalogo.get(i).getTema() + " ," + catalogo.get(i).getPreco() + " R$"
+							+ " -- quantidade disponivel " + catalogo.get(i).getQuant());
+					System.out.println("________________________________________________________________________");
+				}
+				System.out.println("Digite o numero do produto que deseja adicionar ao carrinho");
+				int numProduto = scanNum.nextInt();
+
+				for (int i = 0; i < catalogo.size(); i++) {
+					if ((numProduto - 1) == i) {
+						carrinho.add(catalogo.get(i));
+					}
+				}
+
+			}
+
 		}
 
 	}
 
 	@SuppressWarnings("unused")
-	public void filtro(Catalogo produto) {
+	private void filtro() {
 		String tipo = "", tema = "", cor = "";
 		double precoMax = 0, precoMin = 0;
 		int x;
@@ -103,27 +216,25 @@ public class CatalogoApresentacao {
 
 		} while (x != 0);
 
-		filtragem(tipo, tema, cor, precoMax, precoMin, produto);
+		filtragem(tipo, tema, cor, precoMax, precoMin);
 
 	}
 
 	@SuppressWarnings("unused")
-	private void filtragem(String tipo, String tema, String cor, double precoMaximo, double precoMinimo,
-			Catalogo produto) {
+	private void filtragem(String tipo, String tema, String cor, double precoMaximo, double precoMinimo) {
 		int aux = 0, cont = 1;
 
 		System.out.println("________________________________________________________________________");
-		for (int i = 0; i < produto.getCatalogo().length; i++) {
-			if ((tipo.equalsIgnoreCase(produto.getCatalogo()[i].getTipo()) || tipo.equals(""))
-					&& (tema.equalsIgnoreCase(produto.getCatalogo()[i].getTema()) || tema.equals(""))
-					&& (cor.equalsIgnoreCase(produto.getCatalogo()[i].getCor()) || cor.equals(""))
-					&& (precoMaximo >= produto.getCatalogo()[i].getPreco() || precoMaximo == 0)
-					&& (precoMinimo <= produto.getCatalogo()[i].getPreco() || precoMinimo == 0)) {
+		for (int i = 0; i < catalogo.size(); i++) {
+			if ((tipo.equalsIgnoreCase(catalogo.get(i).getTipo()) || tipo.equals(""))
+					&& (tema.equalsIgnoreCase(catalogo.get(i).getTema()) || tema.equals(""))
+					&& (cor.equalsIgnoreCase(catalogo.get(i).getCor()) || cor.equals(""))
+					&& (precoMaximo >= catalogo.get(i).getPreco() || precoMaximo == 0)
+					&& (precoMinimo <= catalogo.get(i).getPreco() || precoMinimo == 0)) {
 
-				System.out.println(
-						cont + " - " + produto.getCatalogo()[i].getTipo() + " " + produto.getCatalogo()[i].getCor()
-								+ " ," + produto.getCatalogo()[i].getTema() + " ," + produto.getCatalogo()[i].getPreco()
-								+ " R$" + " -- quantidade em estoque " + produto.getCatalogo()[i].getQuant());
+				System.out.println((cont) + " - " + catalogo.get(i).getTipo() + " " + catalogo.get(i).getCor() + " ,"
+						+ catalogo.get(i).getTema() + " ," + catalogo.get(i).getPreco() + " R$"
+						+ " -- quantidade disponivel " + catalogo.get(i).getQuant());
 				System.out.println("________________________________________________________________________");
 				cont++;
 				aux++;
@@ -132,6 +243,50 @@ public class CatalogoApresentacao {
 		}
 		if (aux == 0) {
 			System.out.println("Nenhum produto foi encontrado com essas informações");
+		}
+		if (cliente != null && aux != 0) {
+			System.out.println("Deseja adicionar algum produto no carrinho de compras");
+			System.out.println("Se sim digite 'Sim' se não digite'Não'");
+			String condicao = scan.nextLine();
+
+			if (condicao.equalsIgnoreCase("Sim")) {
+				System.out.println("________________________________________________________________________");
+				System.out.println("________________________________________________________________________");
+				for (int i = 0; i < catalogo.size(); i++) {
+					if ((tipo.equalsIgnoreCase(catalogo.get(i).getTipo()) || tipo.equals(""))
+							&& (tema.equalsIgnoreCase(catalogo.get(i).getTema()) || tema.equals(""))
+							&& (cor.equalsIgnoreCase(catalogo.get(i).getCor()) || cor.equals(""))
+							&& (precoMaximo >= catalogo.get(i).getPreco() || precoMaximo == 0)
+							&& (precoMinimo <= catalogo.get(i).getPreco() || precoMinimo == 0)) {
+
+						System.out.println((cont) + " - " + catalogo.get(i).getTipo() + " " + catalogo.get(i).getCor()
+								+ " ," + catalogo.get(i).getTema() + " ," + catalogo.get(i).getPreco() + " R$"
+								+ " -- quantidade disponivel " + catalogo.get(i).getQuant());
+						System.out.println("________________________________________________________________________");
+						cont++;
+
+					}
+				}
+				System.out.println("Digite o numero do produto que deseja adicionar ao carrinho");
+				int numProduto = scanNum.nextInt();
+
+				for (int i = 0; i < catalogo.size(); i++) {
+					if ((tipo.equalsIgnoreCase(catalogo.get(i).getTipo()) || tipo.equals(""))
+							&& (tema.equalsIgnoreCase(catalogo.get(i).getTema()) || tema.equals(""))
+							&& (cor.equalsIgnoreCase(catalogo.get(i).getCor()) || cor.equals(""))
+							&& (precoMaximo >= catalogo.get(i).getPreco() || precoMaximo == 0)
+							&& (precoMinimo <= catalogo.get(i).getPreco() || precoMinimo == 0)) {
+
+						if ((numProduto - 1) == cont) {
+							carrinho.add(catalogo.get(i));
+						}
+						cont++;
+
+					}
+				}
+
+			}
+
 		}
 
 	}

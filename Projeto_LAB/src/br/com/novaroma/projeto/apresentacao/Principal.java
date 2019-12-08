@@ -23,9 +23,9 @@ public class Principal {
 
 		do {
 			System.out.println(" ___________________________________________ ");
-			System.out.println("|	    BEM-VINDO, Visitante!           |");
+			System.out.println("|          BEM-VINDO, Visitante!            |");
 			System.out.println("|___________________________________________|");
-			System.out.println("|	   O que você deseja fazer?         |");
+			System.out.println("|        O que você deseja fazer?           |");
 			System.out.println("|                                           |");
 			System.out.println("|(Digite 1) -- para EXPLORAR NOSSO CATALOGO |");
 			System.out.println("|(Digite 2) -- para EFETUAR O LOGIN         |");
@@ -36,7 +36,7 @@ public class Principal {
 
 			switch (x) {
 			case 1:
-				catalogo.infoPesquisa();
+				catalogo.principal(null);
 				break;
 			case 2:
 				Login();
