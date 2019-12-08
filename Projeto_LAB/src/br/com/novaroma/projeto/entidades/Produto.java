@@ -14,6 +14,8 @@ public class Produto implements Serializable {
 	public String toString() {
 		return "Produto [tipo=" + tipo + ", tema=" + tema + ", cor=" + cor + ", preço=" + preco + ", id=" + id
 				+ ", quantidade em estoque=" + quant + "]";
+		
+		//return "| %-10S | %-40S | %-15S | %-10S | %-5S | %-11S |", id, tema, cor, tipo, quant, preco
 	}
 
 	public Produto() {

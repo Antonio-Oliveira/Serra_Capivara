@@ -129,9 +129,29 @@ public class FuncionarioApresentacao {
 	}
 
 	private void listarProdutos(ArrayList<Produto> catalogoAtual) {
-		for (int i = 0; i < catalogoAtual.size(); i++) {
-			System.out.println((i + 1) + " " + catalogoAtual.get(i).toString());
+		System.out.println(
+				"______________________________________________________________________________________________________________");
+		System.out.printf("| %-10S | %-40S | %-15S | %-10S | %-5S | %-11S |", "Código", "Tema", "Cor", "Tipo", "Qtd.",
+				"Preço");
+		System.out.println();
+		System.out.println(
+				"|____________|__________________________________________|_________________|____________|_______|_____________|");
+
+		for (int i = 0, c = 1; i < catalogoAtual.size(); i++, c++) {
+			System.out.printf("| %-10s | %-40s | %-15s | %-10s | %5d | R$ %-8.2f |", catalogoAtual.get(i).getId(),
+					catalogoAtual.get(i).getTema(), catalogoAtual.get(i).getCor(), catalogoAtual.get(i).getTipo(),
+					catalogoAtual.get(i).getQuant(), catalogoAtual.get(i).getPreco());
+			System.out.println();
+
+			if (c != catalogoAtual.size()) {
+				
+				System.out.println("|------------|------------------------------------------|-----------------|------------|-------|-------------|");
+
+			}
+
 		}
+
+		System.out.print("|____________________________________________________________________________________________________________|");
 
 	}
 
