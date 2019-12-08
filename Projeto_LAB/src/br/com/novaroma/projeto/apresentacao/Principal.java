@@ -20,7 +20,7 @@ public class Principal {
 	public static void main(String[] args) throws ClassNotFoundException, IOException, InterruptedException {
 
 		int x;
-	
+
 		do {
 			System.out.println(" ___________________________________________ ");
 			System.out.println("|          BEM-VINDO, Visitante!            |");
@@ -56,7 +56,6 @@ public class Principal {
 
 			}
 		} while (x != 0);
-
 	}
 
 	private static void Login() throws ClassNotFoundException, IOException, InterruptedException {
@@ -68,6 +67,7 @@ public class Principal {
 		String email = scan.next();
 		System.out.println("--------- Digite sua senha: ----------");
 		String senha = scan.next();
+
 		switch (x) {
 		case 1:
 
