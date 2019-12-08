@@ -251,7 +251,6 @@ public class CatalogoApresentacao {
 
 			if (condicao.equalsIgnoreCase("Sim")) {
 				System.out.println("________________________________________________________________________");
-				System.out.println("________________________________________________________________________");
 				for (int i = 0; i < catalogo.size(); i++) {
 					if ((tipo.equalsIgnoreCase(catalogo.get(i).getTipo()) || tipo.equals(""))
 							&& (tema.equalsIgnoreCase(catalogo.get(i).getTema()) || tema.equals(""))
