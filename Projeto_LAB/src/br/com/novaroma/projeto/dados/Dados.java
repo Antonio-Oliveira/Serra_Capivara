@@ -9,32 +9,37 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.novaroma.projeto.entidades.Cliente;
+import br.com.novaroma.projeto.entidades.Funcionario;
+import br.com.novaroma.projeto.entidades.Produto;
+
 public class Dados<T> {
-	File arquivo;
-	ArrayList<T> colecao = new ArrayList<T>();
+	private ArrayList<T> colecao;
 	private T objeto;
+	private File arquivo;
 
-	public boolean criarArquivo(T objeto) throws IOException, ClassNotFoundException {
+	public void criarArquivo(T obj) throws IOException, ClassNotFoundException {
 
-		arquivo = new File(objeto.getClass().getCanonicalName() + ".txt.");
-		colecao = ler();
-		FileOutputStream fos = new FileOutputStream(arquivo);
-		ObjectOutputStream oos = new ObjectOutputStream(fos);
-		oos.writeObject(colecao);
-		oos.close();
-		oos.flush();
-		return true;
+		if (obj instanceof Cliente) {
+			arquivo = new File("arquivos/Cliente.txt");
+		}
+		if (obj instanceof Funcionario) {
+			arquivo = new File("arquivos/Funcionario.txt");
+		}
+		if (obj instanceof Produto) {
+			arquivo = new File("arquivos/Produto.txt");
+		}
+
 	}
 
-	public ArrayList<T> ler() {
+	public void ler() {
 
-		if (this.arquivo.exists()) {
-			FileInputStream fis;
+		if (arquivo.exists()) {
 			try {
-				ObjectInputStream ois = new ObjectInputStream(new FileInputStream(arquivo));
-
-				colecao = (ArrayList<T>) ois.readObject();
-
+				System.out.println(arquivo);
+				FileInputStream fis = new FileInputStream(arquivo);
+				ObjectInputStream ois = new ObjectInputStream(fis);
+				this.colecao = (ArrayList<T>) ois.readObject();
 				ois.close();
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -42,20 +47,21 @@ public class Dados<T> {
 
 		} else {
 			try {
-				this.arquivo.createNewFile();
+				arquivo.createNewFile();
+				colecao = new ArrayList<T>();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 
 		}
-		return colecao;
 	}
 
-	public boolean cadastrar(T objeto) throws ClassNotFoundException, IOException {
+	public boolean cadastrar(T obj) throws ClassNotFoundException, IOException {
+		criarArquivo(obj);
 
-		colecao = ler();
+		ler();
 
-		colecao.add(objeto);
+		colecao.add(obj);
 
 		FileOutputStream fos = new FileOutputStream(arquivo);
 
@@ -68,30 +74,140 @@ public class Dados<T> {
 		return true;
 	}
 
-	public T consultar(String cpf) throws ClassNotFoundException, IOException {
-		colecao = ler();
+	@SuppressWarnings("unchecked")
+	public T consultarLogin(String email, String senha, T tipo) throws ClassNotFoundException, IOException {
+		criarArquivo(tipo);
+		ler();
+		if (arquivo.exists()) {
 
-		for (int i = 1; i < colecao.size(); i++) {
-			if (colecao.get(i).equals(cpf)) {
-				T consultado = colecao.get(i);
-				return consultado;
+			if (tipo instanceof Cliente) {
+				for (int i = 0; i < colecao.size(); i++) {
+					ArrayList<Cliente> cliente = (ArrayList<Cliente>) colecao;
+					if (email.equals(cliente.get(i).getEmail()) && senha.equals(cliente.get(i).getSenha())) {
+						return (T) cliente.get(i);
+					}
+
+				}
+			}
+
+			if (tipo instanceof Funcionario) {
+				ArrayList<Funcionario> funcionario = (ArrayList<Funcionario>) colecao;
+				if (funcionario.size() == 0) {
+					((Funcionario) tipo).Adm();
+					funcionario.add((Funcionario) tipo);
+					ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(arquivo));
+					oos.writeObject(colecao);
+					oos.close();
+				}
+				for (int i = 0; i < colecao.size(); i++) {
+					if (email.equals(funcionario.get(i).getEmail()) && senha.equals(funcionario.get(i).getSenha())) {
+						return (T) funcionario.get(i);
+					}
+
+				}
+			}
+		}
+
+		return null;
+
+	}
+
+	@SuppressWarnings("unchecked")
+	public T consultar(String consulta, T tipo) throws ClassNotFoundException, IOException {
+		criarArquivo(tipo);
+		if (arquivo.exists()) {
+			ler();
+
+			for (int i = 0; i < colecao.size(); i++) {
+				if (tipo instanceof Produto) {
+					ArrayList<Produto> produto = (ArrayList<Produto>) colecao;
+					if (consulta.equals(produto.get(i).getId())) {
+						return (T) produto.get(i);
+					}
+
+				}
+
+				if (tipo instanceof Funcionario) {
+					ArrayList<Funcionario> funcionario = (ArrayList<Funcionario>) colecao;
+					if (consulta.equals(funcionario.get(i).getCpf())) {
+						return (T) funcionario.get(i);
+					}
+
+				}
 			}
 		}
 
 		return null;
 	}
 
-	public ArrayList<T> listar() throws ClassNotFoundException, IOException {
-
-		colecao = ler();
-		for (int i = 1; i < colecao.size(); i++) {
-			return (ArrayList<T>) colecao;
+	public ArrayList<T> listar(T obj) throws ClassNotFoundException, IOException {
+		criarArquivo(obj);
+		if (arquivo.exists()) {
+			ler();
+			return colecao;
 		}
 		return null;
 	}
 
-	public void remover(String cpf) throws ClassNotFoundException, IOException {
+	public void remover(T obj) throws ClassNotFoundException, IOException {
+		criarArquivo(obj);
+		if (arquivo.exists()) {
 
+			ler();
+
+			if (obj instanceof Cliente) {
+				ArrayList<Cliente> cliente = (ArrayList<Cliente>) colecao;
+
+				for (int i = 0; i < colecao.size(); i++) {
+
+					if (((Cliente) obj).getCpf().equals(cliente.get(i).getCpf())) {
+						cliente.remove(i);
+						colecao = (ArrayList<T>) cliente;
+					}
+
+				}
+
+			}
+
+			if (obj instanceof Funcionario) {
+				ArrayList<Funcionario> funcionario = (ArrayList<Funcionario>) colecao;
+
+				for (int i = 0; i < colecao.size(); i++) {
+
+					if (((Funcionario) obj).getCpf().equals(funcionario.get(i).getCpf())) {
+						funcionario.remove(i);
+						colecao = (ArrayList<T>) funcionario;
+
+					}
+
+				}
+
+			}
+
+			if (obj instanceof Produto) {
+				ArrayList<Produto> produto = (ArrayList<Produto>) colecao;
+
+				for (int i = 0; i < colecao.size(); i++) {
+
+					if (((Produto) obj).getId().equals(produto.get(i).getId())) {
+						produto.remove(i);
+						colecao = (ArrayList<T>) produto;
+					}
+
+				}
+
+			}
+
+			ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(arquivo));
+			oos.writeObject(colecao);
+			oos.flush();
+			oos.close();
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	public void modificar(T obj) throws ClassNotFoundException, IOException {
+		criarArquivo(obj);
 		if (arquivo.exists()) {
 
 			FileInputStream fis = new FileInputStream(arquivo);
@@ -99,52 +215,112 @@ public class Dados<T> {
 			colecao = (ArrayList<T>) ois.readObject();
 			ois.close();
 
-			int aux = 0;
+			if (obj instanceof Cliente) {
+				ArrayList<Cliente> cliente = (ArrayList<Cliente>) colecao;
 
-			List<T> listAux = new ArrayList<T>();
+				for (int i = 0; i < colecao.size(); i++) {
 
-			for (int i = 0; i < colecao.size(); i++) {
-
-				if (colecao.get(i) != null && !(cpf.equals(colecao.get(i).getClass().getCanonicalName()))) {
-					listAux.add(colecao.get(i));
+					if (((Cliente) obj).getCpf().equals(cliente.get(i).getCpf())) {
+						cliente.set(i, (Cliente) obj);
+						colecao = (ArrayList<T>) cliente;
+					}
 
 				}
 
 			}
-			colecao = (ArrayList<T>) listAux;
-			FileOutputStream fos = new FileOutputStream(arquivo);
-			ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+			if (obj instanceof Produto) {
+				ArrayList<Produto> produto = (ArrayList<Produto>) colecao;
+
+				for (int i = 0; i < colecao.size(); i++) {
+
+					if (((Produto) obj).getId().equals(produto.get(i).getId())) {
+						produto.set(i, (Produto) obj);
+						colecao = (ArrayList<T>) produto;
+					}
+
+				}
+
+			}
+
+			ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(arquivo));
 			oos.writeObject(colecao);
 			oos.flush();
 			oos.close();
 		}
+
 	}
 
-	public void atualizar(String cpf, String nome, String telefone, String email)
-			throws ClassNotFoundException, IOException {
+	public boolean consultaCPF(String cpf, T obj) throws IOException, ClassNotFoundException {
+		criarArquivo(obj);
 
 		if (arquivo.exists()) {
+			ler();
 
-			FileInputStream fis = new FileInputStream(arquivo);
-			ObjectInputStream ois = new ObjectInputStream(fis);
-			colecao = (ArrayList<T>) ois.readObject();
-			ois.close();
+			if (obj instanceof Cliente) {
+				ArrayList<Cliente> cliente = (ArrayList<Cliente>) colecao;
 
-			for (int i = 0; i < colecao.size(); i++) {
+				for (int i = 0; i < colecao.size(); i++) {
 
-				if (colecao.get(i) != null && cpf.equals(colecao.get(i).getClass().getCanonicalName())) {
+					if (cpf.equals(cliente.get(i).getCpf())) {
+						return true;
+					}
 
 				}
 
 			}
 
-			FileOutputStream fos = new FileOutputStream(arquivo);
-			ObjectOutputStream oos = new ObjectOutputStream(fos);
-			oos.writeObject(colecao);
-			oos.flush();
-			oos.close();
-		}
+			if (obj instanceof Funcionario) {
+				ArrayList<Funcionario> funcionario = (ArrayList<Funcionario>) colecao;
 
+				for (int i = 0; i < colecao.size(); i++) {
+
+					if (cpf.equals(funcionario.get(i).getCpf())) {
+						return true;
+
+					}
+
+				}
+
+			}
+		}
+		return false;
+	}
+
+	public boolean consultaEmail(String email, T obj) throws IOException, ClassNotFoundException {
+		criarArquivo(obj);
+
+		if (arquivo.exists()) {
+			ler();
+
+			if (obj instanceof Cliente) {
+				ArrayList<Cliente> cliente = (ArrayList<Cliente>) colecao;
+
+				for (int i = 0; i < colecao.size(); i++) {
+
+					if (email.equals(cliente.get(i).getEmail())) {
+						return true;
+					}
+
+				}
+
+			}
+
+			if (obj instanceof Funcionario) {
+				ArrayList<Funcionario> funcionario = (ArrayList<Funcionario>) colecao;
+
+				for (int i = 0; i < colecao.size(); i++) {
+
+					if (email.equals(funcionario.get(i).getEmail())) {
+						return true;
+
+					}
+
+				}
+
+			}
+		}
+		return false;
 	}
 
 }

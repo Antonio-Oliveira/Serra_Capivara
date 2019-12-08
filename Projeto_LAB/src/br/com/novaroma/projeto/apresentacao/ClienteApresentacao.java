@@ -40,7 +40,7 @@ public class ClienteApresentacao {
 
 	}
 
-	public void contaLogado(Cliente cliente) throws ClassNotFoundException, IOException {
+	public void contaLogado(Cliente cliente) throws ClassNotFoundException, IOException, InterruptedException {
 		int x;
 
 		do {
@@ -58,6 +58,8 @@ public class ClienteApresentacao {
 			switch (x) {
 			case 1:
 				verificarConta(cliente);
+				Thread.sleep(1000);
+			
 				break;
 			case 2:
 				Usuario usuarioNovo = modificarConta(cliente);

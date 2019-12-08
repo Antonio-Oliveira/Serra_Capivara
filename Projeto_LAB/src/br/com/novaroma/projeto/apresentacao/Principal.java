@@ -17,7 +17,7 @@ public class Principal {
 	private static FuncionarioApresentacao funcApresentacao = new FuncionarioApresentacao();
 	private static ClienteApresentacao clienteApresentacao = new ClienteApresentacao();
 
-	public static void main(String[] args) throws ClassNotFoundException, IOException {
+	public static void main(String[] args) throws ClassNotFoundException, IOException, InterruptedException {
 
 		int x;
 
@@ -58,7 +58,7 @@ public class Principal {
 		} while (x != 0);
 	}
 
-	private static void Login() throws ClassNotFoundException, IOException {
+	private static void Login() throws ClassNotFoundException, IOException, InterruptedException {
 		System.out.println("--------------- LOGIN: ---------------");
 		System.out.println("------ Digite 1 para funcionario -----");
 		System.out.println("------ Digite 2 para cliente ---------");

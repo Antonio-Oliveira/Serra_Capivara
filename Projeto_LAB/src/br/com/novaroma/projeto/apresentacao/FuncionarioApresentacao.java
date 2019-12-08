@@ -12,7 +12,7 @@ import br.com.novaroma.projeto.negocio.ProdutoNegocio;
 public class FuncionarioApresentacao {
 	static Scanner scan = new Scanner(System.in);
 	static Scanner scanNum = new Scanner(System.in);
-	private FuncionarioNegocio funcsNegocio = new FuncionarioNegocio();
+	private FuncionarioNegocio negocio = new FuncionarioNegocio();
 	private ProdutoNegocio produtoNegocio = new ProdutoNegocio();
 
 	public void contaLogada(Funcionario func) throws ClassNotFoundException, IOException {
@@ -50,19 +50,34 @@ public class FuncionarioApresentacao {
 				break;
 			case 3:
 				System.out.println("Informe o id do produto que deseja modificar");
-				long id = scanNum.nextLong();
+				String id = scan.nextLine();
 				Produto produto = produtoNegocio.buscaProduto(id);
-				produto = modificarProdutos(produto);
-				System.out.println(produtoNegocio.modificarProduto(produto));
+				if (produto != null) {
+					produto = modificarProdutos(produto);
+					System.out.println(produtoNegocio.modificarProduto(produto));
+				} else {
+					System.out.println("Não existe produto com determinado ID");
+				}
 				break;
 			case 4:
 				System.out.println("Informe o codigo do produto que deseja remover");
-				long idd = scanNum.nextLong();
-				System.out.println(produtoNegocio.removerProduto(idd));
+				String idd = scan.nextLine();
+				Produto remover = produtoNegocio.buscaProduto(idd);
+				if (remover != null) {
+					System.out.println("Deseja remover tal produto abaixo");
+					System.out.println(remover.toString());
+					System.out.println("Se deseja digite |Sim|, se não desejar digite|Não|");
+					String condicao = scan.nextLine();
+					if (condicao.equalsIgnoreCase("Sim")) {
+						System.out.println(produtoNegocio.removerProduto(remover));
+					} else {
+						System.out.println("Não existe produto com determinado ID");
+					}
+				}
 				break;
 			case 5:
 				if (func.getAdm()) {
-					ArrayList<Funcionario> colecaoFuncs = funcsNegocio.listarFuncsNegocio();
+					ArrayList<Funcionario> colecaoFuncs = negocio.listarFuncsNegocio();
 					listarFuncionarios(colecaoFuncs);
 				} else {
 					System.out.println("Por favor... Digite apenas numeros de acordo com o menu acima!!!");
@@ -72,7 +87,7 @@ public class FuncionarioApresentacao {
 				if (func.getAdm()) {
 
 					Funcionario novoFuncionario = adicionarFuncionario();
-					System.out.println(funcsNegocio.verificarCadastro(novoFuncionario));
+					System.out.println(negocio.verificarCadastro(novoFuncionario));
 
 				} else {
 					System.out.println("Por favor... Digite apenas numeros de acordo com o menu acima!!!");
@@ -84,7 +99,14 @@ public class FuncionarioApresentacao {
 
 					System.out.println("Informe qual O CPF do funcionario que deseja remover");
 					String cpf = scan.nextLine();
-					System.out.println(funcsNegocio.verificarRemocao(cpf));
+					Funcionario removerFunc = negocio.buscar(cpf);
+					System.out.println("Deseja remover tal produto abaixo");
+					System.out.println(removerFunc.toString());
+					System.out.println("Se deseja digite |Sim|, se não desejar digite|Não|");
+					String condicaoo = scan.nextLine();
+					if (condicaoo.equalsIgnoreCase("Sim")) {
+						System.out.println(negocio.verificarRemocao(removerFunc));
+					}
 
 				} else {
 					System.out.println("Por favor... Digite apenas numeros de acordo com o menu acima!!!");
@@ -123,11 +145,11 @@ public class FuncionarioApresentacao {
 		System.out.println("------ Informe o preço do produto: -----");
 		double preco = scanNum.nextDouble();
 		System.out.println("------ Informe o codigo do produto -----");
-		long codigo = scanNum.nextInt();
+		String id = scan.nextLine();
 		System.out.println("------ Informe a quantidade inicial ----");
 		int quant = scanNum.nextInt();
 
-		return new Produto(tipo, tema, cor, preco, codigo, quant);
+		return new Produto(tipo, tema, cor, preco, id, quant);
 	}
 
 	private Produto modificarProdutos(Produto produto) {

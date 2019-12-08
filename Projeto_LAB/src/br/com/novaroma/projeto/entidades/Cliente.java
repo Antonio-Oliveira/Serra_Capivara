@@ -8,6 +8,10 @@ public class Cliente extends Usuario {
 	public Cliente(String nome, int idade, long numTell, String email, String cpf, String senha, String sexo) {
 		super(nome, idade, numTell, email, cpf, senha, sexo);
 	}
+	
+	public Cliente() {
+		
+	}
 
 	public ArrayList<Produto> getHistoricoCompras() {
 		return historicoCompras;

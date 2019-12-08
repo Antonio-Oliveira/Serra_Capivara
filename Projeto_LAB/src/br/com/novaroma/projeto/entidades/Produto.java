@@ -7,7 +7,7 @@ public class Produto implements Serializable {
 	private String tema;
 	private String cor;
 	private double preco;
-	private long id;
+	private String id;
 	private int quant;
 
 	@Override
@@ -20,7 +20,7 @@ public class Produto implements Serializable {
 
 	}
 
-	public Produto(String tipo, String tema, String cor, double preco, long id, int quant) {
+	public Produto(String tipo, String tema, String cor, double preco, String id, int quant) {
 
 		this.tipo = tipo;
 		this.tema = tema;
@@ -63,12 +63,12 @@ public class Produto implements Serializable {
 		this.preco = preco;
 	}
 
-	public long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setCodigo(long id) {
-		this.id= id;
+	public void setCodigo(String id) {
+		this.id = id;
 	}
 
 	public int getQuant() {

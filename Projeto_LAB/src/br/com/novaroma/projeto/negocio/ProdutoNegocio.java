@@ -3,33 +3,38 @@ package br.com.novaroma.projeto.negocio;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import br.com.novaroma.projeto.dados.ProdutoDados;
+import br.com.novaroma.projeto.dados.Dados;
 import br.com.novaroma.projeto.entidades.Produto;
 
 public class ProdutoNegocio {
-	private ProdutoDados produtoDados = new ProdutoDados();
+	private Dados dados = new Dados();
+	private Produto obj = new Produto();
 
 	public ArrayList<Produto> listarProduto() throws ClassNotFoundException, IOException {
-		return produtoDados.listarProduto();
+		return dados.listar(obj);
 	}
 
 	public String cadastrarProduto(Produto produto) throws ClassNotFoundException, IOException {
-		produtoDados.cadastrarProduto(produto);
+		dados.cadastrar(produto);
 		return "Produto Cadastrado";
 	}
 
-	public String removerProduto(long id) throws ClassNotFoundException, IOException {
-		return produtoDados.removerProduto(id);
+	public String removerProduto(Produto produto) throws ClassNotFoundException, IOException {
+		dados.remover(produto);
+		return ("Produto " + produto.toString() + " Removido");
+
 	}
 
-	public Produto buscaProduto(long id) throws ClassNotFoundException, IOException {
-		Produto produto = produtoDados.buscarProduto(id);
+	public Produto buscaProduto(String id) throws ClassNotFoundException, IOException {
+		Produto produto = (Produto) dados.consultar(id, obj);
 		return produto;
 	}
 
 	public String modificarProduto(Produto produto) throws ClassNotFoundException, IOException {
-		produtoDados.modificarProduto(produto);
+		dados.modificar(produto);
 		return "Produto modificado com sucesso!!!";
 	}
+
+	
 
 }

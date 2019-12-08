@@ -15,7 +15,7 @@ public class Verificar {
 				|| usuario.getCpf().equals("66666666666") || usuario.getCpf().equals("77777777777")
 				|| usuario.getCpf().equals("88888888888") || usuario.getCpf().equals("99999999999")
 				|| usuario.getCpf().length() != 11) {
-			return false;
+			return true;
 
 		}
 
@@ -52,11 +52,11 @@ public class Verificar {
 
 		if (usuario.getCpf().charAt(9) != dig10 || usuario.getCpf().charAt(10) != dig11) {
 
-			return false;
+			return true;
 
 		}
 
-		return true;
+		return false;
 
 	}
 
@@ -67,12 +67,12 @@ public class Verificar {
 			Pattern p = Pattern.compile(expressao);
 			Matcher m = p.matcher(usuario.getEmail());
 			if (m.matches()) {
-				return true;
+				return false;
 
 			}
 		}
 
-		return false;
+		return true;
 
 	}
 
@@ -82,10 +82,10 @@ public class Verificar {
 			Pattern p = Pattern.compile(expressao);
 			Matcher m = p.matcher(usuario.getSenha());
 			if (m.matches()) {
-				return true;
+				return false;
 			}
 		}
-		return false;
+		return true;
 
 	}
 
