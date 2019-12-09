@@ -129,13 +129,26 @@ public class CatalogoApresentacao {
 
 	private void catalogoCompleto() {
 
-		System.out.println("________________________________________________________________________");
+		System.out.println("______________________________________________________________________________________________________________");
+		System.out.printf("| %-10S | %-40S | %-15S | %-10S | %-5S | %-11S |", "Número", "Tema", "Cor", "Tipo", "Qtd.", "Preço");
+		System.out.println();
+		System.out.println("|____________|__________________________________________|_________________|____________|_______|_____________|");
+
 		for (int i = 0; i < catalogo.size(); i++) {
-			System.out.println((i + 1) + " - " + catalogo.get(i).getTipo() + " " + catalogo.get(i).getCor() + " ,"
-					+ catalogo.get(i).getTema() + " ," + catalogo.get(i).getPreco() + " R$"
-					+ " -- quantidade disponivel " + catalogo.get(i).getQuant());
-			System.out.println("________________________________________________________________________");
+			System.out.printf("| %-10s | %-40s | %-15s | %-10s | %5d | R$ %-8.2f |", (i + 1), catalogo.get(i).getTema(),
+					catalogo.get(i).getCor(), catalogo.get(i).getTipo(), catalogo.get(i).getQuant(),
+					catalogo.get(i).getPreco());
+			System.out.println();
+
+			if (i + 1 != catalogo.size()) {
+
+				System.out.println("|------------|------------------------------------------|-----------------|------------|-------|-------------|");
+
+			}
+
 		}
+
+		System.out.print("|____________________________________________________________________________________________________________|");
 
 		if (cliente != null) {
 			System.out.println("Deseja adicionar algum produto no carrinho de compras");
@@ -143,22 +156,15 @@ public class CatalogoApresentacao {
 			String condicao = scan.nextLine();
 
 			if (condicao.equalsIgnoreCase("Sim")) {
-				System.out.println("________________________________________________________________________");
-				for (int i = 0; i < catalogo.size(); i++) {
-					System.out.println((i + 1) + " - " + catalogo.get(i).getTipo() + " " + catalogo.get(i).getCor()
-							+ " ," + catalogo.get(i).getTema() + " ," + catalogo.get(i).getPreco() + " R$"
-							+ " -- quantidade disponivel " + catalogo.get(i).getQuant());
-					System.out.println("________________________________________________________________________");
-				}
-				System.out.println("Digite o numero do produto que deseja adicionar ao carrinho");
+				System.out.println("Digite o NÚMERO do produto que deseja adicionar ao carrinho");
 				int numProduto = scanNum.nextInt();
 
 				for (int i = 0; i < catalogo.size(); i++) {
 					if ((numProduto - 1) == i) {
 						carrinho.add(catalogo.get(i));
+
 					}
 				}
-
 			}
 
 		}
