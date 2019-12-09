@@ -19,7 +19,7 @@ public class FuncionarioApresentacao {
 		int x;
 
 		do {
-
+			System.out.println("                                                         ");
 			System.out.println(" ________________________________________________________");
 			System.out.println("|	   O que você deseja fazer, com os PRODUTOS?     |");
 			System.out.println("|                                                        |");
@@ -130,7 +130,7 @@ public class FuncionarioApresentacao {
 
 	private void listarProdutos(ArrayList<Produto> catalogoAtual) {
 		System.out.println(
-				"______________________________________________________________________________________________________________");
+				" ____________________________________________________________________________________________________________");
 		System.out.printf("| %-10S | %-40S | %-15S | %-10S | %-5S | %-11S |", "Código", "Tema", "Cor", "Tipo", "Qtd.",
 				"Preço");
 		System.out.println();
