@@ -128,7 +128,6 @@ public class CatalogoApresentacao {
 	}
 
 	private void catalogoCompleto() {
-
 		System.out.println("______________________________________________________________________________________________________________");
 		System.out.printf("| %-10S | %-40S | %-15S | %-10S | %-5S | %-11S |", "Número", "Tema", "Cor", "Tipo", "Qtd.", "Preço");
 		System.out.println();
