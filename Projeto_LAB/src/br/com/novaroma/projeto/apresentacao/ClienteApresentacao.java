@@ -15,27 +15,37 @@ public class ClienteApresentacao {
 
 	public Cliente preencherCliente() {
 
-		System.out.println("Informe seu nome:");
+		System.out.println("____________________________________________________________");
+		System.out.printf("| %-56S |", "Informe seus dados corretamente");
+		System.out.println("\n|----------------------------------------------------------|");
+		System.out.printf("| %-15S |", "Nome");
+		System.out.println("........................................|");
 		String nome = scan.nextLine();
-
-		System.out.println("Informe sua idade:");
+		System.out.println("|----------------------------------------------------------|");
+		System.out.printf("| %-15S |", "Idade");
+		System.out.println("........................................|");
 		int idade = scanNum.nextInt();
-
-		System.out.println("Informe seu sexo:");
+		System.out.println("|----------------------------------------------------------|");
+		System.out.printf("| %-15S |", "Sexo");
+		System.out.println("........................................|");
 		String sexo = scan.nextLine();
-
-		System.out.println("Informe um numero telefonico: ");
+		System.out.println("|----------------------------------------------------------|");
+		System.out.printf("| %-15S |", "Nº Telefone");
+		System.out.println("........................................|");
 		long numTell = scanNum.nextLong();
-
-		System.out.println("Informe seu email:");
+		System.out.println("|----------------------------------------------------------|");
+		System.out.printf("| %-15S |", "Email");
+		System.out.println("........................................|");
 		String email = scan.nextLine();
-
-		System.out.println("Informe seu CPF:");
+		System.out.printf("| %-15S |", "CPF");
+		System.out.println("........................................|");
 		String cpf = scan.nextLine();
-
-		System.out.println("Informe sua senha:");
-		System.out.println("OBSERVAÇÃO!!! - maior que 8 digitos e menor que 15 digitos");
+		System.out.println("|----------------------------------------------------------|");
+		System.out.printf("| %-15S |", "Senha");
+		System.out.println("........................................|");
+		System.out.printf("| %-56S |\n", "A senha deve ter entre 8 e 15 dígitos");
 		String senha = scan.nextLine();
+		
 
 		return new Cliente(nome, idade, numTell, email, cpf, senha, sexo);
 
@@ -46,17 +56,21 @@ public class ClienteApresentacao {
 
 		do {
 
-			System.out.println("_____________________________________________");
-			System.out.println("|	   O que você deseja fazer?          |");
-			System.out.println("|                                            |");
-			System.out.println("|(Digite 1) -- para verificar as informações |");
-			System.out.println("|(Digite 2) -- para para modificar a conta   |");
-			System.out.println("|(Digite 3) -- para remover a conta          |");
-			System.out.println("|                                            |");
-			System.out.println("|(Digite 4) -- para acessar nosso catalogo   |");
-			System.out.println("|                                            |");
-			System.out.println("|(Digite 0) -- para sair desse menu          |");
-			System.out.println("|____________________________________________|");
+			System.out.println("____________________________________________________________");
+			System.out.printf("| %-12S | %-41S |", "Digite", "Ação");
+			System.out.println("\n|----------------------------------------------------------|");
+			System.out.printf("| %-12s | %-41s |", 1, "Verificar as informações");
+			System.out.println("\n|----------------------------------------------------------|");
+			System.out.printf("| %-12s | %-41s |", 2, "Modificar a conta");
+			System.out.println("\n|----------------------------------------------------------|");
+			System.out.printf("| %-12s | %-41s |", 3, "Remover a conta");
+			System.out.println("\n|----------------------------------------------------------|");
+			System.out.println("|----------------------------------------------------------|");
+			System.out.printf("| %-12s | %-41s |", 4, "Acessar nosso catalogo");
+			System.out.println("\n|----------------------------------------------------------|");
+			System.out.println("|----------------------------------------------------------|");
+			System.out.printf("| %-12s | %-41s |", 0, "Sair desse menu");
+			System.out.println("\n|__________________________________________________________|");
 			x = scan.nextInt();
 
 			switch (x) {
@@ -73,8 +87,9 @@ public class ClienteApresentacao {
 				System.out.println("      ");
 				break;
 			case 3:
-				System.out.println(
-						"Tem certeza que deseja excluir sua conta? (Se deseja digite |Sim|, se não digite |Não|)");
+				System.out.println("------------------------------------------------------------");
+				System.out.printf("| %-56S |\n", "Tem certeza que deseja excluir sua conta? |Sim| ou |Não|");
+				System.out.println("------------------------------------------------------------");
 				String condicao = scan.next();
 
 				if (condicao.equalsIgnoreCase("Sim")) {
@@ -90,22 +105,28 @@ public class ClienteApresentacao {
 			case 0:
 				break;
 			default:
-				System.out.println("Por favor... Digite apenas numeros de acordo com o menu acima!!!");
+				System.out.println("------------------------------------------------------------");
+				System.out.printf("| %-56S |\n", "Por favor, digite apenas números de acordo com o menu acima");
+				System.out.println("------------------------------------------------------------");
 				break;
 			}
 		} while (x != 0);
 	}
 
 	private static void verificarConta(Cliente cliente) {
-		System.out.println("____________________________________________");
-		System.out.println("|Nome: " + cliente.getNome());
-		System.out.println("|Idade: " + cliente.getIdade());
-		System.out.println("|Sexo: " + cliente.getSexo());
-		System.out.println("|Número do telefone: " + cliente.getNumTell());
-		System.out.println("|Email: " + cliente.getEmail());
-		System.out.println("|CPF: " + cliente.getCpf());
-		System.out.println("|Senha: " + cliente.getSenha());
-		System.out.println("|___________________________________________");
+		System.out.println("____________________________________________________________");
+		System.out.printf("| %-12S | %-41s |", "Nome",  cliente.getNome());
+		System.out.println("\n|----------------------------------------------------------|");
+		System.out.printf("| %-12S | %-41s |", "Idade", cliente.getIdade());
+		System.out.println("\n|----------------------------------------------------------|");
+		System.out.printf("| %-12S | %-41s |", "Nº Telefone", cliente.getNumTell());
+		System.out.println("\n|----------------------------------------------------------|");
+		System.out.printf("| %-12S | %-41s |", "Email", cliente.getEmail());
+		System.out.println("\n|----------------------------------------------------------|");
+		System.out.printf("| %-12S | %-41s |", "CPF", cliente.getCpf());
+		System.out.println("\n|----------------------------------------------------------|");
+		System.out.printf("| %-12S | %-41s |", "Senha", cliente.getSenha());
+		System.out.println("|__________________________________________________________|");
 
 	}
 
@@ -114,42 +135,57 @@ public class ClienteApresentacao {
 
 		do {
 
-			System.out.println("____________________________________________________");
-			System.out.println("|	   O que você deseja fazer?                |");
-			System.out.println("|                                                  |");
-			System.out.println("|(Digite 1) -- para modificar a idade              |");
-			System.out.println("|(Digite 2) -- para modificar a senha              |");
-			System.out.println("|(Digite 3) -- para modificar o número de telefone |");
-			System.out.println("|(Digite 4) -- para modificar o email              |");
-			System.out.println("|(Digite 0) -- para sair desse Menu                |");
-			System.out.println("|__________________________________________________|");
+			System.out.println("____________________________________________________________");
+			System.out.printf("| %-12S | %-41S |", "Digite", "Ação");
+			System.out.println("\n|----------------------------------------------------------|");
+			System.out.printf("| %-12s | %-41s |", 1, "Modificar a idade");
+			System.out.println("\n|----------------------------------------------------------|");
+			System.out.printf("| %-12s | %-41s |", 2, "Modificar a senha");
+			System.out.println("\n|----------------------------------------------------------|");
+			System.out.printf("| %-12s | %-41s |", 3, "Modificar o Nº Telefone");
+			System.out.println("\n|----------------------------------------------------------|");
+			System.out.printf("| %-12s | %-41s |", 4, "Modificar o Email");
+			System.out.println("\n|----------------------------------------------------------|");
+			System.out.println("|----------------------------------------------------------|");
+			System.out.printf("| %-12s | %-41s |", 0, "Sair desse menu");
+			System.out.println("\n|__________________________________________________________|");
 			x = scan.nextInt();
 
 			switch (x) {
 			case 1:
-				System.out.println(" Informe sua idade atual ");
+				System.out.println("------------------------------------------------------------");
+				System.out.printf("| %-56S |\n", "Informe sua idade atual");
+				System.out.println("------------------------------------------------------------");
 				int idade = scan.nextInt();
 				cliente.setIdade(idade);
 				break;
 			case 2:
-				System.out.println(" Informe sua nova senha ");
+				System.out.println("------------------------------------------------------------");
+				System.out.printf("| %-56S |\n", "Informe sua nova senha");
+				System.out.println("------------------------------------------------------------");
 				String senha = scan.next();
 				cliente.setSenha(senha);
 				break;
 			case 3:
-				System.out.println(" Informe o novo número de Telefone");
+				System.out.println("------------------------------------------------------------");
+				System.out.printf("| %-56S |\n", "Informe o novo Nº de telefone");
+				System.out.println("------------------------------------------------------------");
 				long numTell = scan.nextLong();
 				cliente.setNumTell(numTell);
 				break;
 			case 4:
-				System.out.println("Informe o novo email");
+				System.out.println("------------------------------------------------------------");
+				System.out.printf("| %-56S |\n", "Informe seu email atual");
+				System.out.println("------------------------------------------------------------");
 				String email = scan.next();
 				cliente.setEmail(email);
 				break;
 			case 0:
 				break;
 			default:
-				System.out.println("Por favor... Digite apenas numeros de acordo com o menu acima!!!");
+				System.out.println("------------------------------------------------------------");
+				System.out.printf("| %-56s |\n", "\"Por favor, digite apenas números de acordo com o menu acima!");
+				System.out.println("------------------------------------------------------------");
 				break;
 			}
 

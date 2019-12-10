@@ -22,16 +22,22 @@ public class Principal {
 		int x;
 
 		do {
-			System.out.println(" ___________________________________________ ");
-			System.out.println("|          BEM-VINDO, Visitante!            |");
-			System.out.println("|___________________________________________|");
-			System.out.println("|        O que você deseja fazer?           |");
-			System.out.println("|                                           |");
-			System.out.println("|(Digite 1) -- para EXPLORAR NOSSO CATALOGO |");
-			System.out.println("|(Digite 2) -- para EFETUAR O LOGIN         |");
-			System.out.println("|(Digite 3) -- para REALIZAR UM CADASTRO    |");
-			System.out.println("|(Digite 0) -- para sair do programa        |");
-			System.out.println("|___________________________________________|");
+			System.out.println("____________________________________________________________");
+			System.out.printf("| %-56S |", "Bem-Vindo, Visitante!");
+			System.out.println("\n|----------------------------------------------------------|");
+			System.out.printf("| %-56S |", "O que você deseja fazer?");
+			System.out.println("\n|__________________________________________________________|");
+			System.out.printf("| %-12S | %-41S |", "Digite", "Ação");
+			System.out.println("\n|----------------------------------------------------------|");
+			System.out.printf("| %-12s | %-41s |", 1, "Explorar nosso catálogo");
+			System.out.println("\n|----------------------------------------------------------|");
+			System.out.printf("| %-12s | %-41s |", 2, "Efetuar o login");
+			System.out.println("\n|----------------------------------------------------------|");
+			System.out.printf("| %-12s | %-41s |", 3, "Realizar um cadastro");
+			System.out.println("\n|----------------------------------------------------------|");
+			System.out.println("|----------------------------------------------------------|");
+			System.out.printf("| %-12s | %-41s |", 0, "Sair desse menu");
+			System.out.println("\n|__________________________________________________________|");
 			x = scan.nextInt();
 
 			switch (x) {
@@ -48,24 +54,37 @@ public class Principal {
 				System.out.println(mensagem);
 				break;
 			case 0:
-				System.out.println("Volte Sempre!");
+				System.out.println("------------------------------------------------------------");
+				System.out.printf("| %-56S |\n", "Volte Sempre!");
+				System.out.println("------------------------------------------------------------");
 				System.exit(x);
 				break;
 			default:
-				System.out.println("Não temos essa opção em nosso menu");
+				System.out.println("------------------------------------------------------------");
+				System.out.printf("| %-56s |\n", "Não temos essa opção no nosso menu!");
+				System.out.println("------------------------------------------------------------");
 
 			}
 		} while (x != 0);
 	}
 
 	private static void Login() throws ClassNotFoundException, IOException, InterruptedException {
-		System.out.println("--------------- LOGIN: ---------------");
-		System.out.println("------ Digite 1 para funcionario -----");
-		System.out.println("------ Digite 2 para cliente ---------");
+		System.out.println("____________________________________________________________");
+		System.out.printf("| %-56S |", "Login");
+		System.out.println("\n|__________________________________________________________|");
+		System.out.printf("| %-12S | %-41S |", "Digite", "Ação");
+		System.out.println("\n|----------------------------------------------------------|");
+		System.out.printf("| %-12s | %-41s |", 1, "FUNCIONÁRIO?");
+		System.out.println("\n|----------------------------------------------------------|");
+		System.out.printf("| %-12s | %-41s |", 2, "CLIENTE?");
+		System.out.println("\n|__________________________________________________________|");
 		int x = scan.nextInt();
-		System.out.println("--------- Digite seu Email: ----------");
+		System.out.printf("| %-15S |", "Email");
+		System.out.println("........................................|");
 		String email = scan.next();
-		System.out.println("--------- Digite sua senha: ----------");
+		System.out.println("\n|----------------------------------------------------------|");
+		System.out.printf("| %-15S |", "Senha");
+		System.out.println("........................................|");
 		String senha = scan.next();
 
 		switch (x) {
@@ -73,6 +92,10 @@ public class Principal {
 
 			Funcionario funcionario = funcionarioNegocio.verificarLogin(email, senha);
 			if (funcionario != null) {
+				
+				System.out.println("------------------------------------------------------------");
+				System.out.printf("| %-56s |\n", ("Seja Bem-Vindo! " + funcionario.getNome()));
+				System.out.println("------------------------------------------------------------");
 
 				System.out.println("                                    ");
 				System.out.println("Seja Bem-Vindo! " + funcionario.getNome());
@@ -80,7 +103,9 @@ public class Principal {
 				funcApresentacao.contaLogada(funcionario);
 
 			} else {
-				System.out.println("Ops... você não tem cadastro");
+				System.out.println("------------------------------------------------------------");
+				System.out.printf("| %-56s |\n", "Ops! Você não tem cadastro!");
+				System.out.println("------------------------------------------------------------");
 			}
 
 			break;
@@ -93,15 +118,18 @@ public class Principal {
 				System.out.println("                                    ");
 				System.out.println("Seja Bem-Vindo! " + cliente.getNome());
 				System.out.println("                                    ");
-				clienteApresentacao.contaLogado(cliente);
 
 			} else {
-				System.out.println("Ops... você não tem cadastro");
+				System.out.println("------------------------------------------------------------");
+				System.out.printf("| %-56s |\n", "Ops! Você não tem cadastro!");
+				System.out.println("------------------------------------------------------------");
 			}
 
 			break;
 		default:
-			System.out.println("Não existe tal opção escolhida");
+			System.out.println("------------------------------------------------------------");
+			System.out.printf("| %-56s |\n", "Não existe a opção escolhida!");
+			System.out.println("------------------------------------------------------------");
 
 		}
 

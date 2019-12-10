@@ -24,16 +24,23 @@ public class CatalogoApresentacao {
 		int x;
 
 		do {
-			System.out.println(" ____________________________________________________________________");
-			System.out.println("|           O que você deseja fazer?                                 |");
-			System.out.println("|                                                                    |");
-			System.out.println("|(Digite 1) -- para apresentar o catalogo completo                   |");
-			System.out.println("|(Digite 2) -- para filtrar as informações do produto                |");
+			System.out.println("____________________________________________________________");
+			System.out.printf("| %-12S | %-41S |", "Digite", "Ação");
+			System.out.println("\n|----------------------------------------------------------|");
+			System.out.printf("| %-12s | %-41s |", 1, "Apresentar o catalogo completo");
+			System.out.println("\n|----------------------------------------------------------|");
+			System.out.printf("| %-12s | %-41s |", 2, "Filtrar as informações do produto");
+			System.out.println("\n|----------------------------------------------------------|");
 			if (cliente != null) {
-				System.out.println("|(Digite 3) -- para acessar opcões do carrinho de compras            |");
+				System.out.println("|----------------------------------------------------------|");
+				System.out.printf("| %-12s | %-41s |", 3, "Acessar opcões do carrinho de compras");
+				System.out.println("\n|----------------------------------------------------------|");
+				
 			}
-			System.out.println("|(Digite 0) -- para sair do menu                                     |");
-			System.out.println("|____________________________________________________________________|");
+			
+			System.out.println("|----------------------------------------------------------|");
+			System.out.printf("| %-12s | %-41s |", 0, "Sair desse menu");
+			System.out.println("\n|__________________________________________________________|");
 			x = scanNum.nextInt();
 
 			switch (x) {
@@ -49,7 +56,9 @@ public class CatalogoApresentacao {
 			case 0:
 				break;
 			default:
-				System.out.println("Por favor... Digite apenas numeros de acordo com o menu acima!!!");
+				System.out.println("------------------------------------------------------------");
+				System.out.printf("| %-56s |\n", "Digite apenas números de acordo com o menu acima!");
+				System.out.println("------------------------------------------------------------");
 				continue;
 			}
 
@@ -60,16 +69,20 @@ public class CatalogoApresentacao {
 	private void carrinhoDeCompras() {
 		int x;
 		do {
-			System.out.println(" ______________________________________________");
-			System.out.println("|           O que você deseja fazer?           |");
-			System.out.println("|                                              |");
-			System.out.println("|(Digite 1) -- para visualizar carrinho        |");
-			System.out.println("|(Digite 2) -- para remover produto            |");
-			System.out.println("|(Digite 3) -- para adicionar produto          |");
-			System.out.println("|(Digite 4) -- para finalizar compra           |");
-			System.out.println("|                                              |");
-			System.out.println("|(Digite 0) -- para sair do menu               |");
-			System.out.println("|______________________________________________|");
+			System.out.println("____________________________________________________________");
+			System.out.printf("| %-12S | %-41S |", "Digite", "Ação");
+			System.out.println("\n|----------------------------------------------------------|");
+			System.out.printf("| %-12s | %-41s |", 1, "Visualizar carrinho");
+			System.out.println("\n|----------------------------------------------------------|");
+			System.out.printf("| %-12s | %-41s |", 2, "Remover produto");
+			System.out.println("\n|----------------------------------------------------------|");
+			System.out.printf("| %-12s | %-41s |", 3, "Adicionar produto");
+			System.out.println("\n|----------------------------------------------------------|");
+			System.out.printf("| %-12s | %-41s |", 3, "Finalizar compra");
+			System.out.println("\n|----------------------------------------------------------|");
+			System.out.println("|----------------------------------------------------------|");
+			System.out.printf("| %-12s | %-41s |", 0, "Sair desse menu");
+			System.out.println("\n|__________________________________________________________|");
 			x = scanNum.nextInt();
 
 			switch (x) {
@@ -82,7 +95,9 @@ public class CatalogoApresentacao {
 				for (int i = 0; i < carrinho.size(); i++) {
 					System.out.println((i + 1) + carrinho.get(i).toString());
 				}
-				System.out.println("informe o produto o numero do produto que desejua remover");
+				System.out.println("------------------------------------------------------------");
+				System.out.printf("| %-56s |\n", "Informe o número do produto que deseja remover");
+				System.out.println("------------------------------------------------------------");
 				int removerProduto = scanNum.nextInt();
 
 				for (int i = 0; i < carrinho.size(); i++) {
@@ -93,13 +108,16 @@ public class CatalogoApresentacao {
 
 				break;
 			case 3:
-				System.out.println(" ________________________________________________________");
-				System.out.println("|          Como deseja visualizar o catalogo?            |");
-				System.out.println("|                                                        |");
-				System.out.println("|(Digite 1) -- para apresentar o catalogo completo       |");
-				System.out.println("|(Digite 2) -- para filtrar as informações do catalogo   |");
-				System.out.println("|(Digite 0) -- para sair do menu                         |");
-				System.out.println("|________________________________________________________|");
+				System.out.println("____________________________________________________________");
+				System.out.printf("| %-12S | %-41S |", "Digite", "Ação");
+				System.out.println("\n|----------------------------------------------------------|");
+				System.out.printf("| %-12s | %-41s |", 1, "Apresentar catalogo completo");
+				System.out.println("\n|----------------------------------------------------------|");
+				System.out.printf("| %-12s | %-41s |", 2, "Filtrar as informações do catalogo");
+				System.out.println("\n|----------------------------------------------------------|");
+				System.out.println("|----------------------------------------------------------|");
+				System.out.printf("| %-12s | %-41s |", 0, "Sair desse menu");
+				System.out.println("\n|__________________________________________________________|");
 				x = scanNum.nextInt();
 
 				switch (x) {
@@ -111,7 +129,9 @@ public class CatalogoApresentacao {
 				case 0:
 					break;
 				default:
-					System.out.println("Digite apenas de acordo com as opções acima!!!");
+					System.out.println("------------------------------------------------------------");
+					System.out.printf("| %-56s |\n", "Digite apenas de acordo com as opções acima!");
+					System.out.println("------------------------------------------------------------");
 				}
 
 				break;
@@ -120,7 +140,9 @@ public class CatalogoApresentacao {
 			case 0:
 				break;
 			default:
-				System.out.println("Digite apenas de acordo com oo menu acima!!!");
+				System.out.println("------------------------------------------------------------");
+				System.out.printf("| %-56s |\n", "Digite apenas de acordo com o menu acima!");
+				System.out.println("------------------------------------------------------------");
 
 			}
 		} while (x != 0);
@@ -128,10 +150,13 @@ public class CatalogoApresentacao {
 	}
 
 	private void catalogoCompleto() {
-		System.out.println("______________________________________________________________________________________________________________");
-		System.out.printf("| %-10S | %-40S | %-15S | %-10S | %-5S | %-11S |", "Número", "Tema", "Cor", "Tipo", "Qtd.", "Preço");
+		System.out.println(
+				"______________________________________________________________________________________________________________");
+		System.out.printf("| %-10S | %-40S | %-15S | %-10S | %-5S | %-11S |", "Número", "Tema", "Cor", "Tipo", "Qtd.",
+				"Preço");
 		System.out.println();
-		System.out.println("|____________|__________________________________________|_________________|____________|_______|_____________|");
+		System.out.println(
+				"|____________|__________________________________________|_________________|____________|_______|_____________|");
 
 		for (int i = 0; i < catalogo.size(); i++) {
 			System.out.printf("| %-10s | %-40s | %-15s | %-10s | %5d | R$ %-8.2f |", (i + 1), catalogo.get(i).getTema(),
@@ -141,21 +166,27 @@ public class CatalogoApresentacao {
 
 			if (i + 1 != catalogo.size()) {
 
-				System.out.println("|------------|------------------------------------------|-----------------|------------|-------|-------------|");
+				System.out.println(
+						"|------------|------------------------------------------|-----------------|------------|-------|-------------|");
 
 			}
 
 		}
 
-		System.out.print("|____________________________________________________________________________________________________________|");
+		System.out.print(
+				"|____________________________________________________________________________________________________________|");
 
 		if (cliente != null) {
-			System.out.println("Deseja adicionar algum produto no carrinho de compras");
+			System.out.println("------------------------------------------------------------");
+			System.out.printf("| %-56s |\n", "Deseja adicionar algum produto no carrinho de compras?");
+			System.out.println("------------------------------------------------------------");
 			System.out.println("Se sim digite 'Sim' se não digite'Não'");
 			String condicao = scan.nextLine();
 
 			if (condicao.equalsIgnoreCase("Sim")) {
-				System.out.println("Digite o NÚMERO do produto que deseja adicionar ao carrinho");
+				System.out.println("------------------------------------------------------------");
+				System.out.printf("| %-56s |\n", "Digite o NÚMERO do produto que deseja colocar no carrinho");
+				System.out.println("------------------------------------------------------------");
 				int numProduto = scanNum.nextInt();
 
 				for (int i = 0; i < catalogo.size(); i++) {
@@ -180,43 +211,62 @@ public class CatalogoApresentacao {
 			System.out.println("                                                              ");
 			System.out.println("OBSERVAÇÃO -  O  FILTRO E MODELADO DE ACORDO COM SUAS ESCOLHAS");
 			System.out.println("              QUANDO TIVER ACABADO DE PREENCHER DIGITE '0'    ");
-			System.out.println("________________________________________________________");
-			System.out.println("|                                                      |");
-			System.out.println("|(Digite 1) -- para escolher o tipo do produto         |");
-			System.out.println("|(Digite 2) -- para escolher o tema do produto         |");
-			System.out.println("|(Digite 3) -- para escolher a cor do produto          |");
-			System.out.println("|(Digite 4) -- para escolher o preço maximo do produto |");
-			System.out.println("|(Digite 5) -- para escolher o preço minimo do produto |");
-			System.out.println("|(Digite 0) -- para sair do programa                   |");
-			System.out.println("|______________________________________________________|");
+			System.out.println("____________________________________________________________");
+			System.out.printf("| %-12S | %-41S |", "Digite", "Ação");
+			System.out.println("\n|----------------------------------------------------------|");
+			System.out.printf("| %-12s | %-41s |", 1, "Escolher o TIPO do produto");
+			System.out.println("\n|----------------------------------------------------------|");
+			System.out.printf("| %-12s | %-41s |", 2, "Escolher o TEMA do produto");
+			System.out.println("\n|----------------------------------------------------------|");
+			System.out.printf("| %-12s | %-41s |", 3, "Escolher a COR do produto");
+			System.out.println("\n|----------------------------------------------------------|");
+			System.out.printf("| %-12s | %-41s |", 4, "Escolher o preço MÁX. do produto");
+			System.out.println("\n|----------------------------------------------------------|");
+			System.out.printf("| %-12s | %-41s |", 5, "Escolher o preço MÍN. do produto");
+			System.out.println("\n|----------------------------------------------------------|");
+			System.out.println("|----------------------------------------------------------|");
+			System.out.printf("| %-12s | %-41s |", 0, "Sair desse menu");
+			System.out.println("\n|__________________________________________________________|");
 			x = scanNum.nextInt();
 
 			System.out.println("   ");
 			switch (x) {
 			case 1:
-				System.out.println("Informe o tipo do produto que deseja");
+				System.out.println("------------------------------------------------------------");
+				System.out.printf("| %-56S |\n", "Informe o tipo do produto que deseja");
+				System.out.println("------------------------------------------------------------");
 				tipo = scan.next();
 				continue;
 			case 2:
-				System.out.println("Informe o tema do produto que deseja");
+				System.out.println("------------------------------------------------------------");
+				System.out.printf("| %-56S |\n", "Informe o tema do produto que deseja");
+				System.out.println("------------------------------------------------------------");
 				tema = scan.next();
 				continue;
 			case 3:
-				System.out.println("Informe a cor do produto que deseja: ");
+				System.out.println("------------------------------------------------------------");
+				System.out.printf("| %-56S |\n", "Informe a cor do produto que deseja");
+				System.out.println("------------------------------------------------------------");
 				cor = scan.nextLine();
 				continue;
 			case 4:
-				System.out.println("Informe o preço maximo do produto: ");
+				System.out.println("------------------------------------------------------------");
+				System.out.printf("| %-56S |\n", "Informe o preço máximo do produto que deseja");
+				System.out.println("------------------------------------------------------------");
 				precoMax = scanNum.nextDouble();
 				continue;
 			case 5:
-				System.out.println("Informe o preço mínimo do produto: ");
+				System.out.println("------------------------------------------------------------");
+				System.out.printf("| %-56S |\n", "Informe o preço mínimo do produto que deseja");
+				System.out.println("------------------------------------------------------------");
 				precoMin = scanNum.nextDouble();
 				continue;
 			case 0:
 				continue;
 			default:
-				System.out.println("Não temos essa opções, se deseja terminar o filtrar nada digite '0'");
+				System.out.println("------------------------------------------------------------");
+				System.out.printf("| %-56s |\n", "Não temos essas opções, se deseja sair, digite '0'");
+				System.out.println("------------------------------------------------------------");
 			}
 
 		} while (x != 0);
@@ -229,7 +279,8 @@ public class CatalogoApresentacao {
 	private void filtragem(String tipo, String tema, String cor, double precoMaximo, double precoMinimo) {
 		int aux = 0, cont = 1;
 
-		System.out.println("________________________________________________________________________");
+		System.out.println(
+				"______________________________________________________________________________________________________________");
 		for (int i = 0; i < catalogo.size(); i++) {
 			if ((tipo.equalsIgnoreCase(catalogo.get(i).getTipo()) || tipo.equals(""))
 					&& (tema.equalsIgnoreCase(catalogo.get(i).getTema()) || tema.equals(""))
@@ -237,17 +288,38 @@ public class CatalogoApresentacao {
 					&& (precoMaximo >= catalogo.get(i).getPreco() || precoMaximo == 0)
 					&& (precoMinimo <= catalogo.get(i).getPreco() || precoMinimo == 0)) {
 
-				System.out.println((cont) + " - " + catalogo.get(i).getTipo() + " " + catalogo.get(i).getCor() + " ,"
-						+ catalogo.get(i).getTema() + " ," + catalogo.get(i).getPreco() + " R$"
-						+ " -- quantidade disponivel " + catalogo.get(i).getQuant());
-				System.out.println("________________________________________________________________________");
+				System.out.printf("| %-10S | %-40S | %-15S | %-10S | %-5S | %-11S |", "Número", "Tema", "Cor", "Tipo",
+						"Qtd.", "Preço");
+				System.out.println();
+				System.out.println(
+						"|____________|__________________________________________|_________________|____________|_______|_____________|");
+
+				for (int j = 0; i < catalogo.size(); j++) {
+					System.out.printf("| %-10s | %-40s | %-15s | %-10s | %5d | R$ %-8.2f |", (cont),
+							catalogo.get(i).getTema(), catalogo.get(i).getCor(), catalogo.get(i).getTipo(),
+							catalogo.get(i).getQuant(), catalogo.get(i).getPreco());
+					System.out.println();
+
+					if (i + 1 != catalogo.size()) {
+
+						System.out.println(
+								"|------------|------------------------------------------|-----------------|------------|-------|-------------|");
+
+					}
+
+				}
+
+				System.out.print(
+						"|____________________________________________________________________________________________________________|");
 				cont++;
 				aux++;
 
 			}
 		}
 		if (aux == 0) {
-			System.out.println("Nenhum produto foi encontrado com essas informações");
+			System.out.println("------------------------------------------------------------");
+			System.out.printf("| %-56s |\n", "Nenhum produto foi encontrado com essas informações");
+			System.out.println("------------------------------------------------------------");
 		}
 		if (cliente != null && aux != 0) {
 			System.out.println("Deseja adicionar algum produto no carrinho de compras");
@@ -255,8 +327,9 @@ public class CatalogoApresentacao {
 			String condicao = scan.nextLine();
 
 			if (condicao.equalsIgnoreCase("Sim")) {
-				System.out.println("________________________________________________________________________");
-				System.out.println("________________________________________________________________________");
+				
+				System.out.println(
+						"______________________________________________________________________________________________________________");
 				for (int i = 0; i < catalogo.size(); i++) {
 					if ((tipo.equalsIgnoreCase(catalogo.get(i).getTipo()) || tipo.equals(""))
 							&& (tema.equalsIgnoreCase(catalogo.get(i).getTema()) || tema.equals(""))
@@ -264,15 +337,36 @@ public class CatalogoApresentacao {
 							&& (precoMaximo >= catalogo.get(i).getPreco() || precoMaximo == 0)
 							&& (precoMinimo <= catalogo.get(i).getPreco() || precoMinimo == 0)) {
 
-						System.out.println((cont) + " - " + catalogo.get(i).getTipo() + " " + catalogo.get(i).getCor()
-								+ " ," + catalogo.get(i).getTema() + " ," + catalogo.get(i).getPreco() + " R$"
-								+ " -- quantidade disponivel " + catalogo.get(i).getQuant());
-						System.out.println("________________________________________________________________________");
+						System.out.printf("| %-10S | %-40S | %-15S | %-10S | %-5S | %-11S |", "Número", "Tema", "Cor", "Tipo",
+								"Qtd.", "Preço");
+						System.out.println();
+						System.out.println(
+								"|____________|__________________________________________|_________________|____________|_______|_____________|");
+
+						for (int j = 0; i < catalogo.size(); j++) {
+							System.out.printf("| %-10s | %-40s | %-15s | %-10s | %5d | R$ %-8.2f |", (cont),
+									catalogo.get(i).getTema(), catalogo.get(i).getCor(), catalogo.get(i).getTipo(),
+									catalogo.get(i).getQuant(), catalogo.get(i).getPreco());
+							System.out.println();
+
+							if (i + 1 != catalogo.size()) {
+
+								System.out.println(
+										"|------------|------------------------------------------|-----------------|------------|-------|-------------|");
+
+							}
+
+						}
+
+						System.out.print(
+								"|____________________________________________________________________________________________________________|");
 						cont++;
 
 					}
 				}
-				System.out.println("Digite o numero do produto que deseja adicionar ao carrinho");
+				System.out.println("------------------------------------------------------------");
+				System.out.printf("| %-56s |\n", "Digite o número do produto que deseja adicionar ao carrinho");
+				System.out.println("------------------------------------------------------------");
 				int numProduto = scanNum.nextInt();
 
 				for (int i = 0; i < catalogo.size(); i++) {
@@ -283,7 +377,9 @@ public class CatalogoApresentacao {
 							&& (precoMinimo <= catalogo.get(i).getPreco() || precoMinimo == 0)) {
 
 						if ((numProduto - 1) == cont) {
-							carrinho.add(catalogo.get(i));
+							System.out.println("------------------------------------------------------------");
+							System.out.printf("| %-56S |\n", carrinho.add(catalogo.get(i)));
+							System.out.println("------------------------------------------------------------");
 						}
 						cont++;
 

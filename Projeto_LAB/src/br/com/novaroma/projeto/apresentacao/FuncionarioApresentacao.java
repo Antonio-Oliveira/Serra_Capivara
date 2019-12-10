@@ -19,25 +19,33 @@ public class FuncionarioApresentacao {
 		int x;
 
 		do {
-			System.out.println("                                                         ");
-			System.out.println(" ________________________________________________________");
-			System.out.println("|	   O que você deseja fazer, com os PRODUTOS?     |");
-			System.out.println("|                                                        |");
-			System.out.println("|(Digite 1) -- para LISTAR    CATALOGO ATUAL             |");
-			System.out.println("|(Digite 2) -- para ADICIONAR PRODUTO                    |");
-			System.out.println("|(Digite 3) -- para MODIFICAR PRODUTO                    |");
-			System.out.println("|(Digite 4) -- para REMOVER   PRODUTO                    |");
-			if (func.getAdm()) {
-				System.out.println("|	                                                 |");
-				System.out.println("|	   O que você deseja fazer, com os FUNCIONARIOS? |");
-				System.out.println("|                                                        |");
-				System.out.println("|(Digite 5) -- para LISTAR    FUNCIONARIOS               |");
-				System.out.println("|(Digite 6) -- para ADICIONAR FUNCIONARIO                |");
-				System.out.println("|(Digite 7) -- para REMOVER   FUNCIONARIO                |");
+			System.out.println("____________________________________________________________");
+			System.out.printf("| %-12S | %-41S |", "Digite", "Ação");
+			System.out.println("\n|----------------------------------------------------------|");
+			System.out.printf("| %-56S |", "O que você deseja fazer com os PRODUTOS?");
+			System.out.println("\n|----------------------------------------------------------|");
+			System.out.printf("| %-12s | %-41s |", 1, "Listar catalogo atual");
+			System.out.println("\n|----------------------------------------------------------|");
+			System.out.printf("| %-12s | %-41s |", 2, "Adicionar produto");
+			System.out.println("\n|----------------------------------------------------------|");
+			System.out.printf("| %-12s | %-41s |", 3, "Modificar produto");
+			System.out.println("\n|----------------------------------------------------------|");
+			System.out.printf("| %-12s | %-41s |", 4, "Remover produto");
+			System.out.println("\n|----------------------------------------------------------|");
+			if(func.getAdm()) {
+			System.out.println("|----------------------------------------------------------|");
+			System.out.printf("| %-56S |", "O que você deseja fazer com os FUNCIONÁRIOS?");
+			System.out.println("\n|----------------------------------------------------------|");
+			System.out.printf("| %-12s | %-41s |", 1, "Listar funcionários");
+			System.out.println("\n|----------------------------------------------------------|");
+			System.out.printf("| %-12s | %-41s |", 2, "Adicionar funcionário");
+			System.out.println("\n|----------------------------------------------------------|");
+			System.out.printf("| %-12s | %-41s |", 3, "Remover funcionário");
+			System.out.println("\n|----------------------------------------------------------|");
 			}
-			System.out.println("|                                                        |");
-			System.out.println("|(Digite 0) -- para SAIR DO MENU                         |");
-			System.out.println("|________________________________________________________|");
+			System.out.println("|----------------------------------------------------------|");
+			System.out.printf("| %-12s | %-41s |", 0, "Sair desse menu");
+			System.out.println("\n|__________________________________________________________|");
 			x = scanNum.nextInt();
 
 			switch (x) {
@@ -49,29 +57,41 @@ public class FuncionarioApresentacao {
 				System.out.println(produtoNegocio.cadastrarProduto(novoProduto));
 				break;
 			case 3:
-				System.out.println("Informe o id do produto que deseja modificar");
+				System.out.println("------------------------------------------------------------");
+				System.out.printf("| %-56S |\n", "Informe o ID do produto que deseja modificar");
+				System.out.println("------------------------------------------------------------");
 				String id = scan.nextLine();
 				Produto produto = produtoNegocio.buscaProduto(id);
 				if (produto != null) {
 					produto = modificarProdutos(produto);
 					System.out.println(produtoNegocio.modificarProduto(produto));
 				} else {
-					System.out.println("Não existe produto com determinado ID");
+					System.out.println("------------------------------------------------------------");
+					System.out.printf("| %-56S |\n", "Não existe produtos com esse ID");
+					System.out.println("------------------------------------------------------------");
 				}
 				break;
 			case 4:
-				System.out.println("Informe o codigo do produto que deseja remover");
+				System.out.println("------------------------------------------------------------");
+				System.out.printf("| %-56S |\n", "Informe o código do produto que deseja remover");
+				System.out.println("------------------------------------------------------------");
 				String idd = scan.nextLine();
 				Produto remover = produtoNegocio.buscaProduto(idd);
 				if (remover != null) {
-					System.out.println("Deseja remover tal produto abaixo");
+					System.out.println("------------------------------------------------------------");
+					System.out.printf("| %-56S |\n", "Deseja remover o produto abaixo");
+					System.out.println("------------------------------------------------------------");
 					System.out.println(remover.toString());
-					System.out.println("Se deseja digite |Sim|, se não desejar digite|Não|");
+					System.out.println("------------------------------------------------------------");
+					System.out.printf("| %-56S |\n", "Se deseja digite |Sim|, se não desejar digite|Não|");
+					System.out.println("------------------------------------------------------------");
 					String condicao = scan.nextLine();
 					if (condicao.equalsIgnoreCase("Sim")) {
 						System.out.println(produtoNegocio.removerProduto(remover));
 					} else {
-						System.out.println("Não existe produto com determinado ID");
+						System.out.println("------------------------------------------------------------");
+						System.out.printf("| %-56S |\n", "Não existe produtos com esse ID");
+						System.out.println("------------------------------------------------------------");
 					}
 				}
 				break;
@@ -80,7 +100,9 @@ public class FuncionarioApresentacao {
 					ArrayList<Funcionario> colecaoFuncs = negocio.listarFuncsNegocio();
 					listarFuncionarios(colecaoFuncs);
 				} else {
-					System.out.println("Por favor... Digite apenas numeros de acordo com o menu acima!!!");
+					System.out.println("------------------------------------------------------------");
+					System.out.printf("| %-56S |\n", "Por favor, digite apenas números de acordo com o menu acima");
+					System.out.println("------------------------------------------------------------");
 				}
 				break;
 			case 6:
@@ -97,25 +119,35 @@ public class FuncionarioApresentacao {
 			case 7:
 				if (func.getAdm()) {
 
-					System.out.println("Informe qual O CPF do funcionario que deseja remover");
+					System.out.println("------------------------------------------------------------");
+					System.out.printf("| %-56S |\n", "Por favor, digite apenas números de acordo com o menu acima");
+					System.out.println("------------------------------------------------------------");
 					String cpf = scan.nextLine();
 					Funcionario removerFunc = negocio.buscar(cpf);
-					System.out.println("Deseja remover tal produto abaixo");
+					System.out.println("------------------------------------------------------------");
+					System.out.printf("| %-56S |\n", "Deseja remover o produto abaixo?");
+					System.out.println("------------------------------------------------------------");
 					System.out.println(removerFunc.toString());
-					System.out.println("Se deseja digite |Sim|, se não desejar digite|Não|");
+					System.out.println("------------------------------------------------------------");
+					System.out.printf("| %-56S |\n", "Se deseja digite |Sim|, se não desejar digite|Não|");
+					System.out.println("------------------------------------------------------------");
 					String condicaoo = scan.nextLine();
 					if (condicaoo.equalsIgnoreCase("Sim")) {
 						System.out.println(negocio.verificarRemocao(removerFunc));
 					}
 
 				} else {
-					System.out.println("Por favor... Digite apenas numeros de acordo com o menu acima!!!");
+					System.out.println("------------------------------------------------------------");
+					System.out.printf("| %-56S |\n", "Por favor, digite apenas números de acordo com o menu acima");
+					System.out.println("------------------------------------------------------------");
 				}
 				break;
 			case 0:
 				break;
 			default:
-				System.out.println("Por favor... Digite apenas numeros de acordo com o menu acima!!!");
+				System.out.println("------------------------------------------------------------");
+				System.out.printf("| %-56S |\n", "Por favor, digite apenas números de acordo com o menu acima");
+				System.out.println("------------------------------------------------------------");
 				break;
 			}
 		} while (x != 0);
@@ -156,17 +188,30 @@ public class FuncionarioApresentacao {
 	}
 
 	private Produto cadastrarProduto() {
-		System.out.println("------ Informe o tipo do produto -------");
+		System.out.println("____________________________________________________________");
+		System.out.printf("| %-56S |", "Informe seus dados do produto");
+		System.out.println("\n|----------------------------------------------------------|");
+		System.out.printf("| %-15S |", "Tipo");
+		System.out.println("........................................|");
 		String tipo = scan.nextLine();
-		System.out.println("------ Informe o tema do produto ------ ");
+		System.out.println("|----------------------------------------------------------|");
+		System.out.printf("| %-15S |", "Tema");
+		System.out.println("........................................|");
 		String tema = scan.nextLine();
-		System.out.println("------ Informe a cor do produto: -------");
+		System.out.println("|----------------------------------------------------------|");
+		System.out.printf("| %-15S |", "Cor");
+		System.out.println("........................................|");
 		String cor = scan.nextLine();
-		System.out.println("------ Informe o preço do produto: -----");
-		double preco = scanNum.nextDouble();
-		System.out.println("------ Informe o codigo do produto -----");
+		System.out.println("|----------------------------------------------------------|");
+		System.out.printf("| %-15S |", "Preço");
+		System.out.println("........................................|");
+		long preco = scanNum.nextLong();
+		System.out.println("|----------------------------------------------------------|");
+		System.out.printf("| %-15S |", "Código");
+		System.out.println("........................................|");
 		String id = scan.nextLine();
-		System.out.println("------ Informe a quantidade inicial ----");
+		System.out.printf("| %-15S |", "Quantidade inicial");
+		System.out.println("........................................|");
 		int quant = scanNum.nextInt();
 
 		return new Produto(tipo, tema, cor, preco, id, quant);
@@ -179,43 +224,62 @@ public class FuncionarioApresentacao {
 			System.out.println("                                                                   ");
 			System.out.println("OBSERVAÇÃO - O  PRODUTO SERA MODIFICADO DE ACORDO COM SUAS ESCOLHAS");
 			System.out.println("              QUANDO TIVER ACABADO DE MODIFICAR DIGITE '0'         ");
-			System.out.println(" ________________________________________________________");
-			System.out.println("|                                                        |");
-			System.out.println("|(Digite 1) -- para modificar o tipo  do produto         |");
-			System.out.println("|(Digite 2) -- para modificar o tema  do produto         |");
-			System.out.println("|(Digite 3) -- para modificar a cor   do produto         |");
-			System.out.println("|(Digite 4) -- para modificar o preço do produto         |");
-			System.out.println("|(Digite 5) -- para modificar a quantidade do produto    |");
-			System.out.println("|(Digite 0) -- para sair do programa                     |");
-			System.out.println("|________________________________________________________|");
+			System.out.println("____________________________________________________________");
+			System.out.printf("| %-12S | %-41S |", "Digite", "Ação");
+			System.out.println("\n|----------------------------------------------------------|");
+			System.out.printf("| %-12s | %-41s |", 1, "Modificar o TIPO do produto");
+			System.out.println("\n|----------------------------------------------------------|");
+			System.out.printf("| %-12s | %-41s |", 2, "Modificar o TEMA do produto");
+			System.out.println("\n|----------------------------------------------------------|");
+			System.out.printf("| %-12s | %-41s |", 3, "Modificar a COR do produto");
+			System.out.println("\n|----------------------------------------------------------|");
+			System.out.printf("| %-12s | %-41s |", 4, "Modificar o PREÇO do produto");
+			System.out.println("\n|----------------------------------------------------------|");
+			System.out.printf("| %-12s | %-41s |", 5, "Modificar a QUANTIDADE do produto");
+			System.out.println("\n|----------------------------------------------------------|");
+			System.out.println("|----------------------------------------------------------|");
+			System.out.printf("| %-12s | %-41s |", 0, "Sair desse menu");
+			System.out.println("\n|__________________________________________________________|");
 			x = scanNum.nextInt();
 
 			switch (x) {
 			case 1:
-				System.out.println("Informe o tipo do produto para modificação");
+				System.out.println("------------------------------------------------------------");
+				System.out.printf("| %-56S |\n", "Informe o tipo do produto para modificação");
+				System.out.println("------------------------------------------------------------");
 				produto.setTipo(scan.nextLine());
 				continue;
 			case 2:
-				System.out.println("Informe o tema do produto para modificação");
+				System.out.println("------------------------------------------------------------");
+				System.out.printf("| %-56S |\n", "Informe o tema do produto para modificação");
+				System.out.println("------------------------------------------------------------");
 				produto.setTema(scan.nextLine());
 				continue;
 
 			case 3:
-				System.out.println("Informe a cor do produto para modificação");
+				System.out.println("------------------------------------------------------------");
+				System.out.printf("| %-56S |\n", "Informe a cor do produto para modificação");
+				System.out.println("------------------------------------------------------------");
 				produto.setCor(scan.nextLine());
 				continue;
 			case 4:
-				System.out.println("Informe o preço do produto para modificação");
+				System.out.println("------------------------------------------------------------");
+				System.out.printf("| %-56S |\n", "Informe o preço do produto para modificação");
+				System.out.println("------------------------------------------------------------");
 				produto.setPreco(scanNum.nextDouble());
 				continue;
 			case 5:
-				System.out.println("Informe a quantidade do produto para modificação");
+				System.out.println("------------------------------------------------------------");
+				System.out.printf("| %-56S |\n", "Informe a quantidade do produto para modificação");
+				System.out.println("------------------------------------------------------------");
 				produto.setQuant(scanNum.nextInt());
 				continue;
 			case 0:
 				break;
 			default:
-				System.out.println("Digite apenas numeros de acordo com a tabela acima !!!");
+				System.out.println("------------------------------------------------------------");
+				System.out.printf("| %-56S |\n", "Digite apenas números de acordo com a tabela acima!");
+				System.out.println("------------------------------------------------------------");
 			}
 
 		} while (x != 0);
@@ -224,32 +288,42 @@ public class FuncionarioApresentacao {
 	}
 
 	private Funcionario adicionarFuncionario() {
-		System.out.println("Informe o nome:");
+		System.out.println("____________________________________________________________");
+		System.out.printf("| %-56S |", "Informe os dados do funcionário");
+		System.out.println("\n|----------------------------------------------------------|");
+		System.out.printf("| %-15S |", "Nome");
+		System.out.println("........................................|");
 		String nome = scan.nextLine();
-
-		System.out.println("Informe a idade:");
+		System.out.println("|----------------------------------------------------------|");
+		System.out.printf("| %-15S |", "Idade");
+		System.out.println("........................................|");
 		int idade = scanNum.nextInt();
-
-		System.out.println("Informe o sexo:");
+		System.out.println("|----------------------------------------------------------|");
+		System.out.printf("| %-15S |", "Sexo");
+		System.out.println("........................................|");
 		String sexo = scan.nextLine();
-
-		System.out.println("Informe um numero para contato:");
+		System.out.println("|----------------------------------------------------------|");
+		System.out.printf("| %-15S |", "Nº Telefone");
+		System.out.println("........................................|");
 		long numTell = scanNum.nextLong();
-
-		System.out.println("Informe o email:");
+		System.out.println("|----------------------------------------------------------|");
+		System.out.printf("| %-15S |", "Email");
+		System.out.println("........................................|");
 		String email = scan.nextLine();
-
-		System.out.println("Informe o CPF:");
+		System.out.printf("| %-15S |", "CPF");
+		System.out.println("........................................|");
 		String cpf = scan.nextLine();
-
-		System.out.println("Informe a RG:");
+		System.out.println("|----------------------------------------------------------|");
+		System.out.printf("| %-15S |", "RG");
+		System.out.println("........................................|");
 		String RG = scan.nextLine();
-
-		System.out.println("Informe a CTPS:");
+		System.out.println("|----------------------------------------------------------|");
+		System.out.printf("| %-15S |", "CTPS");
+		System.out.println("........................................|");
 		String CTPS = scan.nextLine();
-
-		System.out.println("Informe a senha:");
-		System.out.println("OBSERVAÇÃO!!! - maior que 8 digitos e menor que 15 digitos");
+		System.out.printf("| %-15S |", "Senha");
+		System.out.println("........................................|");
+		System.out.printf("| %-56S |\n", "A senha deve ter entre 8 e 15 dígitos");
 		String senha = scan.nextLine();
 
 		return new Funcionario(nome, idade, numTell, email, cpf, senha, sexo, CTPS, RG);
